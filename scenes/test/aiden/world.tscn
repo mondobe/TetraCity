@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://birrxtkg5d3hg"]
+
+[ext_resource type="Texture2D" uid="uid://bh5bttlkhuymt" path="res://sprites/city hall test.png" id="1_f1pk4"]
+
+[node name="World" type="Node2D"]
+
+[node name="CityHallTest" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, -16)
+texture = ExtResource("1_f1pk4")
