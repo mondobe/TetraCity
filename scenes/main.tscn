@@ -18,8 +18,6 @@ key = 78
 [node name="Main" type="Node"]
 script = ExtResource("1_0ul8v")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("2_brax0")
 

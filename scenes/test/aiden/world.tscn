@@ -1,10 +1,59 @@
-[gd_scene load_steps=2 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=8 format=3 uid="uid://birrxtkg5d3hg"]
 
-[ext_resource type="Texture2D" uid="uid://bh5bttlkhuymt" path="res://sprites/city hall test.png" id="1_f1pk4"]
+[ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
+[ext_resource type="Texture2D" uid="uid://pllt5njnknbr" path="res://sprites/clouds.png" id="2_gujeu"]
+[ext_resource type="Script" path="res://scripts/effects/scrolling_clouds.gd" id="3_113pp"]
+[ext_resource type="Texture2D" uid="uid://datqvsx5xph6" path="res://sprites/groundTop.png" id="3_ayr2l"]
+[ext_resource type="Texture2D" uid="uid://b7xoss14ph6pv" path="res://sprites/groundBottom.png" id="4_k5aki"]
+[ext_resource type="Texture2D" uid="uid://djbgursymeoqt" path="res://sprites/balloon.png" id="4_txe25"]
+[ext_resource type="Texture2D" uid="uid://blrtmwevytseb" path="res://sprites/buildings/cityHall.png" id="5_yfyrq"]
 
 [node name="World" type="Node2D"]
 
-[node name="CityHallTest" type="Sprite2D" parent="."]
-texture_filter = 1
-position = Vector2(0, -16)
-texture = ExtResource("1_f1pk4")
+[node name="MovingCamera" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+script = ExtResource("2_1vd7b")
+speed = 10.0
+extent = 100.0
+sky_position = Vector2(0, -200)
+
+[node name="Ground" type="Node2D" parent="."]
+
+[node name="GroundTop" type="Sprite2D" parent="Ground"]
+texture_repeat = 2
+position = Vector2(0, 96)
+texture = ExtResource("3_ayr2l")
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 8)
+
+[node name="GroundBottom" type="Sprite2D" parent="Ground"]
+position = Vector2(0, 196)
+texture = ExtResource("4_k5aki")
+region_enabled = true
+region_rect = Rect2(0, 0, 1024, 192)
+
+[node name="TestBuilding" type="Node2D" parent="."]
+position = Vector2(0, -162)
+
+[node name="Balloon" type="Sprite2D" parent="TestBuilding"]
+position = Vector2(0, -28)
+texture = ExtResource("4_txe25")
+
+[node name="CityHall" type="Sprite2D" parent="TestBuilding"]
+position = Vector2(0, 1)
+texture = ExtResource("5_yfyrq")
+
+[node name="BackgroundEffects" type="Node2D" parent="."]
+
+[node name="ScrollingClouds" type="Sprite2D" parent="BackgroundEffects"]
+z_index = -2
+texture_repeat = 2
+texture = ExtResource("2_gujeu")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 1000)
+script = ExtResource("3_113pp")
+drift_x = 12.0
+drift_y_amp = 8.0
+drift_y_freq = 0.001
+
+[node name="Buildings" type="Node2D" parent="."]
