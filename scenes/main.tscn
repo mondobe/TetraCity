@@ -20,6 +20,7 @@ script = ExtResource("1_0ul8v")
 
 [node name="SceneLoader" type="Node" parent="."]
 script = ExtResource("2_brax0")
+_initial_scene = ExtResource("3_wg81f")
 
 [node name="DebugControls" type="Node" parent="."]
 script = ExtResource("4_4o7ee")
