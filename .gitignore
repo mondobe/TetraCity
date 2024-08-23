@@ -8,6 +8,7 @@ export_presets.cfg
 
 # Game-specific ignores
 bin/
+**/*.tmp
 
 # Imported translations (automatically generated from CSV files)
 *.translation
