@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bh5bttlkhuymt"
-path="res://.godot/imported/city hall test.png-b68a497c3daeeb11210e0685d06f5f3f.ctex"
+uid="uid://pllt5njnknbr"
+path="res://.godot/imported/clouds.png-b6059c5963d2ce8e4931ef4a7d256621.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/city hall test.png"
-dest_files=["res://.godot/imported/city hall test.png-b68a497c3daeeb11210e0685d06f5f3f.ctex"]
+source_file="res://sprites/environment/clouds.png"
+dest_files=["res://.godot/imported/clouds.png-b6059c5963d2ce8e4931ef4a7d256621.ctex"]
 
 [params]
 

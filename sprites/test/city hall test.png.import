@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://datqvsx5xph6"
-path="res://.godot/imported/groundTop.png-d65cf8609641935c6b8a997a4829af53.ctex"
+uid="uid://bh5bttlkhuymt"
+path="res://.godot/imported/city hall test.png-c7ba434f35333875d2cf7669b8522a14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/groundTop.png"
-dest_files=["res://.godot/imported/groundTop.png-d65cf8609641935c6b8a997a4829af53.ctex"]
+source_file="res://sprites/test/city hall test.png"
+dest_files=["res://.godot/imported/city hall test.png-c7ba434f35333875d2cf7669b8522a14.ctex"]
 
 [params]
 
