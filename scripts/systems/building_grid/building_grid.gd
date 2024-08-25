@@ -3,7 +3,13 @@ extends Node2D
 
 const GRID_SPACE_SIZE: int = 20
 
+# Test scene variables
+var test_building: Building
+@export var test_blueprints: Array[BuildingBlueprint]
+
 @export var _initial_dimensions: Vector2i
+
+@export var building: PackedScene
 
 var _placing_index: int
 
@@ -12,52 +18,44 @@ var _placing_index: int
 
 @onready var dimensions: Vector2i = _initial_dimensions
 
-@onready var test_building = $Building
-
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var string = \
-"....
-OOOO
-....
-....
-"
-	var test_grid: PackedByteArray = byte_grid_from_string(string)
-	var grid_dimensions: Vector2i = grid_dimensions_from_string(string)
-	print(byte_grid_to_string(test_grid, grid_dimensions))
-
-	var test_building: Building = $Building
-	test_building.grid = test_grid
-	test_building.dimensions = grid_dimensions
-	test_building.center_coords = Vector2i(2, 2)
-	test_building.center_mode = Building.CenterMode.TOP_LEFT
-	test_building.building_grid = self
-	test_building.set_origin_coords(Vector2i(0, 0))
-	test_building.init_sprite()
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if (Input.is_action_just_pressed("rotate_left")):
-		test_building.rotate_building(COUNTERCLOCKWISE)
-		print(byte_grid_to_string(test_building.grid, test_building.dimensions))
+	if (Input.is_action_just_pressed("test_create_building")):
+		var blueprint = test_blueprints[randi_range(0, len(test_blueprints) - 1)]
+		test_building = make_building_from_blueprint(blueprint)
 
-	if (Input.is_action_just_pressed("rotate_right")):
-		test_building.rotate_building(CLOCKWISE)
-		print(byte_grid_to_string(test_building.grid, test_building.dimensions))
+	if test_building:
+		if (Input.is_action_just_pressed("rotate_left")):
+			test_building.rotate_building(COUNTERCLOCKWISE)
+			print(byte_grid_to_string(test_building.grid, test_building.dimensions))
 
-	if (Input.is_action_just_pressed("ui_up")):
-		test_building.set_origin_coords(test_building.pos_coords + Vector2i(0, -1))
+		if (Input.is_action_just_pressed("rotate_right")):
+			test_building.rotate_building(CLOCKWISE)
+			print(byte_grid_to_string(test_building.grid, test_building.dimensions))
 
-	if (Input.is_action_just_pressed("ui_down")):
-		test_building.set_origin_coords(test_building.pos_coords + Vector2i(0, 1))
+		if (Input.is_action_just_pressed("move_up")):
+			test_building.set_origin_coords(test_building.pos_coords + Vector2i(0, -1))
 
-	if (Input.is_action_just_pressed("ui_left")):
-		test_building.set_origin_coords(test_building.pos_coords + Vector2i(-1, 0))
+		if (Input.is_action_just_pressed("move_down")):
+			test_building.set_origin_coords(test_building.pos_coords + Vector2i(0, 1))
 
-	if (Input.is_action_just_pressed("ui_right")):
-		test_building.set_origin_coords(test_building.pos_coords + Vector2i(1, 0))
+		if (Input.is_action_just_pressed("move_left")):
+			test_building.set_origin_coords(test_building.pos_coords + Vector2i(-1, 0))
 
+		if (Input.is_action_just_pressed("move_right")):
+			test_building.set_origin_coords(test_building.pos_coords + Vector2i(1, 0))
+
+
+func make_building_from_blueprint(blueprint: BuildingBlueprint) -> Building:
+	var new_building: Building = building.instantiate()
+	new_building.init_from_blueprint(blueprint)
+	add_child(new_building)
+	return new_building
 
 static func make_grid(initial_dimensions: Vector2i) -> PackedInt32Array:
 	var grid = PackedInt32Array()

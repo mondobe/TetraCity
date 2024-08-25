@@ -3,10 +3,10 @@ extends Node2D
 
 enum CenterMode { TOP_LEFT, CENTER }
 
+var blueprint: BuildingBlueprint
+
 var grid: PackedByteArray
 var dimensions: Vector2i
-var center_coords: Vector2i
-var center_mode: CenterMode
 
 var building_grid: BuildingGrid
 var pos_coords: Vector2i
@@ -23,10 +23,18 @@ func _process(delta: float) -> void:
 	pass
 
 
-func init_sprite() -> void:
+func init_from_blueprint(blueprint: BuildingBlueprint) -> void:
+	self.blueprint = blueprint
+	self.grid = BuildingGrid.byte_grid_from_string(blueprint.squares)
+	self.dimensions = BuildingGrid.grid_dimensions_from_string(blueprint.squares)
+	sprite = $Sprite2D
+	sprite.texture = blueprint.sprite
+	_init_sprite()
+
+func _init_sprite() -> void:
 	sprite.centered = false
-	var center_px = center_coords * BuildingGrid.GRID_SPACE_SIZE
-	if center_mode == CenterMode.CENTER:
+	var center_px = blueprint.center_coords * BuildingGrid.GRID_SPACE_SIZE
+	if blueprint.center_mode == CenterMode.CENTER:
 		center_px += Vector2i(1, 1) * (BuildingGrid.GRID_SPACE_SIZE / 2)
 	sprite.offset = -center_px
 	sprite.position = center_px
@@ -37,7 +45,7 @@ func set_origin_coords(coords: Vector2i) -> void:
 
 func rotate_building(dir: ClockDirection) -> void:
 	# Update grid
-	grid = rotate_grid_around(grid, dimensions, center_coords, center_mode, dir)
+	grid = rotate_grid_around(grid, dimensions, blueprint.center_coords, blueprint.center_mode, dir)
 
 	# Rotate sprite
 	var cw = dir == CLOCKWISE

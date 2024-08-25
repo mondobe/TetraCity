@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_0ul8v"]
 [ext_resource type="Script" path="res://scripts/systems/loading/scene_loader.gd" id="2_brax0"]
-[ext_resource type="PackedScene" uid="uid://birrxtkg5d3hg" path="res://scenes/test/aiden/world.tscn" id="3_wg81f"]
+[ext_resource type="PackedScene" uid="uid://birrxtkg5d3hg" path="res://scenes/gameplay/world.tscn" id="3_wg81f"]
 [ext_resource type="Script" path="res://scripts/debug/debug_controls.gd" id="4_4o7ee"]
 [ext_resource type="Script" path="res://scripts/debug/debug_scene_hotkey.gd" id="5_u4yuf"]
 
