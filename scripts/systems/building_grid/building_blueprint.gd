@@ -6,3 +6,4 @@ extends Resource
 @export_multiline var squares: String
 @export var center_coords: Vector2i
 @export var center_mode: Building.CenterMode
+@export var kick_mode: Building.KickMode

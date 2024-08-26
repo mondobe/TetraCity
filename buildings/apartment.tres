@@ -12,3 +12,4 @@ OOOO
 ...."
 center_coords = Vector2i(2, 2)
 center_mode = 0
+kick_mode = 1

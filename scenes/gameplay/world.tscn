@@ -23,7 +23,7 @@ sky_position = Vector2(0, -200)
 
 [node name="Ground" type="Node2D" parent="."]
 z_index = 1
-position = Vector2(0, 122)
+position = Vector2(0, 123)
 
 [node name="GroundTop" type="Sprite2D" parent="Ground"]
 texture_repeat = 2
@@ -62,8 +62,8 @@ drift_y_amp = 8.0
 drift_y_freq = 0.001
 
 [node name="BuildingGrid" type="Node2D" parent="."]
-position = Vector2(-100, -100)
+position = Vector2(-140, -160)
 script = ExtResource("8_yumsi")
 _test_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("10_yj0rj"), ExtResource("9_vkulm")])
-_initial_dimensions = Vector2i(10, 20)
+_initial_dimensions = Vector2i(14, 14)
 building = ExtResource("9_teedr")
