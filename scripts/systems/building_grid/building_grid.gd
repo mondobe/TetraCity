@@ -4,14 +4,13 @@ extends Node2D
 const GRID_SPACE_SIZE: int = 20
 
 # Test scene variables
-var test_building: Building
-@export var test_blueprints: Array[BuildingBlueprint]
+@export var _test_blueprints: Array[BuildingBlueprint]
 
 @export var _initial_dimensions: Vector2i
 
 @export var building: PackedScene
 
-var _placing_index: int
+var placing_building: Building
 
 @onready var grid: PackedInt32Array = make_grid(_initial_dimensions)
 @onready var buildings: Array[Building]
@@ -26,30 +25,64 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("test_create_building")):
-		var blueprint = test_blueprints[randi_range(0, len(test_blueprints) - 1)]
-		test_building = make_building_from_blueprint(blueprint)
+		if placing_building:
+			buildings.append(placing_building)
+			build_grid()
+		var blueprint = _test_blueprints[randi_range(0, len(_test_blueprints) - 1)]
+		placing_building = make_building_from_blueprint(blueprint)
 
-	if test_building:
+	if placing_building:
 		if (Input.is_action_just_pressed("rotate_left")):
-			test_building.rotate_building(COUNTERCLOCKWISE)
-			print(byte_grid_to_string(test_building.grid, test_building.dimensions))
+			placing_building.rotate_building(COUNTERCLOCKWISE)
 
 		if (Input.is_action_just_pressed("rotate_right")):
-			test_building.rotate_building(CLOCKWISE)
-			print(byte_grid_to_string(test_building.grid, test_building.dimensions))
+			placing_building.rotate_building(CLOCKWISE)
 
 		if (Input.is_action_just_pressed("move_up")):
-			test_building.set_origin_coords(test_building.pos_coords + Vector2i(0, -1))
+			test_move_building(placing_building, Vector2i(0, -1))
 
 		if (Input.is_action_just_pressed("move_down")):
-			test_building.set_origin_coords(test_building.pos_coords + Vector2i(0, 1))
+			test_move_building(placing_building, Vector2i(0, 1))
 
 		if (Input.is_action_just_pressed("move_left")):
-			test_building.set_origin_coords(test_building.pos_coords + Vector2i(-1, 0))
+			test_move_building(placing_building, Vector2i(-1, 0))
 
 		if (Input.is_action_just_pressed("move_right")):
-			test_building.set_origin_coords(test_building.pos_coords + Vector2i(1, 0))
+			test_move_building(placing_building, Vector2i(1, 0))
 
+
+func build_grid() -> void:
+	grid = make_grid(_initial_dimensions)
+	for i in range(buildings.size()):
+		var building: Building = buildings[i]
+		for x in range(building.dimensions.x):
+			for y in range(building.dimensions.y):
+				var xy = Vector2i(x, y)
+				if building.grid_at(xy) != 0:
+					var grid_xy: Vector2i = xy + building.pos_coords
+					set_grid_at(grid, dimensions, grid_xy, i + 1)
+
+
+func test_move_building(building: Building, amount: Vector2i) -> bool:
+	var new_coords: Vector2i = building.pos_coords + amount
+	var test: bool = building_allowed_at_coords(building, new_coords)
+	if test:
+		building.set_origin_coords(new_coords)
+	return test
+
+func building_allowed_at_coords(building: Building, coords: Vector2i) -> bool:
+	for x in range(building.dimensions.x):
+		for y in range(building.dimensions.y):
+			var xy: Vector2i = Vector2i(x, y)
+			if building.grid_at(xy) == 0:
+				continue
+			var grid_xy: Vector2i = xy + coords
+			if (grid_xy.x < 0 or grid_xy.x >= dimensions.x) \
+					or (grid_xy.y < 0 or grid_xy.y >= dimensions.y):
+				return false
+			if building_index_at(grid_xy) != 0:
+				return false
+	return true
 
 func make_building_from_blueprint(blueprint: BuildingBlueprint) -> Building:
 	var new_building: Building = building.instantiate()

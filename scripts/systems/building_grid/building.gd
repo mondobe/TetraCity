@@ -95,3 +95,5 @@ static func rotate_grid_around(
 
 	return new_grid
 
+func grid_at(coords: Vector2i) -> int:
+	return BuildingGrid.grid_at(grid, dimensions, coords)

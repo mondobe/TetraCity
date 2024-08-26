@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=12 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="Texture2D" uid="uid://datqvsx5xph6" path="res://sprites/environment/groundTop.png" id="2_l1lou"]
@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_grid.gd" id="8_yumsi"]
 [ext_resource type="PackedScene" uid="uid://cmoks1w008liq" path="res://scenes/gameplay/building.tscn" id="9_teedr"]
 [ext_resource type="Resource" uid="uid://cbd8qt7xqw4v1" path="res://buildings/city_hall.tres" id="9_vkulm"]
-[ext_resource type="Texture2D" uid="uid://b4wejql45gxc2" path="res://sprites/buildings/apartments.png" id="10_uxpun"]
 [ext_resource type="Resource" uid="uid://bh0s6jhfgvuwv" path="res://buildings/apartment.tres" id="10_yj0rj"]
 
 [node name="World" type="Node2D"]
@@ -65,12 +64,6 @@ drift_y_freq = 0.001
 [node name="BuildingGrid" type="Node2D" parent="."]
 position = Vector2(-100, -100)
 script = ExtResource("8_yumsi")
-test_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("9_vkulm"), ExtResource("10_yj0rj")])
+_test_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("10_yj0rj"), ExtResource("9_vkulm")])
 _initial_dimensions = Vector2i(10, 20)
 building = ExtResource("9_teedr")
-
-[node name="TestBuilding" type="Sprite2D" parent="."]
-position = Vector2(-100, -100)
-texture = ExtResource("10_uxpun")
-centered = false
-offset = Vector2(-40, -40)

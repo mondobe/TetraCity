@@ -11,8 +11,6 @@ const toggle_modes: Array[CameraModes] = [CameraModes.GROUND, CameraModes.SKY]
 @export var sky_position: Vector2
 
 @onready var _camera_mode_index: int = 0
-func camera_mode() -> CameraModes:
-	return toggle_modes[_camera_mode_index]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -34,3 +32,7 @@ func _process(delta: float) -> void:
 			target_pos = sky_position
 	var delta_pos = target_pos - global_position
 	translate(delta_pos * speed * delta)
+
+
+func camera_mode() -> CameraModes:
+	return toggle_modes[_camera_mode_index]
