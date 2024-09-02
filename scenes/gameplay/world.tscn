@@ -4,13 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://datqvsx5xph6" path="res://sprites/environment/groundTop.png" id="2_l1lou"]
 [ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="3_113pp"]
 [ext_resource type="Texture2D" uid="uid://b7xoss14ph6pv" path="res://sprites/environment/groundBottom.png" id="3_ku6pw"]
-[ext_resource type="Texture2D" uid="uid://djbgursymeoqt" path="res://sprites/test/balloon.png" id="4_a0q5s"]
-[ext_resource type="Texture2D" uid="uid://blrtmwevytseb" path="res://sprites/buildings/cityHall.png" id="5_yfyrq"]
 [ext_resource type="Texture2D" uid="uid://pllt5njnknbr" path="res://sprites/environment/clouds.png" id="6_24y6w"]
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_grid.gd" id="8_yumsi"]
 [ext_resource type="PackedScene" uid="uid://cmoks1w008liq" path="res://scenes/gameplay/building.tscn" id="9_teedr"]
 [ext_resource type="Resource" uid="uid://cbd8qt7xqw4v1" path="res://buildings/city_hall.tres" id="9_vkulm"]
+[ext_resource type="FontFile" uid="uid://c685qb4m7qjc" path="res://fonts/rubik.ttf" id="10_3w8xh"]
 [ext_resource type="Resource" uid="uid://bh0s6jhfgvuwv" path="res://buildings/apartment.tres" id="10_yj0rj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mflm6"]
+font = ExtResource("10_3w8xh")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node2D"]
 
@@ -37,17 +41,6 @@ texture = ExtResource("3_ku6pw")
 region_enabled = true
 region_rect = Rect2(0, 0, 1024, 192)
 
-[node name="FakeBalloon" type="Node2D" parent="."]
-position = Vector2(0, -162)
-
-[node name="Balloon" type="Sprite2D" parent="FakeBalloon"]
-position = Vector2(0, -28)
-texture = ExtResource("4_a0q5s")
-
-[node name="CityHall" type="Sprite2D" parent="FakeBalloon"]
-position = Vector2(0, 1)
-texture = ExtResource("5_yfyrq")
-
 [node name="BackgroundEffects" type="Node2D" parent="."]
 
 [node name="ScrollingClouds" type="Sprite2D" parent="BackgroundEffects"]
@@ -67,3 +60,17 @@ script = ExtResource("8_yumsi")
 _test_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("10_yj0rj"), ExtResource("9_vkulm")])
 _initial_dimensions = Vector2i(14, 14)
 building = ExtResource("9_teedr")
+
+[node name="TempUILayer" type="CanvasLayer" parent="."]
+
+[node name="Tutorial" type="Label" parent="TempUILayer"]
+anchors_preset = -1
+offset_left = 182.0
+offset_top = 491.0
+offset_right = 354.0
+offset_bottom = 560.0
+text = "Press SPACE to spawn a building
+Arrow keys/WASD to move building
+Q/E to rotate building
+"
+label_settings = SubResource("LabelSettings_mflm6")
