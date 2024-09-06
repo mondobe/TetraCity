@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://b1eka0588yyur"]
 
 [ext_resource type="Script" path="res://scripts/systems/loading/main.gd" id="1_0ul8v"]
-[ext_resource type="Script" path="res://scripts/systems/loading/scene_loader.gd" id="2_brax0"]
+[ext_resource type="Script" path="res://scripts/systems/loading/level_loader.gd" id="2_brax0"]
 [ext_resource type="PackedScene" uid="uid://birrxtkg5d3hg" path="res://scenes/gameplay/world.tscn" id="3_wg81f"]
 [ext_resource type="Script" path="res://scripts/debug/debug_controls.gd" id="4_4o7ee"]
 [ext_resource type="Script" path="res://scripts/debug/debug_scene_hotkey.gd" id="5_u4yuf"]
@@ -18,7 +18,7 @@ key = 78
 [node name="Main" type="Node"]
 script = ExtResource("1_0ul8v")
 
-[node name="SceneLoader" type="Node" parent="."]
+[node name="LevelLoader" type="Node" parent="."]
 script = ExtResource("2_brax0")
 _initial_scene = ExtResource("3_wg81f")
 

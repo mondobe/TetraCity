@@ -1,28 +1,38 @@
 class_name Building
 extends Node2D
+## Controls buildings that have been placed on the grid.
+## For rotation details, see: https://tetris.wiki/Super_Rotation_System
 
+## Options for a building's center of rotation.
+## For example, T-blocks have the center of rotation in the middle of a block,
+## while I-blocks have it in the corner of two blocks.
 enum CenterMode { TOP_LEFT, CENTER }
+
+## Options for a building's kick mode (basically, whether it looks more like
+## a T-block or an I-block)
 enum KickMode { NORMAL, LONG }
 
+## The blueprint on which this building was based,
 var blueprint: BuildingBlueprint
 
+## The building's grid of pixels. The size is equal to the bounding box size,
+## and the grid is filled with a 1 (if there is a pixel) or 0 (if there isn't).
 var grid: Grid
 
+## The grid in which this building is to be placed.
 var building_grid: BuildingGrid
+
+## This building's current position in the building grid.
 var pos_coords: Vector2i
 
+## The Sprite2D component that displays the building's texture.
 @onready var sprite: Sprite2D = $Sprite2D
 
+## How rotated this building is (i.e. the number of clockwise rotations from
+## the starting point)
 @onready var rotation_value: int = 0
 
-func _ready() -> void:
-	pass
-
-
-func _process(delta: float) -> void:
-	pass
-
-
+## Initialize this building from the specified blueprint.
 func init_from_blueprint(blueprint: BuildingBlueprint) -> void:
 	self.blueprint = blueprint
 	self.grid = BuildingGrid.byte_grid_from_string(blueprint.squares)
@@ -30,6 +40,7 @@ func init_from_blueprint(blueprint: BuildingBlueprint) -> void:
 	sprite.texture = blueprint.sprite
 	_init_sprite()
 
+## Move the Sprite2D child to the correct position and offset for rotation
 func _init_sprite() -> void:
 	sprite.centered = false
 	var center_px = blueprint.center_coords * BuildingGrid.GRID_SPACE_SIZE
@@ -38,10 +49,12 @@ func _init_sprite() -> void:
 	sprite.offset = -center_px
 	sprite.position = center_px
 
+## Set the building's position in the building grid and move its transform
 func set_origin_coords(coords: Vector2i) -> void:
 	position = BuildingGrid.GRID_SPACE_SIZE * coords
 	pos_coords = coords
 
+## Rotate the building in the specified direction
 func rotate_building(dir: ClockDirection) -> void:
 	# Update grid
 	grid = rotate_grid_around(grid, blueprint.center_coords, blueprint.center_mode, dir)
@@ -53,7 +66,8 @@ func rotate_building(dir: ClockDirection) -> void:
 	rotation_value %= 4
 	sprite.rotation = PI / 2 * rotation_value
 
-
+## Calculate the position of each pixel in a rotated building grid using an
+## offset rotation matrix.
 static func rotate_grid_around(
 		grid: Grid,
 		center: Vector2i,

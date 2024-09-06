@@ -64,7 +64,6 @@ building = ExtResource("9_teedr")
 [node name="TempUILayer" type="CanvasLayer" parent="."]
 
 [node name="Tutorial" type="Label" parent="TempUILayer"]
-anchors_preset = -1
 offset_left = 182.0
 offset_top = 491.0
 offset_right = 354.0
