@@ -7,9 +7,6 @@ extends Node
 ## The list of hotkeys with corresponding scenes to load
 @export var scene_keys: Array[DebugSceneHotkey]
 
-## The main node
-@onready var _main: Main = get_parent()
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Close the app if ESC is pressed (for convenience)
@@ -21,4 +18,4 @@ func _process(delta: float) -> void:
 	if Input.is_key_pressed(KEY_SHIFT):
 		for d in scene_keys:
 			if Input.is_key_pressed(d.key):
-				_main.level_loader.load_scene(d.scene)
+				LevelLoader.load_level(d.scene)

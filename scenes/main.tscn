@@ -1,27 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1eka0588yyur"]
+[gd_scene load_steps=7 format=3 uid="uid://b1eka0588yyur"]
 
-[ext_resource type="Script" path="res://scripts/systems/loading/main.gd" id="1_0ul8v"]
-[ext_resource type="Script" path="res://scripts/systems/loading/level_loader.gd" id="2_brax0"]
+[ext_resource type="Script" path="res://scripts/systems/loading/main.gd" id="1_66klc"]
 [ext_resource type="PackedScene" uid="uid://birrxtkg5d3hg" path="res://scenes/gameplay/world.tscn" id="3_wg81f"]
 [ext_resource type="Script" path="res://scripts/debug/debug_controls.gd" id="4_4o7ee"]
 [ext_resource type="Script" path="res://scripts/debug/debug_scene_hotkey.gd" id="5_u4yuf"]
 
-[sub_resource type="Resource" id="Resource_bc0xh"]
+[sub_resource type="Resource" id="Resource_d2lay"]
 script = ExtResource("5_u4yuf")
-key = 84
+key = 87
 scene = ExtResource("3_wg81f")
 
-[sub_resource type="Resource" id="Resource_r0wh5"]
+[sub_resource type="Resource" id="Resource_edjv1"]
 script = ExtResource("5_u4yuf")
-key = 78
+key = 81
 
 [node name="Main" type="Node"]
-script = ExtResource("1_0ul8v")
-
-[node name="LevelLoader" type="Node" parent="."]
-script = ExtResource("2_brax0")
+script = ExtResource("1_66klc")
 _initial_scene = ExtResource("3_wg81f")
 
 [node name="DebugControls" type="Node" parent="."]
 script = ExtResource("4_4o7ee")
-scene_keys = Array[ExtResource("5_u4yuf")]([SubResource("Resource_bc0xh"), SubResource("Resource_r0wh5")])
+scene_keys = Array[ExtResource("5_u4yuf")]([SubResource("Resource_d2lay"), SubResource("Resource_edjv1")])

@@ -15,6 +15,10 @@ run/main_scene="res://scenes/main.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://sprites/test/icon.svg"
 
+[autoload]
+
+LevelLoader="*res://scripts/systems/loading/level_loader.gd"
+
 [display]
 
 window/size/viewport_width=1920

@@ -1,7 +1,11 @@
 class_name Main
 extends Node
-## The Main node doesn't have any actual functionality right now. It just holds
-## useful values.
+## Initializes the basics of the game and loads the first level.
 
-@onready var debug_controls: DebugControls = $DebugControls
-@onready var level_loader: LevelLoader = $LevelLoader
+## The initial level we want to load when the game starts.
+@export var _initial_scene: PackedScene
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	LevelLoader.load_level(_initial_scene)
+
