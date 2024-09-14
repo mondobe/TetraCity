@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=13 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="Texture2D" uid="uid://datqvsx5xph6" path="res://sprites/environment/groundTop.png" id="2_l1lou"]
+[ext_resource type="Script" path="res://scripts/environment/skyview_controls.gd" id="2_ymg3g"]
 [ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="3_113pp"]
 [ext_resource type="Texture2D" uid="uid://b7xoss14ph6pv" path="res://sprites/environment/groundBottom.png" id="3_ku6pw"]
 [ext_resource type="Texture2D" uid="uid://pllt5njnknbr" path="res://sprites/environment/clouds.png" id="6_24y6w"]
@@ -18,12 +19,18 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node2D"]
 
-[node name="MovingCamera" type="Camera2D" parent="."]
+[node name="MovingCamera" type="Camera2D" parent="." groups=["Camera"]]
 zoom = Vector2(4, 4)
 script = ExtResource("2_1vd7b")
 speed = 10.0
 extent = 100.0
 sky_position = Vector2(0, -200)
+
+[node name="SkyViewControls" type="Node" parent="MovingCamera" node_paths=PackedStringArray("_moving_camera")]
+script = ExtResource("2_ymg3g")
+_moving_camera = NodePath("..")
+_camera_mode = 1
+_test_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("9_vkulm"), ExtResource("10_yj0rj")])
 
 [node name="Ground" type="Node2D" parent="."]
 z_index = 1
