@@ -8,3 +8,5 @@ script = ExtResource("1_v4c3k")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_whcsi")
+
+[node name="Bonus" type="Node" parent="."]
