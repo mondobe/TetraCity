@@ -29,6 +29,10 @@ func _init(type: GridType, dimensions: Vector2i) -> void:
 			array = PackedInt64Array()
 	make_grid(array, dimensions)
 
+## Do these coordinates address a space in the grid?
+func contains(coords: Vector2i) -> bool:
+	return coords.x > 0 and coords.x < dimensions.x and coords.y > 0 and coords.y < dimensions.y
+
 ## Get the value at these coordinates.
 func at(coords: Vector2i) -> int:
 	return array[coords.y * dimensions.x + coords.x]

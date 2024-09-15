@@ -24,6 +24,11 @@ const LONG_KICK_TRANSLATIONS: Array[Vector2i] = [
 	Vector2i(0, 0), Vector2i(1, 0), Vector2i(-2, 0), Vector2i(1, -2), Vector2i(-2, 1),
 ]
 
+## The vectors to loop through when looking for adjacent buildings.
+const ADJACENT_VECTORS: Array[Vector2i] = [
+	Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1),
+]
+
 ## Debug variable for what buildings can be placed when you press SPACE.
 @export var _test_blueprints: Array[BuildingBlueprint]
 
@@ -170,8 +175,7 @@ func building_allowed_at_coords(building: Building, coords: Vector2i) -> bool:
 			if building.grid.at(xy) == 0:
 				continue
 			var grid_xy: Vector2i = xy + coords
-			if (grid_xy.x < 0 or grid_xy.x >= grid.dimensions.x) \
-					or (grid_xy.y < 0 or grid_xy.y >= grid.dimensions.y):
+			if !grid.contains(grid_xy):
 				return false
 			if grid.at(grid_xy) != 0:
 				return false
@@ -181,7 +185,26 @@ func building_allowed_at_coords(building: Building, coords: Vector2i) -> bool:
 func make_building_from_blueprint(blueprint: BuildingBlueprint) -> Building:
 	var new_building: Building = building.instantiate()
 	new_building.init_from_blueprint(blueprint)
+	new_building.building_grid = self
 	return new_building
+
+## Get the indices of the buildings adjacent to the one at the specified index.
+func get_adjacent_building_indices(building_index: int) -> Array[int]:
+	var indices: Array[int] = []
+	for x: int in range(grid.dimensions.x):
+		for y: int in range(grid.dimensions.y):
+			var coords: Vector2i = Vector2i(x, y)
+			if grid.at(coords) - 1 != building_index:
+				continue
+			for adj in ADJACENT_VECTORS:
+				var coords_prime: Vector2i = coords + adj
+				if grid.contains(coords_prime):
+					var adj_index = grid.at(coords_prime) - 1
+					if adj_index != building_index \
+							and adj_index not in indices \
+							and adj_index >= 0:
+						indices.append(adj_index)
+	return indices
 
 ## Given a grid string, returns the width and height.
 static func grid_dimensions_from_string(string: String) -> Vector2i:

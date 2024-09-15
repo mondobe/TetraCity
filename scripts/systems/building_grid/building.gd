@@ -25,6 +25,9 @@ var building_grid: BuildingGrid
 ## This building's current position in the building grid.
 var pos_coords: Vector2i
 
+## The node that defines what bonus is applied by this building.
+var bonus: Node
+
 ## The Sprite2D component that displays the building's texture.
 @onready var sprite: Sprite2D = $Sprite2D
 
@@ -36,9 +39,13 @@ var pos_coords: Vector2i
 func init_from_blueprint(blueprint: BuildingBlueprint) -> void:
 	self.blueprint = blueprint
 	self.grid = BuildingGrid.byte_grid_from_string(blueprint.squares)
+
 	sprite = $Sprite2D
 	sprite.texture = blueprint.sprite
 	_init_sprite()
+
+	bonus = $Bonus
+	bonus.set_script(blueprint.bonus)
 
 ## Move the Sprite2D child to the correct position and offset for rotation
 func _init_sprite() -> void:
@@ -107,3 +114,13 @@ static func rotate_grid_around(
 			new_grid.set_at(new_coord, value)
 
 	return new_grid
+
+## This building's index in the building grid
+func get_index_in_grid() -> int:
+	return building_grid.buildings.find(self)
+
+## The buildings adjacent to this one. Returns an array of nodes
+func get_adjacent_buildings() -> Array:
+	var index = get_index_in_grid()
+	var indices = building_grid.get_adjacent_building_indices(index)
+	return indices.map(func(i): return building_grid.buildings[i])

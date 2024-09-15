@@ -5,6 +5,9 @@ extends Resource
 ## The texture that should be displayed on the building.
 @export var sprite: Texture2D
 
+## The script of the bonus that the building uses.
+@export var bonus: Script
+
 ## The squares that make up the building, written as a "human-readable" string.
 ## For example, a T-block with a 3x3 bounding box would have:
 ## .O.

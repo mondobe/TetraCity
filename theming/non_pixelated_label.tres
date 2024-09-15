@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://dbpx7v66har17"]
+
+[ext_resource type="FontFile" uid="uid://c685qb4m7qjc" path="res://fonts/rubik.ttf" id="1_jcbk1"]
+
+[resource]
+font = ExtResource("1_jcbk1")
+font_size = 24
+font_color = Color(0, 0, 0, 1)
