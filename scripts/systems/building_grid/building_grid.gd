@@ -29,6 +29,8 @@ const ADJACENT_VECTORS: Array[Vector2i] = [
 	Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1),
 ]
 
+@export var _moving_camera: MovingCamera
+
 ## Debug variable for what buildings can be placed when you press SPACE.
 @export var _test_blueprints: Array[BuildingBlueprint]
 
@@ -60,7 +62,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# If SPACE is pressed, add a new random building
-	if (Input.is_action_just_pressed("test_create_building") and not placing_building):
+	if (Input.is_action_just_pressed("test_create_building")
+		and not placing_building
+		and _moving_camera.get_camera_mode() == MovingCamera.CameraMode.GROUND):
 		var blueprint = _test_blueprints[randi_range(0, len(_test_blueprints) - 1)]
 		placing_building = make_building_from_blueprint(blueprint)
 		start_placing(placing_building)
