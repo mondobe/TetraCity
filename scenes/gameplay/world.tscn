@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scripts/systems/gameplay/world_stats.gd" id="11_fetru"]
 [ext_resource type="Script" path="res://scripts/ui/gameplay/stats_label.gd" id="12_q7wy1"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay/building_bonuses.gd" id="14_3u7nn"]
+[ext_resource type="PackedScene" uid="uid://bxufr16hlwrbe" path="res://scenes/gameplay/balloon.tscn" id="16_eq88q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7faob"]
 font = ExtResource("11_8u3tu")
@@ -64,9 +65,10 @@ drift_x = 12.0
 drift_y_amp = 8.0
 drift_y_freq = 0.001
 
-[node name="BuildingGrid" type="Node2D" parent="."]
+[node name="BuildingGrid" type="Node2D" parent="." node_paths=PackedStringArray("_moving_camera")]
 position = Vector2(-140, -160)
 script = ExtResource("8_yumsi")
+_moving_camera = NodePath("../MovingCamera")
 _test_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("10_yj0rj"), ExtResource("9_vkulm")])
 _initial_dimensions = Vector2i(14, 14)
 building = ExtResource("9_teedr")
@@ -119,3 +121,4 @@ script = ExtResource("2_ymg3g")
 _moving_camera = NodePath("../MovingCamera")
 _camera_mode = 1
 _test_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("9_vkulm"), ExtResource("10_yj0rj")])
+_balloon = ExtResource("16_eq88q")
