@@ -1,6 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
+[ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
 [ext_resource type="Texture2D" uid="uid://datqvsx5xph6" path="res://sprites/environment/groundTop.png" id="2_l1lou"]
 [ext_resource type="Script" path="res://scripts/environment/skyview_controls.gd" id="2_ymg3g"]
 [ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="3_113pp"]
@@ -15,7 +16,6 @@
 [ext_resource type="Script" path="res://scripts/systems/gameplay/world_stats.gd" id="11_fetru"]
 [ext_resource type="Script" path="res://scripts/ui/gameplay/stats_label.gd" id="12_q7wy1"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay/building_bonuses.gd" id="14_3u7nn"]
-[ext_resource type="AudioStream" uid="uid://dat502i7u1ewv" path="res://music/main_theme9-17-24.ogg" id="16_1axsq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7faob"]
 font = ExtResource("11_8u3tu")
@@ -32,7 +32,7 @@ extent = 100.0
 sky_position = Vector2(0, -200)
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="MovingCamera"]
-stream = ExtResource("16_1axsq")
+stream = ExtResource("2_is7ov")
 autoplay = true
 
 [node name="Ground" type="Node2D" parent="."]
