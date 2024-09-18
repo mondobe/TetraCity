@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=20 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" path="res://scripts/systems/gameplay/world_stats.gd" id="11_fetru"]
 [ext_resource type="Script" path="res://scripts/ui/gameplay/stats_label.gd" id="12_q7wy1"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay/building_bonuses.gd" id="14_3u7nn"]
+[ext_resource type="PackedScene" uid="uid://b0rc8omyr0as8" path="res://scenes/ui/dialogue_box.tscn" id="14_qdc0i"]
 [ext_resource type="PackedScene" uid="uid://bxufr16hlwrbe" path="res://scenes/gameplay/balloon.tscn" id="16_eq88q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7faob"]
@@ -104,6 +105,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("12_q7wy1")
 world_stats = NodePath("../../WorldStats")
+
+[node name="SmallPixelUILayer" type="CanvasLayer" parent="."]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="DialogueBox" parent="SmallPixelUILayer" instance=ExtResource("14_qdc0i")]
 
 [node name="WorldStats" type="Node" parent="." node_paths=PackedStringArray("top_label", "building_bonuses", "building_grid")]
 script = ExtResource("11_fetru")
