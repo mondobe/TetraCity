@@ -17,7 +17,6 @@ func click_input(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 		var mouse_event: InputEventMouseButton = event as InputEventMouseButton
 		if mouse_event.button_index == MOUSE_BUTTON_LEFT \
 			and mouse_event.is_pressed():
-			on_click()
+			on_click.emit()
 
-func on_click() -> void:
-	print("Balloon clicked")
+signal on_click()

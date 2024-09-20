@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=21 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -18,6 +18,8 @@
 [ext_resource type="Script" path="res://scripts/systems/gameplay/building_bonuses.gd" id="14_3u7nn"]
 [ext_resource type="PackedScene" uid="uid://b0rc8omyr0as8" path="res://scenes/ui/dialogue_box.tscn" id="14_qdc0i"]
 [ext_resource type="PackedScene" uid="uid://bxufr16hlwrbe" path="res://scenes/gameplay/balloon.tscn" id="16_eq88q"]
+[ext_resource type="Script" path="res://scripts/ui/gameplay/dialogue_box_spawner.gd" id="18_al1pw"]
+[ext_resource type="PackedScene" uid="uid://bq56tb6w0hcbb" path="res://scenes/ui/npc_dialogue_box.tscn" id="19_yklqn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7faob"]
 font = ExtResource("11_8u3tu")
@@ -110,7 +112,10 @@ world_stats = NodePath("../../WorldStats")
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 
-[node name="DialogueBox" parent="SmallPixelUILayer" instance=ExtResource("14_qdc0i")]
+[node name="StaticSmallPixelUILayer" type="CanvasLayer" parent="."]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+follow_viewport_enabled = true
 
 [node name="WorldStats" type="Node" parent="." node_paths=PackedStringArray("top_label", "building_bonuses", "building_grid")]
 script = ExtResource("11_fetru")
@@ -123,9 +128,17 @@ script = ExtResource("14_3u7nn")
 building_grid = NodePath("../BuildingGrid")
 world_stats = NodePath("../WorldStats")
 
-[node name="SkyViewControls" type="Node" parent="." node_paths=PackedStringArray("_moving_camera")]
+[node name="SkyViewControls" type="Node" parent="." node_paths=PackedStringArray("_moving_camera", "_dialogue_box_spawner")]
 script = ExtResource("2_ymg3g")
 _moving_camera = NodePath("../MovingCamera")
+_dialogue_box_spawner = NodePath("../DialogueBoxSpawner")
 _camera_mode = 1
 _test_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("9_vkulm"), ExtResource("10_yj0rj")])
 _balloon = ExtResource("16_eq88q")
+
+[node name="DialogueBoxSpawner" type="Node" parent="." node_paths=PackedStringArray("small_pixel_ui_layer", "static_small_pixel_ui_layer")]
+script = ExtResource("18_al1pw")
+dialogue_box = ExtResource("14_qdc0i")
+npc_dialogue_box = ExtResource("19_yklqn")
+small_pixel_ui_layer = NodePath("../SmallPixelUILayer")
+static_small_pixel_ui_layer = NodePath("../StaticSmallPixelUILayer")
