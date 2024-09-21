@@ -1,8 +1,15 @@
-extends Node
+class_name NuclearReactorBonus extends Node
 
-## Multiply adjacent coin bonuses by five, by adding four times their CPD
+## Give CPD equal to the sum of each neighbor's CPD times 4
 func get_bonus() -> BuildingBonus:
+	var get_coins_reducer = func(accum, building):
+		var bonus = building.bonus
+		## Avoid infinite recursion
+		if bonus is NuclearReactorBonus:
+			return accum
+		else:
+			return accum + 4 * bonus.get_bonus().coins
 	var coins = get_parent().get_adjacent_buildings().reduce(
-		func(accum, building) : return 4 * building.bonus.get_bonus().coins, 0
+		get_coins_reducer, 0
 	)
 	return BuildingBonus.new().with_coins(coins)
