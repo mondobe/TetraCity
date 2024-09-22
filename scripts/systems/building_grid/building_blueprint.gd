@@ -2,9 +2,6 @@ class_name BuildingBlueprint
 extends Resource
 ## Holds the unique information about a building type.
 
-## The texture that should be displayed on the building.
-@export var sprite: Texture2D
-
 ## The script of the bonus that the building uses.
 @export var bonus: Script
 

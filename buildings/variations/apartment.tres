@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="BuildingVariation" load_steps=4 format=3 uid="uid://blctvydks2h24"]
+
+[ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="1_3jvir"]
+[ext_resource type="Resource" uid="uid://bh0s6jhfgvuwv" path="res://buildings/apartment.tres" id="1_11ynu"]
+[ext_resource type="Texture2D" uid="uid://b4wejql45gxc2" path="res://sprites/buildings/apartments.png" id="3_pbyl4"]
+
+[resource]
+script = ExtResource("1_3jvir")
+sprite = ExtResource("3_pbyl4")
+building_name = "Apartment"
+blueprint = ExtResource("1_11ynu")

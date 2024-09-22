@@ -1,3 +1,4 @@
+class_name Park
 extends Node
 
 ## Return a bonus with coins equal to the number of unique adjacent buildings
