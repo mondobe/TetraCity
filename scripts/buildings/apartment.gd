@@ -1,3 +1,4 @@
+class_name Apartment
 extends Node
 
 ## Return a bonus of exactly one coin

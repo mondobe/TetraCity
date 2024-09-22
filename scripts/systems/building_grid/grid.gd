@@ -31,7 +31,7 @@ func _init(type: GridType, dimensions: Vector2i) -> void:
 
 ## Do these coordinates address a space in the grid?
 func contains(coords: Vector2i) -> bool:
-	return coords.x > 0 and coords.x < dimensions.x and coords.y > 0 and coords.y < dimensions.y
+	return coords.x >= 0 and coords.x < dimensions.x and coords.y >= 0 and coords.y < dimensions.y
 
 ## Get the value at these coordinates.
 func at(coords: Vector2i) -> int:
