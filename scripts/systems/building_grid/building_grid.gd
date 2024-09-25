@@ -29,10 +29,14 @@ const ADJACENT_VECTORS: Array[Vector2i] = [
 	Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1),
 ]
 
+## The moving camera.
 @export var _moving_camera: MovingCamera
 
+## The sky view controls.
+@export var _sky_view_controls: SkyViewControls
+
 ## Debug variable for what buildings can be placed when you press SPACE.
-@export var _test_blueprints: Array[BuildingBlueprint]
+@export var _test_variations: Array[BuildingVariation]
 
 ## The width and height of the grid.
 @export var _initial_dimensions: Vector2i
@@ -65,12 +69,16 @@ func _process(delta: float) -> void:
 	if (Input.is_action_just_pressed("test_create_building")
 		and not placing_building
 		and _moving_camera.get_camera_mode() == MovingCamera.CameraMode.GROUND):
-		var blueprint = _test_blueprints[randi_range(0, len(_test_blueprints) - 1)]
-		placing_building = make_building_from_blueprint(blueprint)
-		start_placing(placing_building)
+		var variation = _test_variations[randi_range(0, len(_test_variations) - 1)]
+		make_and_place(variation)
 
 	if placing_building:
 		placing_process(delta)
+
+## Create a building based on this variation, and begin placing it.
+func make_and_place(variation: BuildingVariation) -> void:
+	placing_building = make_building_from_blueprint_variation(variation)
+	start_placing(placing_building)
 
 ## Start placing a new building. Sets the building at the top center of the grid
 ## and restarts the timer.
@@ -124,6 +132,7 @@ func done_placing() -> void:
 	buildings.append(placing_building)
 	build_grid()
 	placing_building = null
+	_sky_view_controls.done_placing()
 
 ## Clears the grid and rebuilds it, polling every building for its collision pixels.
 func build_grid() -> void:
@@ -186,9 +195,9 @@ func building_allowed_at_coords(building: Building, coords: Vector2i) -> bool:
 	return true
 
 ## Instantiates a building and initializes it from the blueprint.
-func make_building_from_blueprint(blueprint: BuildingBlueprint) -> Building:
+func make_building_from_blueprint_variation(variation: BuildingVariation) -> Building:
 	var new_building: Building = building.instantiate()
-	new_building.init_from_blueprint(blueprint)
+	new_building.init_from_blueprint_variation(variation)
 	new_building.building_grid = self
 	return new_building
 

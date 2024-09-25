@@ -12,8 +12,11 @@ enum CenterMode { TOP_LEFT, CENTER }
 ## a T-block or an I-block)
 enum KickMode { NORMAL, LONG }
 
-## The blueprint on which this building was based,
+## The blueprint on which this building was based.
 var blueprint: BuildingBlueprint
+
+## The blueprint variation this building uses (containing alternate sprite information).
+var variation: BuildingVariation
 
 ## The building's grid of pixels. The size is equal to the bounding box size,
 ## and the grid is filled with a 1 (if there is a pixel) or 0 (if there isn't).
@@ -36,12 +39,13 @@ var bonus: Node
 @onready var rotation_value: int = 0
 
 ## Initialize this building from the specified blueprint.
-func init_from_blueprint(blueprint: BuildingBlueprint) -> void:
-	self.blueprint = blueprint
+func init_from_blueprint_variation(variation: BuildingVariation) -> void:
+	self.blueprint = variation.blueprint
+	self.variation = variation
 	self.grid = BuildingGrid.byte_grid_from_string(blueprint.squares)
 
 	sprite = $Sprite2D
-	sprite.texture = blueprint.sprite
+	sprite.texture = variation.sprite
 	_init_sprite()
 
 	bonus = $Bonus

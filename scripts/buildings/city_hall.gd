@@ -1,3 +1,4 @@
+class_name CityHall
 extends Node
 
 ## Return no bonus
