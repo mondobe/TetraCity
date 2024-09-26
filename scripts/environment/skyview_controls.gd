@@ -64,10 +64,13 @@ func buy_button(box: NpcDialogueBox) -> void:
 
 ## Hide an undesirable NPC dialogue box (called upon pressing "No, thanks")
 func ignore_button(box: NpcDialogueBox) -> void:
-	_npc_dialogue_box = null
+	close_dialogue()
 	box.queue_free()
 
 ## Finish placing a bought building
 func done_placing() -> void:
+	close_dialogue()
+
+func close_dialogue() -> void:
 	_moving_camera.unlock()
 	_npc_dialogue_box = null

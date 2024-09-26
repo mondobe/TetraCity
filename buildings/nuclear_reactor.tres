@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BuildingBlueprint" load_steps=3 format=3 uid="uid://da5icvnicvami"]
+
+[ext_resource type="Script" path="res://scripts/buildings/nuclear_reactor.gd" id="1_36wbt"]
+[ext_resource type="Script" path="res://scripts/systems/building_grid/building_blueprint.gd" id="2_xrgr3"]
+
+[resource]
+script = ExtResource("2_xrgr3")
+bonus = ExtResource("1_36wbt")
+squares = "OOO
+OOO
+OOO"
+center_coords = Vector2i(1, 1)
+center_mode = 1
+kick_mode = 0
