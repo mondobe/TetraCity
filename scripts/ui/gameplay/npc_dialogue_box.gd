@@ -9,6 +9,9 @@ var balloon: Balloon
 ## The variation that the building being bought was based on.
 var variation: BuildingVariation
 
+## The price of this building in coins
+var price: int
+
 ## The button to ignore the interaction.
 @onready var no_button: TextureButton = $NinePatchRect/NoButton
 
@@ -22,7 +25,10 @@ func init_from_balloon(balloon):
 
 func _ready() -> void:
 	resize_borders(Vector2(320, 300))
-	set_text_no_resize("Test balloon NPC dialogue")
+	set_text_no_resize(
+"Test balloon NPC dialogue
+Cost: %d coins"
+		% price)
 
 	no_button.pressed.connect(func(): ignore.emit())
 	yes_button.pressed.connect(func(): buy.emit())
