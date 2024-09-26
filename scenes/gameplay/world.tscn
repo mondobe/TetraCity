@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=25 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -18,7 +18,10 @@
 [ext_resource type="Script" path="res://scripts/systems/gameplay/building_bonuses.gd" id="14_3u7nn"]
 [ext_resource type="PackedScene" uid="uid://b0rc8omyr0as8" path="res://scenes/ui/dialogue_box.tscn" id="14_qdc0i"]
 [ext_resource type="PackedScene" uid="uid://bxufr16hlwrbe" path="res://scenes/gameplay/balloon.tscn" id="16_eq88q"]
+[ext_resource type="Resource" uid="uid://bsegeoaejh2yl" path="res://buildings/variations/park.tres" id="17_072nv"]
+[ext_resource type="Resource" uid="uid://65ueslr70uo" path="res://buildings/variations/school.tres" id="18_0tkei"]
 [ext_resource type="Script" path="res://scripts/ui/gameplay/dialogue_box_spawner.gd" id="18_al1pw"]
+[ext_resource type="Resource" uid="uid://dutfrehwacddo" path="res://buildings/variations/nuclear_reactor.tres" id="19_p4iij"]
 [ext_resource type="PackedScene" uid="uid://bq56tb6w0hcbb" path="res://scenes/ui/npc_dialogue_box.tscn" id="19_yklqn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7faob"]
@@ -68,11 +71,12 @@ drift_x = 12.0
 drift_y_amp = 8.0
 drift_y_freq = 0.001
 
-[node name="BuildingGrid" type="Node2D" parent="." node_paths=PackedStringArray("_moving_camera", "_sky_view_controls")]
+[node name="BuildingGrid" type="Node2D" parent="." node_paths=PackedStringArray("_moving_camera", "_sky_view_controls", "world_stats")]
 position = Vector2(-140, -160)
 script = ExtResource("8_yumsi")
 _moving_camera = NodePath("../MovingCamera")
 _sky_view_controls = NodePath("../SkyViewControls")
+world_stats = NodePath("../WorldStats")
 _test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("8_gjekm"), ExtResource("9_uh8o4")])
 _initial_dimensions = Vector2i(14, 14)
 building = ExtResource("9_teedr")
@@ -134,7 +138,7 @@ script = ExtResource("2_ymg3g")
 _moving_camera = NodePath("../MovingCamera")
 _dialogue_box_spawner = NodePath("../DialogueBoxSpawner")
 _building_grid = NodePath("../BuildingGrid")
-_test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("9_uh8o4"), ExtResource("8_gjekm")])
+_test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("9_uh8o4"), ExtResource("8_gjekm"), ExtResource("17_072nv"), ExtResource("18_0tkei"), ExtResource("19_p4iij")])
 _balloon = ExtResource("16_eq88q")
 
 [node name="DialogueBoxSpawner" type="Node" parent="." node_paths=PackedStringArray("small_pixel_ui_layer", "static_small_pixel_ui_layer")]
