@@ -35,6 +35,9 @@ const ADJACENT_VECTORS: Array[Vector2i] = [
 ## The sky view controls.
 @export var _sky_view_controls: SkyViewControls
 
+## The world stats.
+@export var world_stats: WorldStats
+
 ## Debug variable for what buildings can be placed when you press SPACE.
 @export var _test_variations: Array[BuildingVariation]
 
