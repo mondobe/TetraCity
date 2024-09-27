@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=26 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" path="res://scripts/ui/gameplay/dialogue_box_spawner.gd" id="18_al1pw"]
 [ext_resource type="Resource" uid="uid://dutfrehwacddo" path="res://buildings/variations/nuclear_reactor.tres" id="19_p4iij"]
 [ext_resource type="PackedScene" uid="uid://bq56tb6w0hcbb" path="res://scenes/ui/npc_dialogue_box.tscn" id="19_yklqn"]
+[ext_resource type="Script" path="res://scripts/systems/gameplay/balloon_spawn_ai.gd" id="24_fvko1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7faob"]
 font = ExtResource("11_8u3tu")
@@ -122,22 +123,24 @@ scale = Vector2(0.5, 0.5)
 transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 follow_viewport_enabled = true
 
-[node name="WorldStats" type="Node" parent="." node_paths=PackedStringArray("top_label", "building_bonuses", "building_grid")]
+[node name="WorldStats" type="Node" parent="." node_paths=PackedStringArray("top_label", "building_bonuses", "building_grid", "balloon_spawn_ai")]
 script = ExtResource("11_fetru")
 top_label = NodePath("../PixelUILayer/StatsLabel")
 building_bonuses = NodePath("../BuildingBonuses")
 building_grid = NodePath("../BuildingGrid")
+balloon_spawn_ai = NodePath("../BalloonSpawnAI")
 
 [node name="BuildingBonuses" type="Node" parent="." node_paths=PackedStringArray("building_grid", "world_stats")]
 script = ExtResource("14_3u7nn")
 building_grid = NodePath("../BuildingGrid")
 world_stats = NodePath("../WorldStats")
 
-[node name="SkyViewControls" type="Node" parent="." node_paths=PackedStringArray("_moving_camera", "_dialogue_box_spawner", "_building_grid")]
+[node name="SkyViewControls" type="Node" parent="." node_paths=PackedStringArray("_moving_camera", "_dialogue_box_spawner", "_building_grid", "_world_stats")]
 script = ExtResource("2_ymg3g")
 _moving_camera = NodePath("../MovingCamera")
 _dialogue_box_spawner = NodePath("../DialogueBoxSpawner")
 _building_grid = NodePath("../BuildingGrid")
+_world_stats = NodePath("../WorldStats")
 _test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("9_uh8o4"), ExtResource("8_gjekm"), ExtResource("17_072nv"), ExtResource("18_0tkei"), ExtResource("19_p4iij")])
 _balloon = ExtResource("16_eq88q")
 
@@ -147,3 +150,7 @@ dialogue_box = ExtResource("14_qdc0i")
 npc_dialogue_box = ExtResource("19_yklqn")
 small_pixel_ui_layer = NodePath("../SmallPixelUILayer")
 static_small_pixel_ui_layer = NodePath("../StaticSmallPixelUILayer")
+
+[node name="BalloonSpawnAI" type="Node" parent="." node_paths=PackedStringArray("_sky_view_controls")]
+script = ExtResource("24_fvko1")
+_sky_view_controls = NodePath("../SkyViewControls")

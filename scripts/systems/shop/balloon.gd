@@ -10,6 +10,9 @@ var variation: BuildingVariation
 ## The moving camera.
 var moving_camera: MovingCamera
 
+## The price of the balloon's building in coins.
+var price: int
+
 ## The area of this balloon that can be clicked.
 @onready var click_area: Area2D = $HitboxArea
 
