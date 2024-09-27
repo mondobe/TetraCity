@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=26 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="3_113pp"]
 [ext_resource type="Texture2D" uid="uid://b7xoss14ph6pv" path="res://sprites/environment/groundBottom.png" id="3_ku6pw"]
 [ext_resource type="Texture2D" uid="uid://pllt5njnknbr" path="res://sprites/environment/clouds.png" id="6_24y6w"]
+[ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="8_7pa1u"]
 [ext_resource type="Resource" uid="uid://bas3a8n65ds1" path="res://buildings/variations/city_hall.tres" id="8_gjekm"]
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_grid.gd" id="8_yumsi"]
 [ext_resource type="PackedScene" uid="uid://cmoks1w008liq" path="res://scenes/gameplay/building.tscn" id="9_teedr"]
@@ -77,7 +78,7 @@ script = ExtResource("8_yumsi")
 _moving_camera = NodePath("../MovingCamera")
 _sky_view_controls = NodePath("../SkyViewControls")
 world_stats = NodePath("../WorldStats")
-_test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("8_gjekm"), ExtResource("9_uh8o4")])
+_test_variations = Array[ExtResource("8_7pa1u")]([ExtResource("8_gjekm"), ExtResource("9_uh8o4")])
 _initial_dimensions = Vector2i(14, 14)
 building = ExtResource("9_teedr")
 
@@ -138,7 +139,7 @@ script = ExtResource("2_ymg3g")
 _moving_camera = NodePath("../MovingCamera")
 _dialogue_box_spawner = NodePath("../DialogueBoxSpawner")
 _building_grid = NodePath("../BuildingGrid")
-_test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("9_uh8o4"), ExtResource("8_gjekm"), ExtResource("17_072nv"), ExtResource("18_0tkei"), ExtResource("19_p4iij")])
+_test_variations = Array[ExtResource("8_7pa1u")]([ExtResource("9_uh8o4"), ExtResource("8_gjekm"), ExtResource("17_072nv"), ExtResource("18_0tkei"), ExtResource("19_p4iij")])
 _balloon = ExtResource("16_eq88q")
 
 [node name="DialogueBoxSpawner" type="Node" parent="." node_paths=PackedStringArray("small_pixel_ui_layer", "static_small_pixel_ui_layer")]
