@@ -11,6 +11,9 @@ extends Node
 ## The building grid.
 @export var building_grid: BuildingGrid
 
+## The node in charge of spawning balloons.
+@export var balloon_spawn_ai: BalloonSpawnAI
+
 ## The amount of coins the player has.
 var coins
 
@@ -34,7 +37,7 @@ func _process(delta: float) -> void:
 
 ## Initialize values at the start of the game
 func init_values() -> void:
-	coins = 0
+	coins = 5
 	fuel = 60
 	day = 1
 
@@ -45,4 +48,6 @@ func end_day() -> void:
 	fuel -= 1
 	day += 1
 	building_bonuses.apply_bonuses()
+	balloon_spawn_ai.on_new_day()
+
 

@@ -22,16 +22,19 @@ var price: int
 func init_from_balloon(balloon):
 	self.balloon = balloon
 	self.variation = balloon.variation
+	self.price = balloon.price
+	update_text()
 
 func _ready() -> void:
+	no_button.pressed.connect(func(): ignore.emit())
+	yes_button.pressed.connect(func(): buy.emit())
+
+func update_text() -> void:
 	resize_borders(Vector2(320, 300))
 	set_text_no_resize(
 "Test balloon NPC dialogue
 Cost: %d coins"
 		% price)
-
-	no_button.pressed.connect(func(): ignore.emit())
-	yes_button.pressed.connect(func(): buy.emit())
 
 ## Called when clicking the "buy" button
 signal buy()
