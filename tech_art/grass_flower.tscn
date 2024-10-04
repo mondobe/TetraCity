@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlsi186j032br"]
+
+[ext_resource type="Texture2D" uid="uid://s8r77c1lklfk" path="res://tech_art/grass/grass_flower0.png" id="1_6sd4t"]
+[ext_resource type="Texture2D" uid="uid://cegpf128m7eet" path="res://tech_art/grass/grass_flower1.png" id="2_ps37b"]
+[ext_resource type="Texture2D" uid="uid://dykgwpgfijd4w" path="res://tech_art/grass/grass_flower2.png" id="3_wt0xq"]
+[ext_resource type="Texture2D" uid="uid://dw1kkxbc3rt2x" path="res://tech_art/grass/grass_flower3.png" id="4_n2nbw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_e61ko"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ps37b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_6sd4t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wt0xq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_n2nbw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rufpd"]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_e61ko")
+frame = 3
+frame_progress = 0.701753
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 11)
+shape = SubResource("CircleShape2D_rufpd")
