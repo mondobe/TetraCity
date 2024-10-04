@@ -78,6 +78,7 @@ func buy_button(box: NpcDialogueBox) -> void:
 	if _world_stats.coins < box.price:
 		ignore_button(box)
 		return
+	_world_stats.coins -= box.price
 	_moving_camera.lock_to_camera_mode(MovingCamera.CameraMode.GROUND)
 	_building_grid.make_and_place(box.variation)
 	box.balloon.queue_free()
