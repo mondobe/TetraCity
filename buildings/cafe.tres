@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BuildingBlueprint" load_steps=3 format=3 uid="uid://o4wnmgkxop7d"]
+
+[ext_resource type="Script" path="res://scripts/buildings/cafe.gd" id="1_4kcfv"]
+[ext_resource type="Script" path="res://scripts/systems/building_grid/building_blueprint.gd" id="2_5rsty"]
+
+[resource]
+script = ExtResource("2_5rsty")
+bonus = ExtResource("1_4kcfv")
+squares = "....
+..O.
+.OO.
+...."
+center_coords = Vector2i(2, 2)
+center_mode = 0
+kick_mode = 0
