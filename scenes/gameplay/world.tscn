@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=28 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -24,6 +24,7 @@
 [ext_resource type="Resource" uid="uid://dutfrehwacddo" path="res://buildings/variations/nuclear_reactor.tres" id="19_p4iij"]
 [ext_resource type="PackedScene" uid="uid://bq56tb6w0hcbb" path="res://scenes/ui/npc_dialogue_box.tscn" id="19_yklqn"]
 [ext_resource type="Resource" uid="uid://be6stuus2km8m" path="res://buildings/variations/cafe.tres" id="20_q54bt"]
+[ext_resource type="Resource" uid="uid://bhxuoe0d6x3u1" path="res://buildings/variations/solar_farm.tres" id="21_xkiqr"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay/balloon_spawn_ai.gd" id="24_fvko1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7faob"]
@@ -142,7 +143,7 @@ _moving_camera = NodePath("../MovingCamera")
 _dialogue_box_spawner = NodePath("../DialogueBoxSpawner")
 _building_grid = NodePath("../BuildingGrid")
 _world_stats = NodePath("../WorldStats")
-_test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("9_uh8o4"), ExtResource("8_gjekm"), ExtResource("17_072nv"), ExtResource("18_0tkei"), ExtResource("19_p4iij"), ExtResource("20_q54bt")])
+_test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("9_uh8o4"), ExtResource("8_gjekm"), ExtResource("17_072nv"), ExtResource("18_0tkei"), ExtResource("19_p4iij"), ExtResource("20_q54bt"), ExtResource("21_xkiqr")])
 _balloon = ExtResource("16_eq88q")
 
 [node name="DialogueBoxSpawner" type="Node" parent="." node_paths=PackedStringArray("small_pixel_ui_layer", "static_small_pixel_ui_layer")]

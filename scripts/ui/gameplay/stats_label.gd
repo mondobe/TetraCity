@@ -7,4 +7,4 @@ extends Label
 
 ## Update the label to match the world.
 func update() -> void:
-	text = "Day %d - %d coins" % [world_stats.day, world_stats.coins]
+	text = "Day %d - %d coins - %d fuel" % [world_stats.day, world_stats.coins, world_stats.fuel]
