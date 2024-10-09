@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="BuildingBlueprint" load_steps=3 format=3 uid="uid://x7obthv6pdcy"]
+
+[ext_resource type="Script" path="res://scripts/buildings/solar_farm.gd" id="1_4ivfb"]
+[ext_resource type="Script" path="res://scripts/systems/building_grid/building_blueprint.gd" id="2_kocg7"]
+
+[resource]
+script = ExtResource("2_kocg7")
+bonus = ExtResource("1_4ivfb")
+squares = ".OO
+OO.
+..."
+center_coords = Vector2i(1, 1)
+center_mode = 1
+kick_mode = 0
