@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1eka0588yyur"]
+[gd_scene load_steps=8 format=3 uid="uid://b1eka0588yyur"]
 
 [ext_resource type="Script" path="res://scripts/systems/loading/main.gd" id="1_66klc"]
+[ext_resource type="PackedScene" uid="uid://eayrnwud62wn" path="res://scenes/menus/title_screen.tscn" id="2_klejw"]
 [ext_resource type="PackedScene" uid="uid://birrxtkg5d3hg" path="res://scenes/gameplay/world.tscn" id="3_wg81f"]
 [ext_resource type="Script" path="res://scripts/debug/debug_controls.gd" id="4_4o7ee"]
 [ext_resource type="Script" path="res://scripts/debug/debug_scene_hotkey.gd" id="5_u4yuf"]
@@ -16,7 +17,7 @@ key = 81
 
 [node name="Main" type="Node"]
 script = ExtResource("1_66klc")
-_initial_scene = ExtResource("3_wg81f")
+_initial_scene = ExtResource("2_klejw")
 
 [node name="DebugControls" type="Node" parent="."]
 script = ExtResource("4_4o7ee")
