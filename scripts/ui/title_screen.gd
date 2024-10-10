@@ -1,22 +1,14 @@
 extends Node2D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+const _main_scene = preload("res://scenes/gameplay/world.tscn")
+const _setting_scene = preload("res://scenes/menus/settings.tscn")
 
 func _on_setting_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/menus/settings.tscn")
+	LevelLoader.load_level(_setting_scene)
 
 
 func _on_start_button_pressed():
-	get_tree().change_scene_to_file("res://scenes/gameplay/world.tscn")
+	LevelLoader.load_level(_main_scene)
 
 
 func _on_quit_button_pressed():
