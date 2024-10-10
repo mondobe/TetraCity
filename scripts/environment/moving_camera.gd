@@ -76,7 +76,8 @@ func set_camera_mode_if_unlocked(new_mode: CameraMode) -> void:
 	if not locked:
 		_camera_mode = new_mode
 
-## If the camera is unlocked, sets it to the specified mode.
+## If the camera is unlocked, looks at the specified building (sets mode to
+## BUILDING).
 func look_at_building(building: Building) -> void:
 	if not locked and _camera_mode == CameraMode.GROUND:
 		_camera_mode = CameraMode.BUILDING

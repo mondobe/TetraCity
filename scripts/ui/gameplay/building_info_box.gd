@@ -6,11 +6,12 @@ extends DialogueBox
 ## The balloon that was clicked on to spawn this box.
 var building: Building
 
-## Initialize this dialogue box's values from a specific balloon.
+## Initialize this dialogue box's values from a specific building.
 func init_from_building(building: Building):
 	self.building = building
 	update_text()
 
+## Using the properties of this box's building, updates the text in the box.
 func update_text() -> void:
 	resize_borders(Vector2(300, 400))
 	set_text("%s\n%s" % [
