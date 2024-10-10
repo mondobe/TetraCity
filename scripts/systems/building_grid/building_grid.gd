@@ -264,3 +264,10 @@ static func byte_grid_to_string(grid: PackedByteArray, dimensions: Vector2i) -> 
 			string += "\n"
 
 	return string
+
+## Given a global position, finds the grid space it's in (used to spawn the info
+## box when clicking on a building)
+func global_coords_to_grid_space(point: Vector2) -> Vector2i:
+	var relative_point: Vector2 = point - global_position
+	var spaces: Vector2 = relative_point / GRID_SPACE_SIZE
+	return Vector2i(spaces)

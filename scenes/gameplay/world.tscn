@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=30 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -26,6 +26,8 @@
 [ext_resource type="Resource" uid="uid://be6stuus2km8m" path="res://buildings/variations/cafe.tres" id="20_q54bt"]
 [ext_resource type="Resource" uid="uid://bhxuoe0d6x3u1" path="res://buildings/variations/solar_farm.tres" id="21_xkiqr"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay/balloon_spawn_ai.gd" id="24_fvko1"]
+[ext_resource type="PackedScene" uid="uid://cf4x3txyo6wyw" path="res://scenes/ui/building_info_box.tscn" id="26_no2ju"]
+[ext_resource type="Script" path="res://scripts/ui/gameplay/grid_click_controls.gd" id="27_lq8jb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7faob"]
 font = ExtResource("11_8u3tu")
@@ -150,9 +152,16 @@ _balloon = ExtResource("16_eq88q")
 script = ExtResource("18_al1pw")
 dialogue_box = ExtResource("14_qdc0i")
 npc_dialogue_box = ExtResource("19_yklqn")
+building_info_box = ExtResource("26_no2ju")
 small_pixel_ui_layer = NodePath("../SmallPixelUILayer")
 static_small_pixel_ui_layer = NodePath("../StaticSmallPixelUILayer")
 
 [node name="BalloonSpawnAI" type="Node" parent="." node_paths=PackedStringArray("_sky_view_controls")]
 script = ExtResource("24_fvko1")
 _sky_view_controls = NodePath("../SkyViewControls")
+
+[node name="GridClickControls" type="Node" parent="." node_paths=PackedStringArray("building_grid", "moving_camera", "dialogue_box_spawner")]
+script = ExtResource("27_lq8jb")
+building_grid = NodePath("../BuildingGrid")
+moving_camera = NodePath("../MovingCamera")
+dialogue_box_spawner = NodePath("../DialogueBoxSpawner")

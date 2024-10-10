@@ -13,3 +13,6 @@ func get_bonus() -> BuildingBonus:
 		get_coins_reducer, 0
 	)
 	return BuildingBonus.new().with_coins(coins)
+
+func get_info_text() -> String:
+	return "Supercharges all nearby buildings, causing them to make 5 times as much money!"
