@@ -1,0 +1,83 @@
+[gd_scene load_steps=5 format=3 uid="uid://vsi3m02kybq0"]
+
+[ext_resource type="Script" path="res://scripts/ui/gameplay/cutscene_dialogue_box.gd" id="1_sft7l"]
+[ext_resource type="Texture2D" uid="uid://vfgrp5seiq7s" path="res://sprites/ui/dialogue_nine_patch.png" id="2_dxvqe"]
+[ext_resource type="Theme" uid="uid://babe0j67pdkhx" path="res://theming/dialogue_box_label.tres" id="3_4icx3"]
+[ext_resource type="Texture2D" uid="uid://cgpcvb844wi6" path="res://sprites/test/icon.svg" id="4_g5u7l"]
+
+[node name="CutsceneDialogueBox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_top = 61.0
+offset_right = 1.0
+offset_bottom = 61.0
+mouse_filter = 2
+script = ExtResource("1_sft7l")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 100.0
+offset_right = 944.0
+offset_bottom = 100.0
+texture = ExtResource("2_dxvqe")
+region_rect = Rect2(0, 0, 39, 39)
+patch_margin_left = 13
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 13
+
+[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 34.0
+offset_right = -17.0
+offset_bottom = -14.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_4icx3")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("4_g5u7l")
+expand_mode = 2
+
+[node name="CutsceneName" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_left = 102.0
+offset_top = -20.0
+offset_right = 267.0
+offset_bottom = 34.0
+texture = ExtResource("2_dxvqe")
+region_rect = Rect2(0, 0, 39, 39)
+patch_margin_left = 13
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 13
+
+[node name="NameLabel" type="RichTextLabel" parent="CutsceneName"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 11.0
+offset_top = 19.0
+offset_right = -9.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_4icx3")
+bbcode_enabled = true
+text = "GoDot"
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false

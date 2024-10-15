@@ -1,3 +1,75 @@
-[gd_scene format=3 uid="uid://eayrnwud62wn"]
+[gd_scene load_steps=5 format=3 uid="uid://eayrnwud62wn"]
+
+[ext_resource type="Script" path="res://scripts/ui/title_screen.gd" id="1_bsimy"]
+[ext_resource type="FontFile" uid="uid://sxhpegxwj6qy" path="res://fonts/verdana.ttf" id="2_hlc0w"]
+[ext_resource type="Texture2D" uid="uid://pllt5njnknbr" path="res://sprites/environment/clouds.png" id="3_5qla5"]
+[ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="4_tu6lm"]
 
 [node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_bsimy")
+
+[node name="Logo" type="Label" parent="."]
+offset_left = 605.0
+offset_top = 100.0
+offset_right = 1201.0
+offset_bottom = 222.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_hlc0w")
+theme_override_font_sizes/font_size = 100
+text = "TETRA CITY"
+
+[node name="BackgroundEffect" type="Node2D" parent="."]
+
+[node name="ScrollingClouds" type="Sprite2D" parent="BackgroundEffect"]
+z_index = -2
+texture_repeat = 2
+position = Vector2(957.5, 540)
+scale = Vector2(0.9595, 1.084)
+texture = ExtResource("3_5qla5")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 1000)
+script = ExtResource("4_tu6lm")
+drift_x = 12.0
+drift_y_amp = 8.0
+drift_y_freq = 0.001
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="QuitButton" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 569.0
+offset_right = 513.0
+offset_bottom = 669.0
+theme_override_fonts/font = ExtResource("2_hlc0w")
+theme_override_font_sizes/font_size = 30
+text = "Quit
+"
+
+[node name="StartButton" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 269.0
+offset_right = 513.0
+offset_bottom = 369.0
+theme_override_fonts/font = ExtResource("2_hlc0w")
+theme_override_font_sizes/font_size = 30
+text = "Start"
+
+[node name="SettingButton" type="Button" parent="Buttons"]
+layout_mode = 0
+offset_left = 383.0
+offset_top = 419.0
+offset_right = 513.0
+offset_bottom = 519.0
+theme_override_fonts/font = ExtResource("2_hlc0w")
+theme_override_font_sizes/font_size = 30
+text = "Setting"
+
+[connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="Buttons/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Buttons/SettingButton" to="." method="_on_setting_button_pressed"]
