@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://tpwh1rw6ehic"]
+[gd_scene load_steps=9 format=3 uid="uid://tpwh1rw6ehic"]
 
 [ext_resource type="Script" path="res://scripts/menu/CutsceneDialogBoxSpawner.gd" id="1_kwxge"]
 [ext_resource type="PackedScene" uid="uid://b0rc8omyr0as8" path="res://scenes/ui/dialogue_box.tscn" id="2_1lu6r"]
 [ext_resource type="PackedScene" uid="uid://vsi3m02kybq0" path="res://scenes/ui/cutscene_dialogue_box.tscn" id="3_l1x2e"]
 [ext_resource type="PackedScene" uid="uid://cf4x3txyo6wyw" path="res://scenes/ui/building_info_box.tscn" id="5_jsk11"]
+[ext_resource type="Texture2D" uid="uid://bdsrb7og8piqf" path="res://sprites/buildings/nuclear_reactor.png" id="5_nx6ne"]
 [ext_resource type="Script" path="res://scripts/menu/DialogueBoxManager.gd" id="6_8v5d6"]
+[ext_resource type="Texture2D" uid="uid://c2ti2vov3or7t" path="res://sprites/buildings/solar_farm.png" id="7_lmy3p"]
+[ext_resource type="Texture2D" uid="uid://bwkstq2h01f78" path="res://sprites/buildings/school.png" id="8_gk2rg"]
 
 [node name="Cutscene" type="Node2D"]
 
@@ -16,10 +19,15 @@ building_info_box = ExtResource("5_jsk11")
 small_pixel_ui_layer = NodePath("../SmallPixelUILayer")
 
 [node name="SmallPixelUILayer" type="CanvasLayer" parent="."]
-scale = Vector2(2, 2)
-transform = Transform2D(2, 0, 0, 2, 0, 0)
 
-[node name="DialogueBoxManager" type="Node" parent="." node_paths=PackedStringArray("_dialogue_box_spawner")]
+[node name="TextureRect" type="TextureRect" parent="SmallPixelUILayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_nx6ne")
+
+[node name="DialogueBoxManager" type="Node" parent="." node_paths=PackedStringArray("_dialogue_box_spawner", "imageFrame")]
 script = ExtResource("6_8v5d6")
 _dialogue_box_spawner = NodePath("../CutsceneDialogBoxSpawner")
-conversation = Array[String](["Hi, How's your coding going?", "For me?, it's going decent", "This text box can change the conversation through cycling this array", "but, everything else is a WIP"])
+conversation = Array[String](["Hey, Welcome to the tutorial", "This is a solar farm", "This is the goal, a nuclear reactor", "This is a school, very useful for the residents!"])
+image = Array[Texture2D]([null, ExtResource("7_lmy3p"), ExtResource("5_nx6ne"), ExtResource("8_gk2rg")])
+imageFrame = NodePath("../SmallPixelUILayer/TextureRect")
