@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=32 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/environment/skyview_controls.gd" id="2_ymg3g"]
 [ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="3_113pp"]
 [ext_resource type="Texture2D" uid="uid://b7xoss14ph6pv" path="res://sprites/environment/groundBottom.png" id="3_ku6pw"]
-[ext_resource type="Texture2D" uid="uid://pllt5njnknbr" path="res://sprites/environment/clouds.png" id="6_24y6w"]
+[ext_resource type="Texture2D" uid="uid://bk3mcifbo00ob" path="res://sprites/environment/clouds2.png" id="5_q6mms"]
 [ext_resource type="Resource" uid="uid://bas3a8n65ds1" path="res://buildings/variations/city_hall.tres" id="8_gjekm"]
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_grid.gd" id="8_yumsi"]
 [ext_resource type="PackedScene" uid="uid://cmoks1w008liq" path="res://scenes/gameplay/building.tscn" id="9_teedr"]
@@ -28,6 +28,8 @@
 [ext_resource type="Script" path="res://scripts/systems/gameplay/balloon_spawn_ai.gd" id="24_fvko1"]
 [ext_resource type="PackedScene" uid="uid://cf4x3txyo6wyw" path="res://scenes/ui/building_info_box.tscn" id="26_no2ju"]
 [ext_resource type="Script" path="res://scripts/ui/gameplay/grid_click_controls.gd" id="27_lq8jb"]
+[ext_resource type="PackedScene" uid="uid://cr0ovt1ydrnpm" path="res://tech_art/grass.tscn" id="29_trtxd"]
+[ext_resource type="PackedScene" uid="uid://dlsi186j032br" path="res://tech_art/grass_flower.tscn" id="30_7vn53"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7faob"]
 font = ExtResource("11_8u3tu")
@@ -68,7 +70,7 @@ region_rect = Rect2(0, 0, 1024, 192)
 [node name="ScrollingClouds" type="Sprite2D" parent="BackgroundEffects"]
 z_index = -2
 texture_repeat = 2
-texture = ExtResource("6_24y6w")
+texture = ExtResource("5_q6mms")
 region_enabled = true
 region_rect = Rect2(0, 0, 2000, 1000)
 script = ExtResource("3_113pp")
@@ -165,3 +167,21 @@ script = ExtResource("27_lq8jb")
 building_grid = NodePath("../BuildingGrid")
 moving_camera = NodePath("../MovingCamera")
 dialogue_box_spawner = NodePath("../DialogueBoxSpawner")
+
+[node name="ForegroundDecoration" type="Node2D" parent="."]
+z_index = 1
+
+[node name="GrassFlower" parent="ForegroundDecoration" instance=ExtResource("30_7vn53")]
+position = Vector2(40, 130)
+
+[node name="GrassFlower2" parent="ForegroundDecoration" instance=ExtResource("30_7vn53")]
+position = Vector2(-260, 150)
+
+[node name="BackgroundDecoration" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Grass" parent="BackgroundDecoration" instance=ExtResource("29_trtxd")]
+position = Vector2(-310, 96)
+
+[node name="Grass2" parent="BackgroundDecoration" instance=ExtResource("29_trtxd")]
+position = Vector2(290, 104)
