@@ -12,3 +12,4 @@ OOO"
 center_coords = Vector2i(1, 1)
 center_mode = 1
 kick_mode = 0
+description = "Supercharges all nearby buildings, causing them to make 5 times as much money!"

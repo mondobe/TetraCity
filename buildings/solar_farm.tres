@@ -12,3 +12,4 @@ OO.
 center_coords = Vector2i(1, 1)
 center_mode = 1
 kick_mode = 0
+description = "Gives one day's worth of fuel every 3 days - as long as this building isn't blocked by others above it."

@@ -12,3 +12,4 @@ squares = "....
 center_coords = Vector2i(1, 1)
 center_mode = 1
 kick_mode = 0
+description = "Earns 1 coin for each adjacent building."

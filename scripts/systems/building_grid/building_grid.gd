@@ -60,6 +60,9 @@ var push_timer: float
 ## The buildings currently in the grid.
 @onready var buildings: Array[Building]
 
+## The building guide squares
+@onready var guide: Sprite2D = $GridGuide
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	build_grid()
@@ -90,6 +93,7 @@ func start_placing(new_building: Building) -> void:
 			grid.dimensions.x / 2 - new_building.grid.dimensions.x / 2, 0))
 	add_child(new_building)
 	push_timer = MAX_PUSH_TIMER
+	guide.show()
 
 ## Called every frame while placing a building.
 func placing_process(delta: float) -> void:
@@ -134,8 +138,10 @@ func placing_process(delta: float) -> void:
 func done_placing() -> void:
 	buildings.append(placing_building)
 	build_grid()
+	placing_building.done_placing()
 	placing_building = null
 	_sky_view_controls.done_placing()
+	guide.hide()
 
 ## Clears the grid and rebuilds it, polling every building for its collision pixels.
 func build_grid() -> void:

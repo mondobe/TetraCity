@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=33 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -11,9 +11,10 @@
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_grid.gd" id="8_yumsi"]
 [ext_resource type="PackedScene" uid="uid://cmoks1w008liq" path="res://scenes/gameplay/building.tscn" id="9_teedr"]
 [ext_resource type="Resource" uid="uid://blctvydks2h24" path="res://buildings/variations/apartment.tres" id="9_uh8o4"]
-[ext_resource type="LabelSettings" uid="uid://dbpx7v66har17" path="res://theming/non_pixelated_label.tres" id="10_kif8a"]
 [ext_resource type="FontFile" uid="uid://sxhpegxwj6qy" path="res://fonts/verdana.ttf" id="11_8u3tu"]
+[ext_resource type="Texture2D" uid="uid://u3oof2tbhd7g" path="res://sprites/gameplay_misc/grid_space.png" id="11_cvkpl"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay/world_stats.gd" id="11_fetru"]
+[ext_resource type="Script" path="res://scripts/environment/grid_guide.gd" id="12_dcn3s"]
 [ext_resource type="Script" path="res://scripts/ui/gameplay/stats_label.gd" id="12_q7wy1"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay/building_bonuses.gd" id="14_3u7nn"]
 [ext_resource type="PackedScene" uid="uid://b0rc8omyr0as8" path="res://scenes/ui/dialogue_box.tscn" id="14_qdc0i"]
@@ -88,18 +89,17 @@ _test_variations = Array[Resource("res://scripts/systems/building_grid/building_
 _initial_dimensions = Vector2i(14, 14)
 building = ExtResource("9_teedr")
 
-[node name="TempUILayer" type="CanvasLayer" parent="."]
+[node name="GridGuide" type="Sprite2D" parent="BuildingGrid"]
+visible = false
+z_index = -2
+texture_repeat = 2
+texture = ExtResource("11_cvkpl")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 280, 280)
+script = ExtResource("12_dcn3s")
 
-[node name="Tutorial" type="Label" parent="TempUILayer"]
-offset_left = 182.0
-offset_top = 491.0
-offset_right = 354.0
-offset_bottom = 560.0
-text = "Press SPACE to spawn a building
-Arrow keys/WASD to move building
-Q/E to rotate building
-"
-label_settings = ExtResource("10_kif8a")
+[node name="TempUILayer" type="CanvasLayer" parent="."]
 
 [node name="PixelUILayer" type="CanvasLayer" parent="."]
 scale = Vector2(4, 4)

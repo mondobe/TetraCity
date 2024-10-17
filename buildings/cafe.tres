@@ -13,3 +13,4 @@ squares = "....
 center_coords = Vector2i(2, 2)
 center_mode = 0
 kick_mode = 0
+description = "Earns the same income as the highest-earning adjacent building each day (excluding other Cafes)."

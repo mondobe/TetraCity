@@ -34,6 +34,9 @@ var bonus: Node
 ## The Sprite2D component that displays the building's texture.
 @onready var sprite: Sprite2D = $Sprite2D
 
+## The guide arrows that show players the ropes.
+@onready var guide: Sprite2D = $Guide
+
 ## How rotated this building is (i.e. the number of clockwise rotations from
 ## the starting point)
 @onready var rotation_value: int = 0
@@ -59,6 +62,12 @@ func _init_sprite() -> void:
 		center_px += Vector2i(1, 1) * (BuildingGrid.GRID_SPACE_SIZE / 2)
 	sprite.offset = -center_px
 	sprite.position = center_px
+
+	guide = $Guide
+	guide.position = center_px + Vector2i.UP * 50
+
+func done_placing() -> void:
+	guide.hide()
 
 ## Set the building's position in the building grid and move its transform
 func set_origin_coords(coords: Vector2i) -> void:
