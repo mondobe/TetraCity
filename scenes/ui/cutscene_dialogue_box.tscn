@@ -7,19 +7,19 @@
 
 [node name="CutsceneDialogueBox" type="Control"]
 layout_mode = 3
-anchors_preset = 0
-offset_left = 1.0
-offset_top = 61.0
-offset_right = 1.0
-offset_bottom = 61.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("1_sft7l")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 100.0
-offset_right = 944.0
-offset_bottom = 100.0
+offset_left = 101.0
+offset_top = -101.0
+offset_right = 945.0
+offset_bottom = -1.0
 texture = ExtResource("2_dxvqe")
 region_rect = Rect2(0, 0, 39, 39)
 patch_margin_left = 13
@@ -46,17 +46,19 @@ shortcut_keys_enabled = false
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
-offset_right = 100.0
-offset_bottom = 100.0
+offset_left = -2.0
+offset_top = -97.0
+offset_right = 98.0
+offset_bottom = 3.0
 texture = ExtResource("4_g5u7l")
 expand_mode = 2
 
 [node name="CutsceneName" type="NinePatchRect" parent="."]
 layout_mode = 0
-offset_left = 102.0
-offset_top = -20.0
-offset_right = 267.0
-offset_bottom = 34.0
+offset_left = 108.0
+offset_top = -123.0
+offset_right = 273.0
+offset_bottom = -69.0
 texture = ExtResource("2_dxvqe")
 region_rect = Rect2(0, 0, 39, 39)
 patch_margin_left = 13
