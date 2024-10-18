@@ -14,6 +14,12 @@ extends Node
 ## The node in charge of spawning balloons.
 @export var balloon_spawn_ai: BalloonSpawnAI
 
+var _nuclear_reactor: BuildingBlueprint = preload("res://buildings/nuclear_reactor.tres")
+
+var _you_win: PackedScene = preload("res://scenes/menus/you_win.tscn")
+
+var _you_lose: PackedScene = preload("res://scenes/menus/you_lose.tscn")
+
 ## The amount of coins the player has.
 var coins
 
@@ -47,7 +53,18 @@ func end_day() -> void:
 		return
 	fuel -= 1
 	day += 1
+
+	if building_grid.buildings.any(
+		func(b: Building) -> bool:
+			return b.blueprint == _nuclear_reactor
+	):
+		LevelLoader.load_level(_you_win)
+
+	if day == 61 and not building_grid.buildings.any(
+		func(b: Building) -> bool:
+			return b.blueprint == _nuclear_reactor
+	):
+		LevelLoader.load_level(_you_lose)
+
 	building_bonuses.apply_bonuses()
 	balloon_spawn_ai.on_new_day()
-
-

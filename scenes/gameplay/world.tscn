@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=39 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -18,7 +18,6 @@
 [ext_resource type="Script" path="res://scripts/ui/gameplay/stats_label.gd" id="12_q7wy1"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay/building_bonuses.gd" id="14_3u7nn"]
 [ext_resource type="PackedScene" uid="uid://b0rc8omyr0as8" path="res://scenes/ui/dialogue_box.tscn" id="14_qdc0i"]
-[ext_resource type="PackedScene" uid="uid://bxufr16hlwrbe" path="res://scenes/gameplay/balloon.tscn" id="16_eq88q"]
 [ext_resource type="Resource" uid="uid://bsegeoaejh2yl" path="res://buildings/variations/park.tres" id="17_072nv"]
 [ext_resource type="Resource" uid="uid://65ueslr70uo" path="res://buildings/variations/school.tres" id="18_0tkei"]
 [ext_resource type="Script" path="res://scripts/ui/gameplay/dialogue_box_spawner.gd" id="18_al1pw"]
@@ -29,8 +28,15 @@
 [ext_resource type="Script" path="res://scripts/systems/gameplay/balloon_spawn_ai.gd" id="24_fvko1"]
 [ext_resource type="PackedScene" uid="uid://cf4x3txyo6wyw" path="res://scenes/ui/building_info_box.tscn" id="26_no2ju"]
 [ext_resource type="Script" path="res://scripts/ui/gameplay/grid_click_controls.gd" id="27_lq8jb"]
+[ext_resource type="Resource" uid="uid://cbd8qt7xqw4v1" path="res://buildings/city_hall.tres" id="28_hpkc4"]
+[ext_resource type="Resource" uid="uid://bh0s6jhfgvuwv" path="res://buildings/apartment.tres" id="29_paan3"]
 [ext_resource type="PackedScene" uid="uid://cr0ovt1ydrnpm" path="res://tech_art/grass.tscn" id="29_trtxd"]
 [ext_resource type="PackedScene" uid="uid://dlsi186j032br" path="res://tech_art/grass_flower.tscn" id="30_7vn53"]
+[ext_resource type="Resource" uid="uid://da5icvnicvami" path="res://buildings/nuclear_reactor.tres" id="30_8p0k6"]
+[ext_resource type="Resource" uid="uid://cfyagiutao5c2" path="res://buildings/park.tres" id="31_1hyee"]
+[ext_resource type="Resource" uid="uid://du6t0xow0k5db" path="res://buildings/school.tres" id="32_dibiw"]
+[ext_resource type="Resource" uid="uid://x7obthv6pdcy" path="res://buildings/solar_farm.tres" id="33_uhqqw"]
+[ext_resource type="Resource" uid="uid://o4wnmgkxop7d" path="res://buildings/cafe.tres" id="34_6wwn0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7faob"]
 font = ExtResource("11_8u3tu")
@@ -141,14 +147,14 @@ script = ExtResource("14_3u7nn")
 building_grid = NodePath("../BuildingGrid")
 world_stats = NodePath("../WorldStats")
 
-[node name="SkyViewControls" type="Node" parent="." node_paths=PackedStringArray("_moving_camera", "_dialogue_box_spawner", "_building_grid", "_world_stats")]
+[node name="SkyViewControls" type="Node" parent="." node_paths=PackedStringArray("_moving_camera", "_dialogue_box_spawner", "_building_grid", "_world_stats", "_balloon_spawn_ai")]
 script = ExtResource("2_ymg3g")
 _moving_camera = NodePath("../MovingCamera")
 _dialogue_box_spawner = NodePath("../DialogueBoxSpawner")
 _building_grid = NodePath("../BuildingGrid")
 _world_stats = NodePath("../WorldStats")
+_balloon_spawn_ai = NodePath("../BalloonSpawnAI")
 _test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("9_uh8o4"), ExtResource("8_gjekm"), ExtResource("17_072nv"), ExtResource("18_0tkei"), ExtResource("19_p4iij"), ExtResource("20_q54bt"), ExtResource("21_xkiqr")])
-_balloon = ExtResource("16_eq88q")
 
 [node name="DialogueBoxSpawner" type="Node" parent="." node_paths=PackedStringArray("small_pixel_ui_layer", "static_small_pixel_ui_layer")]
 script = ExtResource("18_al1pw")
@@ -158,9 +164,11 @@ building_info_box = ExtResource("26_no2ju")
 small_pixel_ui_layer = NodePath("../SmallPixelUILayer")
 static_small_pixel_ui_layer = NodePath("../StaticSmallPixelUILayer")
 
-[node name="BalloonSpawnAI" type="Node" parent="." node_paths=PackedStringArray("_sky_view_controls")]
+[node name="BalloonSpawnAI" type="Node" parent="." node_paths=PackedStringArray("_sky_view_controls", "_world_stats")]
 script = ExtResource("24_fvko1")
 _sky_view_controls = NodePath("../SkyViewControls")
+_world_stats = NodePath("../WorldStats")
+_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("28_hpkc4"), ExtResource("29_paan3"), ExtResource("30_8p0k6"), ExtResource("31_1hyee"), ExtResource("32_dibiw"), ExtResource("33_uhqqw"), ExtResource("34_6wwn0")])
 
 [node name="GridClickControls" type="Node" parent="." node_paths=PackedStringArray("building_grid", "moving_camera", "dialogue_box_spawner")]
 script = ExtResource("27_lq8jb")

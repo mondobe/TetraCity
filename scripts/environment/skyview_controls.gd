@@ -14,11 +14,13 @@ extends Node
 ## The world stats.
 @export var _world_stats: WorldStats
 
+@export var _balloon_spawn_ai: BalloonSpawnAI
+
 ## The building variations that can randomly spawn upon pressing SPACE.
 @export var _test_variations: Array[BuildingVariation]
 
 ## The scene holding the balloon.
-@export var _balloon: PackedScene
+var _balloon: PackedScene = preload("res://scenes/gameplay/balloon.tscn")
 
 ## The NPC dialogue box being shown currently.
 @onready var _npc_dialogue_box: NpcDialogueBox = null
@@ -61,7 +63,7 @@ func spawn_balloon_at(pos: Vector2) -> Balloon:
 ## Spawn a dialogue box (called when clicking on a balloon).
 func balloon_dialogue(balloon: Balloon) -> void:
 	if _npc_dialogue_box:
-		return
+		ignore_button(_npc_dialogue_box)
 
 	_moving_camera.lock_to_camera_mode(MovingCamera.CameraMode.SKY)
 	var dialogue_box_pos = (Vector2(80, 80)
@@ -82,7 +84,7 @@ func buy_button(box: NpcDialogueBox) -> void:
 	_world_stats.top_label.update()
 	_moving_camera.lock_to_camera_mode(MovingCamera.CameraMode.GROUND)
 	_building_grid.make_and_place(box.variation)
-	box.balloon.queue_free()
+	_balloon_spawn_ai.remove_balloon(box.balloon)
 	box.queue_free()
 
 ## Hide an undesirable NPC dialogue box (called upon pressing "No, thanks").
