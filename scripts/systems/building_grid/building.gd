@@ -137,3 +137,6 @@ func get_adjacent_buildings() -> Array:
 	var index = get_index_in_grid()
 	var indices = building_grid.get_adjacent_building_indices(index)
 	return indices.map(func(i): return building_grid.buildings[i])
+
+func get_center_position() -> Vector2:
+	return global_position + Vector2(blueprint.center_coords * building_grid.GRID_SPACE_SIZE)

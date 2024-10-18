@@ -16,6 +16,6 @@ description = "Gives one day's worth of fuel every 3 days - as long as this buil
 variations = Array[String](["solar_farm"])
 first_spawning_day = 8
 balloon_lifetime = 1
-probabilities = Array[float]([0.05, 0.3, 0.0])
+probabilities = Array[float]([0.12, 0.04, 0.0])
 starting_price = 50.0
 daily_increase = -0.3

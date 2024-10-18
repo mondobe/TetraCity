@@ -17,5 +17,5 @@ variations = Array[String](["city_hall"])
 first_spawning_day = 0
 balloon_lifetime = 60
 probabilities = Array[float]([0.0])
-starting_price = 0
-daily_increase = 0
+starting_price = 0.0
+daily_increase = 0.0

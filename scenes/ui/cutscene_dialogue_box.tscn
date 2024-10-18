@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/ui/gameplay/cutscene_dialogue_box.gd" id="1_sft7l"]
 [ext_resource type="Texture2D" uid="uid://vfgrp5seiq7s" path="res://sprites/ui/dialogue_nine_patch.png" id="2_dxvqe"]
-[ext_resource type="Theme" uid="uid://babe0j67pdkhx" path="res://theming/dialogue_box_label.tres" id="3_4icx3"]
+[ext_resource type="Theme" uid="uid://babe0j67pdkhx" path="res://theming/hud.tres" id="3_4icx3"]
 [ext_resource type="Texture2D" uid="uid://cgpcvb844wi6" path="res://sprites/test/icon.svg" id="4_g5u7l"]
 
 [node name="CutsceneDialogueBox" type="Control"]

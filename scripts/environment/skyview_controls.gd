@@ -16,6 +16,8 @@ extends Node
 
 @export var _balloon_spawn_ai: BalloonSpawnAI
 
+@export var end_day_button: TextureButton
+
 ## The building variations that can randomly spawn upon pressing SPACE.
 @export var _test_variations: Array[BuildingVariation]
 
@@ -25,20 +27,26 @@ var _balloon: PackedScene = preload("res://scenes/gameplay/balloon.tscn")
 ## The NPC dialogue box being shown currently.
 @onready var _npc_dialogue_box: NpcDialogueBox = null
 
+@onready var click_sfx = $ClickSfx
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("test_create_building") \
-		and _moving_camera._camera_mode == MovingCamera.CameraMode.SKY:
-		spawn_random_balloon_at_cursor()
+# func _process(delta: float) -> void:
+	# if Input.is_action_just_pressed("test_create_building") \
+	# 	and _moving_camera._camera_mode == MovingCamera.CameraMode.SKY:
+	# 	spawn_random_balloon_at_cursor()
+
+func end_day() -> void:
+	if _npc_dialogue_box:
+		ignore_button(_npc_dialogue_box)
 
 ## Spawn the specified balloon variation in a random position with the given price.
 func spawn_balloon(price: int, variation: BuildingVariation) -> Balloon:
 	var balloon: Balloon = spawn_balloon_at(
-		Vector2(randf_range(-180, 180), randf_range(-250, -100)))
+		Vector2(randf_range(-180, 180), randf_range(-350, -200)))
 	balloon.init_from_blueprint_variation(variation)
 	balloon.price = price
 	return balloon
@@ -74,6 +82,9 @@ func balloon_dialogue(balloon: Balloon) -> void:
 	box.buy.connect(func(): buy_button(box))
 	box.ignore.connect(func(): ignore_button(box))
 	_npc_dialogue_box = box
+	end_day_button.hide()
+
+	click_sfx.play()
 
 ## Buy a building (called upon pressing the corresponding button).
 func buy_button(box: NpcDialogueBox) -> void:
@@ -86,11 +97,14 @@ func buy_button(box: NpcDialogueBox) -> void:
 	_building_grid.make_and_place(box.variation)
 	_balloon_spawn_ai.remove_balloon(box.balloon)
 	box.queue_free()
+	end_day_button.show()
+	click_sfx.play()
 
 ## Hide an undesirable NPC dialogue box (called upon pressing "No, thanks").
 func ignore_button(box: NpcDialogueBox) -> void:
 	close_dialogue()
 	box.queue_free()
+	end_day_button.show()
 
 ## Finish placing a bought building.
 func done_placing() -> void:

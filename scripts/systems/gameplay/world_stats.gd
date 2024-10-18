@@ -14,6 +14,9 @@ extends Node
 ## The node in charge of spawning balloons.
 @export var balloon_spawn_ai: BalloonSpawnAI
 
+## The node in charge of spawning balloons.
+@export var sky_view_controls: SkyViewControls
+
 var _nuclear_reactor: BuildingBlueprint = preload("res://buildings/nuclear_reactor.tres")
 
 var _you_win: PackedScene = preload("res://scenes/menus/you_win.tscn")
@@ -38,14 +41,17 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# Placeholder for now! Hopefully we have an "end day" button soon
 	if Input.is_action_just_pressed("test_end_day"):
-		end_day()
-		top_label.update()
+		end_day_button()
 
 ## Initialize values at the start of the game
 func init_values() -> void:
-	coins = 5
+	coins = 10
 	fuel = 60
 	day = 1
+
+func end_day_button() -> void:
+	end_day()
+	top_label.update()
 
 ## Update the values for each day
 func end_day() -> void:
@@ -60,11 +66,12 @@ func end_day() -> void:
 	):
 		LevelLoader.load_level(_you_win)
 
-	if day == 61 and not building_grid.buildings.any(
+	if fuel <= 0 and not building_grid.buildings.any(
 		func(b: Building) -> bool:
 			return b.blueprint == _nuclear_reactor
 	):
 		LevelLoader.load_level(_you_lose)
 
+	sky_view_controls.end_day()
 	building_bonuses.apply_bonuses()
 	balloon_spawn_ai.on_new_day()

@@ -1,19 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1eka0588yyur"]
+[gd_scene load_steps=6 format=3 uid="uid://b1eka0588yyur"]
 
 [ext_resource type="Script" path="res://scripts/systems/loading/main.gd" id="1_66klc"]
 [ext_resource type="PackedScene" uid="uid://eayrnwud62wn" path="res://scenes/menus/title_screen.tscn" id="2_klejw"]
-[ext_resource type="PackedScene" uid="uid://birrxtkg5d3hg" path="res://scenes/gameplay/world.tscn" id="3_wg81f"]
 [ext_resource type="Script" path="res://scripts/debug/debug_controls.gd" id="4_4o7ee"]
 [ext_resource type="Script" path="res://scripts/debug/debug_scene_hotkey.gd" id="5_u4yuf"]
 
 [sub_resource type="Resource" id="Resource_d2lay"]
 script = ExtResource("5_u4yuf")
-key = 87
-scene = ExtResource("3_wg81f")
-
-[sub_resource type="Resource" id="Resource_edjv1"]
-script = ExtResource("5_u4yuf")
-key = 81
+key = 84
+scene = ExtResource("2_klejw")
 
 [node name="Main" type="Node"]
 script = ExtResource("1_66klc")
@@ -21,4 +16,4 @@ _initial_scene = ExtResource("2_klejw")
 
 [node name="DebugControls" type="Node" parent="."]
 script = ExtResource("4_4o7ee")
-scene_keys = Array[ExtResource("5_u4yuf")]([SubResource("Resource_d2lay"), SubResource("Resource_edjv1")])
+scene_keys = Array[ExtResource("5_u4yuf")]([SubResource("Resource_d2lay")])
