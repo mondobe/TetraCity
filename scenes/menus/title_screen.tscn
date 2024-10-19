@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://pllt5njnknbr" path="res://sprites/environment/clouds.png" id="3_5qla5"]
 [ext_resource type="Theme" uid="uid://cou1oxt1vsf13" path="res://theming/hover_ui.tres" id="4_737vl"]
 [ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="4_tu6lm"]
-[ext_resource type="Texture2D" uid="uid://bajxu4w5pf5fv" path="res://sprites/ui/m2 logo.png" id="5_ndkb7"]
+[ext_resource type="Texture2D" uid="uid://tu1sfupggi2i" path="res://sprites/ui/m2_logo.png" id="5_72qku"]
 [ext_resource type="AudioStream" uid="uid://c8mm5qn6gafc8" path="res://music/title_theme.mp3" id="6_pxqlc"]
 
 [node name="TitleScreen" type="Node2D"]
@@ -34,9 +34,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -236.5
-offset_top = 112.55
+offset_top = 153.0
 offset_right = 236.5
-offset_bottom = 180.55
+offset_bottom = 221.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_737vl")
@@ -58,17 +58,17 @@ theme = ExtResource("4_737vl")
 text = "Settings"
 
 [node name="TextureRect" type="TextureRect" parent="UICanvas"]
+texture_filter = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -754.5
-offset_top = -70.0
-offset_right = 754.5
-offset_bottom = 624.0
+offset_left = -191.0
+offset_top = 276.0
+offset_right = 191.0
+offset_bottom = 641.0
 grow_horizontal = 2
-scale = Vector2(0.6, 0.6)
-pivot_offset = Vector2(754, 347)
-texture = ExtResource("5_ndkb7")
+pivot_offset = Vector2(191, 182)
+texture = ExtResource("5_72qku")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_pxqlc")
