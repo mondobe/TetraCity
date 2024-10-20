@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://tpwh1rw6ehic"]
+[gd_scene load_steps=7 format=3 uid="uid://tpwh1rw6ehic"]
 
 [ext_resource type="Script" path="res://scripts/menu/CutsceneDialogBoxSpawner.gd" id="1_kwxge"]
 [ext_resource type="PackedScene" uid="uid://b0rc8omyr0as8" path="res://scenes/ui/dialogue_box.tscn" id="2_1lu6r"]
@@ -6,9 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://cf4x3txyo6wyw" path="res://scenes/ui/building_info_box.tscn" id="5_jsk11"]
 [ext_resource type="Texture2D" uid="uid://bdsrb7og8piqf" path="res://sprites/buildings/nuclear_reactor.png" id="5_nx6ne"]
 [ext_resource type="Script" path="res://scripts/menu/DialogueBoxManager.gd" id="6_8v5d6"]
-[ext_resource type="Texture2D" uid="uid://b4wejql45gxc2" path="res://sprites/buildings/apartments.png" id="7_xarg6"]
-[ext_resource type="Texture2D" uid="uid://3luu62vikwou" path="res://sprites/buildings/cafe.png" id="8_wghpf"]
-[ext_resource type="Texture2D" uid="uid://blrtmwevytseb" path="res://sprites/buildings/cityHall.png" id="9_lqxj5"]
 
 [node name="Cutscene" type="Node2D"]
 
@@ -26,10 +23,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("5_nx6ne")
 
-[node name="DialogueBoxManager" type="Node" parent="." node_paths=PackedStringArray("_dialogue_box_spawner", "imageFrame")]
+[node name="DialogueBoxManager" type="Node" parent="." node_paths=PackedStringArray("_dialogue_box_spawner", "image_frame")]
 script = ExtResource("6_8v5d6")
 _dialogue_box_spawner = NodePath("../CutsceneDialogBoxSpawner")
-startConversation = Array[String](["This is the starting conversation", "this is an apartment", "this is a cafe", "this is a cityHall", "After this conversation, we'll leave to the main scene"])
-startImage = Array[Texture2D]([null, ExtResource("7_xarg6"), ExtResource("8_wghpf"), ExtResource("9_lqxj5"), null])
-startSpeaker = "GoDot"
-imageFrame = NodePath("../SmallPixelUILayer/TextureRect")
+image_frame = NodePath("../SmallPixelUILayer/TextureRect")
