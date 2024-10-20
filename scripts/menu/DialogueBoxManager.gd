@@ -1,7 +1,5 @@
 extends Node
 
-#cutscene should be more general. Can be 3 different forms. 
-
 @export var _dialogue_box_spawner: CutsceneDialogBoxSpawner
 
 @onready var textBox: CutsceneDialogueBox = null
