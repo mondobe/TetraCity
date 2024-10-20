@@ -12,7 +12,7 @@ func spawn_box_at(pos: Vector2, scene: PackedScene) -> DialogueBox:
 	var box: DialogueBox = scene.instantiate()
 	var canvas_layer: CanvasLayer = small_pixel_ui_layer
 	canvas_layer.add_child(box)
-	var pos_screen = get_viewport().canvas_transform * pos
+	var pos_screen = get_viewport().canvas_transform * pos	
 	box.position = canvas_layer.transform.affine_inverse() * pos_screen
 	return box
 
@@ -24,5 +24,5 @@ func spawn_box_at_screen(pos_screen: Vector2, scene: PackedScene) -> DialogueBox
 	box.position = pos_screen
 	return box
 
-func spawn_cutscene_box_at_screen(pos_screen: Vector2) -> CutsceneDialogueBox:
-	return spawn_box_at_screen(pos_screen, cutscene_dialog_box);
+func spawn_cutscene_box_at_screen() -> CutsceneDialogueBox:
+	return spawn_box_at_screen(Vector2(0, 0), cutscene_dialog_box);
