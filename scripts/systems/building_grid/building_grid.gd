@@ -60,6 +60,11 @@ var push_timer: float
 ## The buildings currently in the grid.
 @onready var buildings: Array[Building]
 
+## The building guide squares
+@onready var guide: Sprite2D = $GridGuide
+
+@onready var sfx: GridSfx = $GridSfx
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	build_grid()
@@ -68,13 +73,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	# If SPACE is pressed, add a new random building
-	if (Input.is_action_just_pressed("test_create_building")
-		and not placing_building
-		and _moving_camera.get_camera_mode() == MovingCamera.CameraMode.GROUND):
-		var variation = _test_variations[randi_range(0, len(_test_variations) - 1)]
-		make_and_place(variation)
-
 	if placing_building:
 		placing_process(delta)
 
@@ -90,52 +88,67 @@ func start_placing(new_building: Building) -> void:
 			grid.dimensions.x / 2 - new_building.grid.dimensions.x / 2, 0))
 	add_child(new_building)
 	push_timer = MAX_PUSH_TIMER
+	guide.show()
 
 ## Called every frame while placing a building.
 func placing_process(delta: float) -> void:
 	# Respond to keypresses by rotating left and right
 	if Input.is_action_just_pressed("rotate_left"):
-		test_rotate_building(placing_building, COUNTERCLOCKWISE)
+		if test_rotate_building(placing_building, COUNTERCLOCKWISE):
+			sfx.play_building_move()
 		if push_timer < MAX_PUSH_TIMER / 2:
 			push_timer = MAX_PUSH_TIMER / 2
 
 	if Input.is_action_just_pressed("rotate_right"):
-		test_rotate_building(placing_building, CLOCKWISE)
+		if test_rotate_building(placing_building, CLOCKWISE):
+			sfx.play_building_move()
 		if push_timer < MAX_PUSH_TIMER / 2:
 			push_timer = MAX_PUSH_TIMER / 2
 
 	# Hard Drop
 	if Input.is_action_just_pressed("move_up"):
+		var num_drops: int = 0
 		while test_move_building(placing_building, Vector2i(0, 1)):
+			num_drops += 1
 			continue
+		if num_drops > 0:
+			sfx.play_hard_drop()
 		push_timer = MAX_PUSH_TIMER
 
 	# Soft Drop
 	if Input.is_action_just_pressed("move_down"):
-		test_move_building(placing_building, Vector2i(0, 1))
+		if test_move_building(placing_building, Vector2i(0, 1)):
+			sfx.play_building_move()
 		push_timer = MAX_PUSH_TIMER
 
 	# Move left
 	if Input.is_action_just_pressed("move_left"):
-		test_move_building(placing_building, Vector2i(-1, 0))
+		if test_move_building(placing_building, Vector2i(-1, 0)):
+			sfx.play_building_move()
 
 	# Move right
 	if Input.is_action_just_pressed("move_right"):
-		test_move_building(placing_building, Vector2i(1, 0))
+		if test_move_building(placing_building, Vector2i(1, 0)):
+			sfx.play_building_move()
 
 	# If the push timer is below zero, stop moving the building
 	push_timer -= delta
 	if push_timer < 0:
-		if not test_move_building(placing_building, Vector2i(0, 1)):
+		if test_move_building(placing_building, Vector2i(0, 1)):
+			sfx.play_gravity()
+		else:
 			done_placing()
+			sfx.play_settle()
 		push_timer = MAX_PUSH_TIMER
 
 ## Add the current building to the grid and rebuild its collision.
 func done_placing() -> void:
 	buildings.append(placing_building)
 	build_grid()
+	placing_building.done_placing()
 	placing_building = null
 	_sky_view_controls.done_placing()
+	guide.hide()
 
 ## Clears the grid and rebuilds it, polling every building for its collision pixels.
 func build_grid() -> void:

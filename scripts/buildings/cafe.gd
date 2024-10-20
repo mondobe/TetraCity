@@ -13,8 +13,10 @@ func highest_earner() -> Building:
 	var coins: int = 0
 	var highest_earner: Building = null
 	for building: Node in adjacent_buildings:
+		if building.bonus is Cafe:
+			continue
 		var bonus: BuildingBonus = building.bonus.get_bonus()
-		if bonus.coins > coins and not building.bonus is Cafe:
+		if bonus.coins > coins:
 			coins = bonus.coins
 			highest_earner = building
 	return highest_earner

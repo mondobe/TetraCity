@@ -32,10 +32,10 @@ func _ready() -> void:
 func update_text() -> void:
 	resize_borders(Vector2(320, 300))
 	set_text_no_resize(
-"Test balloon NPC dialogue
-Buy %s
+"%s
+%s
 Cost: %d coins"
-		% [variation.building_name, price])
+		% [variation.building_name, variation.blueprint.description, price])
 
 ## Called when clicking the "buy" button
 signal buy()

@@ -12,3 +12,10 @@ OO.
 center_coords = Vector2i(1, 1)
 center_mode = 1
 kick_mode = 0
+description = "Gives one day's worth of fuel every 3 days - as long as this building isn't blocked by others above it."
+variations = Array[String](["solar_farm"])
+first_spawning_day = 8
+balloon_lifetime = 1
+probabilities = Array[float]([0.12, 0.04, 0.0])
+starting_price = 50.0
+daily_increase = -0.3
