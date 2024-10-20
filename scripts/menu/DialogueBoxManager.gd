@@ -2,66 +2,34 @@ extends Node
 
 @export var _dialogue_box_spawner: CutsceneDialogBoxSpawner
 
-@onready var textBox: CutsceneDialogueBox = null
+@onready var cutscene: Cutscene = CutsceneLoader.current_cutscene
 
-@export var startConversation: Array[String]
-@export var startImage: Array[Texture2D]
-@export var startSpeaker: String
+var text_box: CutsceneDialogueBox
 
-@export var endWinConversation: Array[String]
-@export var endWinImage: Array[Texture2D]
-@export var endWinSpeaker: String
+@onready var current_frame: int = 0
 
-@export var endLoseConversation: Array[String]
-@export var endLoseImage: Array[Texture2D]
-@export var endLoseSpeaker: String
-
-@onready var conversation: Array[String]
-@onready var image: Array[Texture2D]
-@onready var exitScene: PackedScene
-
-@onready var currentString: int = 0
-
-@export var imageFrame: TextureRect
-
-const _main_scene = preload("res://scenes/gameplay/world.tscn")
-const _title_scene = preload("res://scenes/menus/title_screen.tscn")
+@export var image_frame: TextureRect
 
 func _ready():
-	createScene("startCutscene")
+	text_box = _dialogue_box_spawner.spawn_cutscene_box_at_screen()
+	text_box.update_size()
+	image_frame.size = get_window().size
+	next_frame()
 
-func createScene(scene: String):
-	var test = _dialogue_box_spawner.spawn_cutscene_box_at_screen()
-	test.update_size()
-	imageFrame.size = DisplayServer.window_get_size(0)
-	if(scene == "endWinCutscene"):
-		conversation = endWinConversation
-		image = endWinImage
-		test.set_speaker_text(endWinSpeaker)
-		exitScene = _main_scene;
-	elif(scene == "endLoseCutscene"):
-		conversation = endLoseConversation
-		image = endLoseImage
-		test.set_speaker_tet(endLoseSpeaker)
-		exitScene = _title_scene
-	elif(scene == "startCutscene"):
-		conversation = startConversation
-		image = startImage
-		test.set_speaker_text(startSpeaker)
-		exitScene = _main_scene
-	test.set_speaker_text(conversation[currentString]);
-	imageFrame.texture = image[currentString]
-	textBox = test
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("left_mouse"):
+		next_frame()
 
-func updateTextbox():
-	textBox.set_speaker_text(conversation[currentString]);
-	imageFrame.texture = image[currentString]
+func next_frame() -> void:
+	if current_frame < cutscene.frames.size():
+		apply_frame(cutscene.frames[current_frame])
+		current_frame += 1
+	else:
+		LevelLoader.load_level(load(cutscene.next_level))
 
-func _input(event):
-	if(Input.is_anything_pressed()):
-		currentString += 1
-		if(currentString < conversation.size()):
-			updateTextbox()
-		else:
-			LevelLoader.load_level(exitScene)
+func apply_frame(frame: CutsceneFrame) -> void:
+	text_box.set_speaker(frame.speaker)
+	text_box
+	image_frame.texture = frame.portrait
+	text_box.set_speaker_text(frame.dialogue)
 
