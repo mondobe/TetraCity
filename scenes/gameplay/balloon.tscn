@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxufr16hlwrbe"]
 
 [ext_resource type="Script" path="res://scripts/systems/shop/balloon.gd" id="1_bpkah"]
-[ext_resource type="Texture2D" uid="uid://djbgursymeoqt" path="res://sprites/test/balloon.png" id="1_k2lxj"]
+[ext_resource type="Texture2D" uid="uid://c122agkdptxel" path="res://sprites/gameplay_misc/balloon2.png" id="2_5iksp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ey5yg"]
-size = Vector2(40, 30)
+size = Vector2(60, 40)
 
 [node name="Balloon" type="Node2D"]
 script = ExtResource("1_bpkah")
@@ -13,8 +13,8 @@ script = ExtResource("1_bpkah")
 
 [node name="BalloonSprite" type="Sprite2D" parent="."]
 z_index = -1
-position = Vector2(0, -40.5)
-texture = ExtResource("1_k2lxj")
+position = Vector2(0, -53)
+texture = ExtResource("2_5iksp")
 
 [node name="HitboxArea" type="Area2D" parent="."]
 

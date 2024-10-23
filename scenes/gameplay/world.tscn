@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=54 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -6,23 +6,52 @@
 [ext_resource type="Script" path="res://scripts/environment/skyview_controls.gd" id="2_ymg3g"]
 [ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="3_113pp"]
 [ext_resource type="Texture2D" uid="uid://b7xoss14ph6pv" path="res://sprites/environment/groundBottom.png" id="3_ku6pw"]
-[ext_resource type="Texture2D" uid="uid://pllt5njnknbr" path="res://sprites/environment/clouds.png" id="6_24y6w"]
+[ext_resource type="Texture2D" uid="uid://bk3mcifbo00ob" path="res://sprites/environment/clouds2.png" id="5_q6mms"]
 [ext_resource type="Resource" uid="uid://bas3a8n65ds1" path="res://buildings/variations/city_hall.tres" id="8_gjekm"]
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_grid.gd" id="8_yumsi"]
 [ext_resource type="PackedScene" uid="uid://cmoks1w008liq" path="res://scenes/gameplay/building.tscn" id="9_teedr"]
 [ext_resource type="Resource" uid="uid://blctvydks2h24" path="res://buildings/variations/apartment.tres" id="9_uh8o4"]
-[ext_resource type="LabelSettings" uid="uid://dbpx7v66har17" path="res://theming/non_pixelated_label.tres" id="10_kif8a"]
 [ext_resource type="FontFile" uid="uid://sxhpegxwj6qy" path="res://fonts/verdana.ttf" id="11_8u3tu"]
+[ext_resource type="Texture2D" uid="uid://u3oof2tbhd7g" path="res://sprites/gameplay_misc/grid_space.png" id="11_cvkpl"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay/world_stats.gd" id="11_fetru"]
+[ext_resource type="Script" path="res://scripts/environment/grid_guide.gd" id="12_dcn3s"]
 [ext_resource type="Script" path="res://scripts/ui/gameplay/stats_label.gd" id="12_q7wy1"]
+[ext_resource type="Script" path="res://scripts/environment/effects/grid_sfx.gd" id="13_56ujm"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay/building_bonuses.gd" id="14_3u7nn"]
 [ext_resource type="PackedScene" uid="uid://b0rc8omyr0as8" path="res://scenes/ui/dialogue_box.tscn" id="14_qdc0i"]
-[ext_resource type="PackedScene" uid="uid://bxufr16hlwrbe" path="res://scenes/gameplay/balloon.tscn" id="16_eq88q"]
+[ext_resource type="AudioStream" uid="uid://shijvr8llyke" path="res://sound_effects/building_move1.wav" id="14_qey0i"]
+[ext_resource type="AudioStream" uid="uid://boyj8hac8ushc" path="res://sound_effects/building_move2.wav" id="15_4rysv"]
+[ext_resource type="AudioStream" uid="uid://cj7gj3mqajj55" path="res://sound_effects/building_move3.wav" id="16_bf1gg"]
 [ext_resource type="Resource" uid="uid://bsegeoaejh2yl" path="res://buildings/variations/park.tres" id="17_072nv"]
+[ext_resource type="AudioStream" uid="uid://i5g1n1r0kdx0" path="res://sound_effects/gravity.wav" id="17_mefcy"]
 [ext_resource type="Resource" uid="uid://65ueslr70uo" path="res://buildings/variations/school.tres" id="18_0tkei"]
+[ext_resource type="AudioStream" uid="uid://d38miyjdvd7tk" path="res://sound_effects/hard_drop.wav" id="18_150fx"]
 [ext_resource type="Script" path="res://scripts/ui/gameplay/dialogue_box_spawner.gd" id="18_al1pw"]
+[ext_resource type="AudioStream" uid="uid://bjtt3aj4u4sm2" path="res://sound_effects/settle.wav" id="19_16mf0"]
 [ext_resource type="Resource" uid="uid://dutfrehwacddo" path="res://buildings/variations/nuclear_reactor.tres" id="19_p4iij"]
 [ext_resource type="PackedScene" uid="uid://bq56tb6w0hcbb" path="res://scenes/ui/npc_dialogue_box.tscn" id="19_yklqn"]
+[ext_resource type="Texture2D" uid="uid://2y0cu1o4f15y" path="res://sprites/ui/swap_view_button.png" id="20_j6mao"]
+[ext_resource type="Script" path="res://scripts/ui/gameplay/hud_container.gd" id="20_mo5pp"]
+[ext_resource type="Resource" uid="uid://be6stuus2km8m" path="res://buildings/variations/cafe.tres" id="20_q54bt"]
+[ext_resource type="Theme" uid="uid://babe0j67pdkhx" path="res://theming/hud.tres" id="21_thl1h"]
+[ext_resource type="Resource" uid="uid://bhxuoe0d6x3u1" path="res://buildings/variations/solar_farm.tres" id="21_xkiqr"]
+[ext_resource type="Texture2D" uid="uid://cs2j0cowr4jvg" path="res://sprites/ui/end_day_button.png" id="22_r5sg8"]
+[ext_resource type="Texture2D" uid="uid://cpcb07fut3qoi" path="res://sprites/ui/end_day_button_pressed.png" id="23_tn7m6"]
+[ext_resource type="Script" path="res://scripts/systems/gameplay/balloon_spawn_ai.gd" id="24_fvko1"]
+[ext_resource type="BitMap" uid="uid://bxvhu0db4kx20" path="res://sprites/ui/end_day_button_mask.png" id="24_wx3v4"]
+[ext_resource type="PackedScene" uid="uid://cf4x3txyo6wyw" path="res://scenes/ui/building_info_box.tscn" id="26_no2ju"]
+[ext_resource type="Script" path="res://scripts/ui/gameplay/grid_click_controls.gd" id="27_lq8jb"]
+[ext_resource type="Resource" uid="uid://cbd8qt7xqw4v1" path="res://buildings/city_hall.tres" id="28_hpkc4"]
+[ext_resource type="Resource" uid="uid://bh0s6jhfgvuwv" path="res://buildings/apartment.tres" id="29_paan3"]
+[ext_resource type="PackedScene" uid="uid://cr0ovt1ydrnpm" path="res://tech_art/grass.tscn" id="29_trtxd"]
+[ext_resource type="PackedScene" uid="uid://dlsi186j032br" path="res://tech_art/grass_flower.tscn" id="30_7vn53"]
+[ext_resource type="Resource" uid="uid://da5icvnicvami" path="res://buildings/nuclear_reactor.tres" id="30_8p0k6"]
+[ext_resource type="AudioStream" uid="uid://drhnluohr4qns" path="res://sound_effects/click.wav" id="30_ph8ko"]
+[ext_resource type="PackedScene" uid="uid://hxfntnk8ej7c" path="res://scenes/ui/coin_label.tscn" id="30_uter3"]
+[ext_resource type="Resource" uid="uid://cfyagiutao5c2" path="res://buildings/park.tres" id="31_1hyee"]
+[ext_resource type="Resource" uid="uid://du6t0xow0k5db" path="res://buildings/school.tres" id="32_dibiw"]
+[ext_resource type="Resource" uid="uid://x7obthv6pdcy" path="res://buildings/solar_farm.tres" id="33_uhqqw"]
+[ext_resource type="Resource" uid="uid://o4wnmgkxop7d" path="res://buildings/cafe.tres" id="34_6wwn0"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7faob"]
 font = ExtResource("11_8u3tu")
@@ -31,12 +60,13 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="World" type="Node2D"]
 
-[node name="MovingCamera" type="Camera2D" parent="." groups=["Camera"]]
+[node name="MovingCamera" type="Camera2D" parent="." node_paths=PackedStringArray("hud_container") groups=["Camera"]]
 zoom = Vector2(4, 4)
 script = ExtResource("2_1vd7b")
 speed = 10.0
 extent = 100.0
-sky_position = Vector2(0, -200)
+sky_position = Vector2(0, -300)
+hud_container = NodePath("../PixelUILayer/HUDContainer")
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="MovingCamera"]
 stream = ExtResource("2_is7ov")
@@ -63,9 +93,9 @@ region_rect = Rect2(0, 0, 1024, 192)
 [node name="ScrollingClouds" type="Sprite2D" parent="BackgroundEffects"]
 z_index = -2
 texture_repeat = 2
-texture = ExtResource("6_24y6w")
+texture = ExtResource("5_q6mms")
 region_enabled = true
-region_rect = Rect2(0, 0, 2000, 1000)
+region_rect = Rect2(0, 0, 2000, 2000)
 script = ExtResource("3_113pp")
 drift_x = 12.0
 drift_y_amp = 8.0
@@ -81,29 +111,59 @@ _test_variations = Array[Resource("res://scripts/systems/building_grid/building_
 _initial_dimensions = Vector2i(14, 14)
 building = ExtResource("9_teedr")
 
-[node name="TempUILayer" type="CanvasLayer" parent="."]
+[node name="GridGuide" type="Sprite2D" parent="BuildingGrid"]
+visible = false
+z_index = -2
+texture_repeat = 2
+texture = ExtResource("11_cvkpl")
+centered = false
+region_enabled = true
+region_rect = Rect2(0, 0, 280, 280)
+script = ExtResource("12_dcn3s")
 
-[node name="Tutorial" type="Label" parent="TempUILayer"]
-offset_left = 182.0
-offset_top = 491.0
-offset_right = 354.0
-offset_bottom = 560.0
-text = "Press SPACE to spawn a building
-Arrow keys/WASD to move building
-Q/E to rotate building
-"
-label_settings = ExtResource("10_kif8a")
+[node name="GridSfx" type="AudioStreamPlayer2D" parent="BuildingGrid"]
+volume_db = -3.0
+attenuation = 1e-05
+script = ExtResource("13_56ujm")
+building_move = Array[AudioStream]([ExtResource("14_qey0i"), ExtResource("15_4rysv"), ExtResource("16_bf1gg")])
+gravity = ExtResource("17_mefcy")
+hard_drop = ExtResource("18_150fx")
+settle = ExtResource("19_16mf0")
+
+[node name="TempUILayer" type="CanvasLayer" parent="."]
 
 [node name="PixelUILayer" type="CanvasLayer" parent="."]
 scale = Vector2(4, 4)
 transform = Transform2D(4, 0, 0, 4, 0, 0)
 
-[node name="StatsLabel" type="Label" parent="PixelUILayer" node_paths=PackedStringArray("world_stats")]
+[node name="HUDContainer" type="VBoxContainer" parent="PixelUILayer"]
+offset_right = 480.0
+offset_bottom = 270.0
+script = ExtResource("20_mo5pp")
+
+[node name="AscendButton" type="TextureButton" parent="PixelUILayer/HUDContainer"]
+self_modulate = Color(1, 1, 1, 0.352941)
+layout_mode = 2
+theme = ExtResource("21_thl1h")
+action_mode = 0
+texture_normal = ExtResource("20_j6mao")
+texture_pressed = ExtResource("20_j6mao")
+texture_hover = ExtResource("20_j6mao")
+texture_disabled = ExtResource("20_j6mao")
+texture_focused = ExtResource("20_j6mao")
+
+[node name="MiddleArea" type="Control" parent="PixelUILayer/HUDContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="StatsLabel" type="Label" parent="PixelUILayer/HUDContainer/MiddleArea" node_paths=PackedStringArray("world_stats")]
+layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -960.0
-offset_right = -480.0
+offset_left = -240.0
+offset_right = 240.0
 offset_bottom = 40.0
 grow_horizontal = 2
 text = "Top Label"
@@ -111,7 +171,41 @@ label_settings = SubResource("LabelSettings_7faob")
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("12_q7wy1")
-world_stats = NodePath("../../WorldStats")
+world_stats = NodePath("../../../../WorldStats")
+
+[node name="EndDayButton" type="TextureButton" parent="PixelUILayer/HUDContainer/MiddleArea"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -63.0
+offset_top = -65.0
+offset_right = -13.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+texture_normal = ExtResource("22_r5sg8")
+texture_pressed = ExtResource("23_tn7m6")
+texture_hover = ExtResource("23_tn7m6")
+texture_disabled = ExtResource("22_r5sg8")
+texture_focused = ExtResource("22_r5sg8")
+texture_click_mask = ExtResource("24_wx3v4")
+
+[node name="DescendButton" type="TextureButton" parent="PixelUILayer/HUDContainer"]
+visible = false
+self_modulate = Color(1, 1, 1, 0.352941)
+layout_mode = 2
+theme = ExtResource("21_thl1h")
+action_mode = 0
+texture_normal = ExtResource("20_j6mao")
+texture_pressed = ExtResource("20_j6mao")
+texture_hover = ExtResource("20_j6mao")
+texture_disabled = ExtResource("20_j6mao")
+texture_focused = ExtResource("20_j6mao")
+flip_v = true
 
 [node name="SmallPixelUILayer" type="CanvasLayer" parent="."]
 scale = Vector2(2, 2)
@@ -122,28 +216,73 @@ scale = Vector2(0.5, 0.5)
 transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 follow_viewport_enabled = true
 
-[node name="WorldStats" type="Node" parent="." node_paths=PackedStringArray("top_label", "building_bonuses", "building_grid")]
+[node name="WorldStats" type="Node" parent="." node_paths=PackedStringArray("top_label", "building_bonuses", "building_grid", "balloon_spawn_ai", "sky_view_controls")]
 script = ExtResource("11_fetru")
-top_label = NodePath("../PixelUILayer/StatsLabel")
+top_label = NodePath("../PixelUILayer/HUDContainer/MiddleArea/StatsLabel")
 building_bonuses = NodePath("../BuildingBonuses")
 building_grid = NodePath("../BuildingGrid")
+balloon_spawn_ai = NodePath("../BalloonSpawnAI")
+sky_view_controls = NodePath("../SkyViewControls")
 
-[node name="BuildingBonuses" type="Node" parent="." node_paths=PackedStringArray("building_grid", "world_stats")]
+[node name="BuildingBonuses" type="Node" parent="." node_paths=PackedStringArray("building_grid", "world_stats", "static_ui_layer")]
 script = ExtResource("14_3u7nn")
 building_grid = NodePath("../BuildingGrid")
 world_stats = NodePath("../WorldStats")
+coin_label = ExtResource("30_uter3")
+static_ui_layer = NodePath("../StaticSmallPixelUILayer")
 
-[node name="SkyViewControls" type="Node" parent="." node_paths=PackedStringArray("_moving_camera", "_dialogue_box_spawner", "_building_grid")]
+[node name="SkyViewControls" type="Node" parent="." node_paths=PackedStringArray("_moving_camera", "_dialogue_box_spawner", "_building_grid", "_world_stats", "_balloon_spawn_ai", "end_day_button")]
 script = ExtResource("2_ymg3g")
 _moving_camera = NodePath("../MovingCamera")
 _dialogue_box_spawner = NodePath("../DialogueBoxSpawner")
 _building_grid = NodePath("../BuildingGrid")
-_test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("9_uh8o4"), ExtResource("8_gjekm"), ExtResource("17_072nv"), ExtResource("18_0tkei"), ExtResource("19_p4iij")])
-_balloon = ExtResource("16_eq88q")
+_world_stats = NodePath("../WorldStats")
+_balloon_spawn_ai = NodePath("../BalloonSpawnAI")
+end_day_button = NodePath("../PixelUILayer/HUDContainer/MiddleArea/EndDayButton")
+_test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("9_uh8o4"), ExtResource("8_gjekm"), ExtResource("17_072nv"), ExtResource("18_0tkei"), ExtResource("19_p4iij"), ExtResource("20_q54bt"), ExtResource("21_xkiqr")])
+
+[node name="ClickSfx" type="AudioStreamPlayer2D" parent="SkyViewControls"]
+stream = ExtResource("30_ph8ko")
+volume_db = -3.0
 
 [node name="DialogueBoxSpawner" type="Node" parent="." node_paths=PackedStringArray("small_pixel_ui_layer", "static_small_pixel_ui_layer")]
 script = ExtResource("18_al1pw")
 dialogue_box = ExtResource("14_qdc0i")
 npc_dialogue_box = ExtResource("19_yklqn")
+building_info_box = ExtResource("26_no2ju")
 small_pixel_ui_layer = NodePath("../SmallPixelUILayer")
 static_small_pixel_ui_layer = NodePath("../StaticSmallPixelUILayer")
+
+[node name="BalloonSpawnAI" type="Node" parent="." node_paths=PackedStringArray("_sky_view_controls", "_world_stats")]
+script = ExtResource("24_fvko1")
+_sky_view_controls = NodePath("../SkyViewControls")
+_world_stats = NodePath("../WorldStats")
+_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("28_hpkc4"), ExtResource("29_paan3"), ExtResource("30_8p0k6"), ExtResource("31_1hyee"), ExtResource("32_dibiw"), ExtResource("33_uhqqw"), ExtResource("34_6wwn0")])
+
+[node name="GridClickControls" type="Node" parent="." node_paths=PackedStringArray("building_grid", "moving_camera", "dialogue_box_spawner")]
+script = ExtResource("27_lq8jb")
+building_grid = NodePath("../BuildingGrid")
+moving_camera = NodePath("../MovingCamera")
+dialogue_box_spawner = NodePath("../DialogueBoxSpawner")
+
+[node name="ForegroundDecoration" type="Node2D" parent="."]
+z_index = 1
+
+[node name="GrassFlower" parent="ForegroundDecoration" instance=ExtResource("30_7vn53")]
+position = Vector2(40, 130)
+
+[node name="GrassFlower2" parent="ForegroundDecoration" instance=ExtResource("30_7vn53")]
+position = Vector2(-260, 150)
+
+[node name="BackgroundDecoration" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Grass" parent="BackgroundDecoration" instance=ExtResource("29_trtxd")]
+position = Vector2(-310, 96)
+
+[node name="Grass2" parent="BackgroundDecoration" instance=ExtResource("29_trtxd")]
+position = Vector2(290, 104)
+
+[connection signal="pressed" from="PixelUILayer/HUDContainer/AscendButton" to="MovingCamera" method="toggle_sky_and_ground_view"]
+[connection signal="pressed" from="PixelUILayer/HUDContainer/MiddleArea/EndDayButton" to="WorldStats" method="end_day_button"]
+[connection signal="pressed" from="PixelUILayer/HUDContainer/DescendButton" to="MovingCamera" method="toggle_sky_and_ground_view"]

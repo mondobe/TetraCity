@@ -1,7 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://babe0j67pdkhx"]
-
-[ext_resource type="FontFile" uid="uid://sxhpegxwj6qy" path="res://fonts/verdana.ttf" id="1_bl5lj"]
-
-[resource]
-RichTextLabel/font_sizes/normal_font_size = 11
-RichTextLabel/fonts/normal_font = ExtResource("1_bl5lj")

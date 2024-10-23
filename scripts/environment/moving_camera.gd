@@ -4,7 +4,7 @@ extends Camera2D
 ## World scene.
 
 ## The modes that the camera could be in.
-enum CameraMode { GROUND, SKY }
+enum CameraMode { GROUND, SKY, BUILDING }
 
 ## The speed at which the camera moves towards its target
 @export var speed: float
@@ -16,12 +16,16 @@ enum CameraMode { GROUND, SKY }
 ## The position where the camera goes in Sky View
 @export var sky_position: Vector2
 
+@export var hud_container: HudContainer
+
 ## The mode the camera is currently in
 @onready var _camera_mode: CameraMode
 
 ## Whether the camera is locked to the current mode.
 ## If the camera is locked, pressing TAB will not change the camera view.
-@onready var locked = false
+@onready var locked: bool = false
+
+@onready var _current_building: Building = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -40,6 +44,10 @@ func _process(delta: float) -> void:
 		# Sky view: move towards the previously specified position
 		CameraMode.SKY:
 			target_pos = sky_position
+		# Building view: move towards the current building
+		CameraMode.BUILDING:
+			target_pos = (_current_building.get_center_position() + Vector2(0, -30))
+
 	var delta_pos = target_pos - global_position
 	translate(delta_pos * speed * delta)
 
@@ -57,7 +65,7 @@ func get_camera_mode() -> CameraMode:
 ## Sets the camera to the specified mode and locks it.
 ## Could be used for e.g. placing a piece.
 func lock_to_camera_mode(mode: CameraMode) -> void:
-	_camera_mode = mode
+	_set_camera_mode(mode)
 	locked = true
 
 ## Unlocks the camera so calling set_camera_mode_if_unlocked will move it
@@ -67,4 +75,15 @@ func unlock() -> void:
 ## If the camera is unlocked, sets it to the specified mode.
 func set_camera_mode_if_unlocked(new_mode: CameraMode) -> void:
 	if not locked:
-		_camera_mode = new_mode
+		_set_camera_mode(new_mode)
+
+func _set_camera_mode(mode: CameraMode) -> void:
+	_camera_mode = mode
+	hud_container.set_camera_mode(mode)
+
+## If the camera is unlocked, looks at the specified building (sets mode to
+## BUILDING).
+func look_at_building(building: Building) -> void:
+	if not locked and _camera_mode == CameraMode.GROUND:
+		_camera_mode = CameraMode.BUILDING
+		_current_building = building

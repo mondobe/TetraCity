@@ -1,12 +1,10 @@
-[gd_resource type="Resource" script_class="BuildingBlueprint" load_steps=4 format=3 uid="uid://cbd8qt7xqw4v1"]
+[gd_resource type="Resource" script_class="BuildingBlueprint" load_steps=3 format=3 uid="uid://cbd8qt7xqw4v1"]
 
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_blueprint.gd" id="1_dyf1i"]
 [ext_resource type="Script" path="res://scripts/buildings/city_hall.gd" id="1_ly0hm"]
-[ext_resource type="Texture2D" uid="uid://blrtmwevytseb" path="res://sprites/buildings/cityHall.png" id="2_mut0u"]
 
 [resource]
 script = ExtResource("1_dyf1i")
-sprite = ExtResource("2_mut0u")
 bonus = ExtResource("1_ly0hm")
 squares = ".O.
 OOO
@@ -14,3 +12,10 @@ OOO
 center_coords = Vector2i(1, 1)
 center_mode = 1
 kick_mode = 0
+description = "Handles administrative tasks."
+variations = Array[String](["city_hall"])
+first_spawning_day = 0
+balloon_lifetime = 60
+probabilities = Array[float]([0.0])
+starting_price = 0.0
+daily_increase = 0.0

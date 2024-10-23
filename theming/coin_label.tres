@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://yygddil734by"]
+
+[ext_resource type="FontFile" uid="uid://sxhpegxwj6qy" path="res://fonts/verdana.ttf" id="1_rdw3x"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_rdw3x")
+font_size = 24
+font_color = Color(0.85, 0.7225, 0.085, 1)
+outline_size = 7
+outline_color = Color(0.346422, 0.210109, 0.0353883, 1)

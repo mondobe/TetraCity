@@ -10,8 +10,8 @@ extends Node
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Close the app if ESC is pressed (for convenience)
-	if Input.is_action_just_pressed("ui_cancel"):
-		get_tree().quit()
+	# if Input.is_action_just_pressed("ui_cancel"):
+		# get_tree().quit()
 
 	# For each scene hotkey, test if SHIFT + the hotkey is pressed, then open
 	# the scene

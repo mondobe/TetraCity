@@ -1,11 +1,35 @@
-class_name CafeBonus extends Node
+class_name Cafe
+extends Node
 
 ## Returns same CPD as the highest CPD from the adjacent buildings
 func get_bonus() -> BuildingBonus:
-	var adjacent_buildings = get_parent().get_adjacent_buildings()
-	var CDP : int = 0
-	for building in adjacent_buildings:
-		if not building.bonus is CafeBonus and building.bonus.getbonus() > CDP:
-			CDP = building.bonus.coins
+	if highest_earner():
+		return BuildingBonus.new().with_coins(highest_earner().bonus.get_bonus().coins)
+	else:
+		return BuildingBonus.new()
 
-	return BuildingBonus.new().with_coins(CDP)
+func highest_earner() -> Building:
+	var adjacent_buildings = get_parent().get_adjacent_buildings()
+	var coins: int = 0
+	var highest_earner: Building = null
+	for building: Node in adjacent_buildings:
+		if building.bonus is Cafe:
+			continue
+		var bonus: BuildingBonus = building.bonus.get_bonus()
+		if bonus.coins > coins:
+			coins = bonus.coins
+			highest_earner = building
+	return highest_earner
+
+func get_info_text() -> String:
+	var highest_earner = highest_earner()
+	if highest_earner == null:
+		return \
+"Earns the same income as the highest-earning adjacent building each day (excluding other Cafes)."
+	else:
+		return \
+"Earns the same income as the highest-earning adjacent building each day (excluding other Cafes).
+Right now, that's the %s with %d coins." % [
+	highest_earner.variation.building_name,
+	highest_earner.bonus.get_bonus().coins
+]

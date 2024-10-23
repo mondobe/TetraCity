@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://bxvhu0db4kx20"
+path="res://.godot/imported/end_day_button_mask.png-a577746fb52e6ddd6ff67588ad219861.res"
+
+[deps]
+
+source_file="res://sprites/ui/end_day_button_mask.png"
+dest_files=["res://.godot/imported/end_day_button_mask.png-a577746fb52e6ddd6ff67588ad219861.res"]
+
+[params]
+
+create_from=0
+threshold=0.5
