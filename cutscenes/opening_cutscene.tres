@@ -1,14 +1,16 @@
-[gd_resource type="Resource" script_class="Cutscene" load_steps=8 format=3 uid="uid://cfospeu84vy2o"]
+[gd_resource type="Resource" script_class="Cutscene" load_steps=9 format=3 uid="uid://cfospeu84vy2o"]
 
-[ext_resource type="Texture2D" uid="uid://cgpcvb844wi6" path="res://sprites/test/icon.svg" id="1_eac20"]
+[ext_resource type="Texture2D" uid="uid://ck3umphbk182x" path="res://sprites/test/flower_man.png" id="1_q34ci"]
+[ext_resource type="Texture2D" uid="uid://bg15plpij7opp" path="res://sprites/test/lei_world.png" id="1_qbvp3"]
 [ext_resource type="Script" path="res://scripts/systems/cutscenes/cutscene.gd" id="1_x51ab"]
 [ext_resource type="Script" path="res://scripts/systems/cutscenes/cutscene_frame.gd" id="2_1e8qj"]
 
 [sub_resource type="Resource" id="Resource_5rr2n"]
 script = ExtResource("2_1e8qj")
-speaker = "Speaker 1"
-portrait = ExtResource("1_eac20")
-dialogue = "Welcome to Tetra City!!!"
+speaker = "SkyLeia"
+portrait = ExtResource("1_q34ci")
+frame = ExtResource("1_qbvp3")
+dialogue = "Welcome to the Land of SkyLei, traveler!"
 
 [sub_resource type="Resource" id="Resource_ip5qn"]
 script = ExtResource("2_1e8qj")

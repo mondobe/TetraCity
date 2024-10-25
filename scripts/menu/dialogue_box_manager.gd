@@ -29,7 +29,7 @@ func next_frame() -> void:
 
 func apply_frame(frame: CutsceneFrame) -> void:
 	text_box.set_speaker(frame.speaker)
-	text_box
-	image_frame.texture = frame.portrait
+	text_box.portrait.texture = frame.portrait
+	image_frame.texture = frame.frame
 	text_box.set_speaker_text(frame.dialogue)
 
