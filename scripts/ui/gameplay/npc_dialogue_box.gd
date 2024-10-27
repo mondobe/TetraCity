@@ -28,9 +28,7 @@ func init_from_balloon(balloon, canAfford):
 	self.variation = balloon.variation
 	self.price = balloon.price
 	if !canAfford:
-		yes_button_text.set_label_settings(label_setting_red)
-	else:
-		yes_button_text.get_label_settings().set_font_color(Color(0, 0, 0))
+		yes_button.hide()
 	update_text()
 
 func _ready() -> void:
