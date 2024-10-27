@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=57 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -52,11 +52,31 @@
 [ext_resource type="Resource" uid="uid://du6t0xow0k5db" path="res://buildings/school.tres" id="32_dibiw"]
 [ext_resource type="Resource" uid="uid://x7obthv6pdcy" path="res://buildings/solar_farm.tres" id="33_uhqqw"]
 [ext_resource type="Resource" uid="uid://o4wnmgkxop7d" path="res://buildings/cafe.tres" id="34_6wwn0"]
+[ext_resource type="Script" path="res://scripts/systems/shop/weighted_random.gd" id="50_pn2c1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7faob"]
 font = ExtResource("11_8u3tu")
 font_size = 11
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Resource" id="Resource_ukpd0"]
+script = ExtResource("50_pn2c1")
+choices = {
+"apartment": 100.0,
+"cafe": 30.0,
+"park": 50.0,
+"school": 40.0,
+"solar_farm": 20.0
+}
+
+[sub_resource type="Resource" id="Resource_fot5w"]
+script = ExtResource("50_pn2c1")
+choices = {
+0: 0.7,
+1: 1.0,
+2: 0.2,
+3: 0.05
+}
 
 [node name="World" type="Node2D"]
 
@@ -258,6 +278,15 @@ script = ExtResource("24_fvko1")
 _sky_view_controls = NodePath("../SkyViewControls")
 _world_stats = NodePath("../WorldStats")
 _blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("28_hpkc4"), ExtResource("30_8p0k6"), ExtResource("29_paan3"), ExtResource("31_1hyee"), ExtResource("34_6wwn0"), ExtResource("32_dibiw"), ExtResource("33_uhqqw")])
+building_weights = SubResource("Resource_ukpd0")
+building_weight_factors = {
+"apartment": 0.8,
+"cafe": 0.6,
+"park": 0.65,
+"school": 0.8,
+"solar_farm": 0.2
+}
+spawn_weights = SubResource("Resource_fot5w")
 
 [node name="GridClickControls" type="Node" parent="." node_paths=PackedStringArray("building_grid", "moving_camera", "dialogue_box_spawner")]
 script = ExtResource("27_lq8jb")

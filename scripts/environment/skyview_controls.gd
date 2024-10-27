@@ -48,6 +48,7 @@ func spawn_balloon(price: int, variation: BuildingVariation) -> Balloon:
 	var balloon: Balloon = spawn_balloon_at(
 		Vector2(randf_range(-180, 180), randf_range(-350, -200)))
 	balloon.init_from_blueprint_variation(variation)
+	balloon.on_click.connect(func(): balloon_dialogue(balloon))
 	balloon.price = price
 	return balloon
 
@@ -96,6 +97,7 @@ func buy_button(box: NpcDialogueBox) -> void:
 	_moving_camera.lock_to_camera_mode(MovingCamera.CameraMode.GROUND)
 	_building_grid.make_and_place(box.variation)
 	_balloon_spawn_ai.remove_balloon(box.balloon)
+	_balloon_spawn_ai.update_weights(box.variation.blueprint.resource_name)
 	box.queue_free()
 	end_day_button.show()
 	click_sfx.play()

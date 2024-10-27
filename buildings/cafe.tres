@@ -19,4 +19,4 @@ first_spawning_day = 6
 balloon_lifetime = 2
 probabilities = Array[float]([0.1, 0.15])
 starting_price = 20.0
-daily_increase = 2.0
+daily_increase = 0.07

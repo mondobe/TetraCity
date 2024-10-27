@@ -42,5 +42,5 @@ extends Resource
 ## The price of this building on the day on which it can first appear.
 @export var starting_price: float
 
-## The price increase of this building per day.
+## The price increase of this building per day, as a fraction of the current price.
 @export var daily_increase: float
