@@ -12,3 +12,12 @@ extends Resource
 
 ## The blueprint on which this variation is based.
 @export var blueprint: BuildingBlueprint
+
+# the possible dialog the associated NPC will say when the building is insepcted
+@export var NPCDialog: Array[String]
+
+# the image associated with the building's NPC
+@export var NPCImage: Texture2D
+
+# the name of the building's NPC
+@export var NPCName: String
