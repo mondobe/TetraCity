@@ -44,11 +44,10 @@ func end_day() -> void:
 		ignore_button(_npc_dialogue_box)
 
 ## Spawn the specified balloon variation in a random position with the given price.
-func spawn_balloon(price: int, variation: BuildingVariation, choice: int) -> Balloon:
+func spawn_balloon(price: int, variation: BuildingVariation) -> Balloon:
 	var balloon: Balloon = spawn_balloon_at(
 		Vector2(randf_range(-180, 180), randf_range(-350, -200)))
 	balloon.init_from_blueprint_variation(variation)
-	balloon.on_click.connect(func(): balloon_dialogue(balloon, choice))
 	balloon.price = price
 	return balloon
 
@@ -64,12 +63,13 @@ func spawn_random_balloon_at_cursor() -> Balloon:
 func spawn_balloon_at(pos: Vector2) -> Balloon:
 	var balloon: Balloon = _balloon.instantiate()
 	balloon.position = pos
+	balloon.on_click.connect(func(): balloon_dialogue(balloon))
 	balloon.moving_camera = _moving_camera
 	add_child(balloon)
 	return balloon
 
 ## Spawn a dialogue box (called when clicking on a balloon).
-func balloon_dialogue(balloon: Balloon, choice: int) -> void:
+func balloon_dialogue(balloon: Balloon) -> void:
 	if _npc_dialogue_box:
 		ignore_button(_npc_dialogue_box)
 
@@ -79,7 +79,7 @@ func balloon_dialogue(balloon: Balloon, choice: int) -> void:
 		else Vector2(560, 80))
 	var box = _dialogue_box_spawner.spawn_npc_box_at_screen(dialogue_box_pos)
 	box.init_from_balloon(balloon)
-	box.buy.connect(func(): buy_button(box, choice))
+	box.buy.connect(func(): buy_button(box))
 	box.ignore.connect(func(): ignore_button(box))
 	_npc_dialogue_box = box
 	end_day_button.hide()
@@ -87,16 +87,15 @@ func balloon_dialogue(balloon: Balloon, choice: int) -> void:
 	click_sfx.play()
 
 ## Buy a building (called upon pressing the corresponding button).
-func buy_button(box: NpcDialogueBox, choice: int) -> void:
+func buy_button(box: NpcDialogueBox) -> void:
 	if _world_stats.coins < box.price:
 		ignore_button(box)
 		return
 	_world_stats.coins -= box.price
-	_world_stats.top_label.update() 
+	_world_stats.top_label.update()
 	_moving_camera.lock_to_camera_mode(MovingCamera.CameraMode.GROUND)
 	_building_grid.make_and_place(box.variation)
 	_balloon_spawn_ai.remove_balloon(box.balloon)
-	_balloon_spawn_ai.update_weights(choice)
 	box.queue_free()
 	end_day_button.show()
 	click_sfx.play()
