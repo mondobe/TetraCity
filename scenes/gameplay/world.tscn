@@ -257,7 +257,7 @@ static_small_pixel_ui_layer = NodePath("../StaticSmallPixelUILayer")
 script = ExtResource("24_fvko1")
 _sky_view_controls = NodePath("../SkyViewControls")
 _world_stats = NodePath("../WorldStats")
-_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("28_hpkc4"), ExtResource("29_paan3"), ExtResource("30_8p0k6"), ExtResource("31_1hyee"), ExtResource("32_dibiw"), ExtResource("33_uhqqw"), ExtResource("34_6wwn0")])
+_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("28_hpkc4"), ExtResource("30_8p0k6"), ExtResource("29_paan3"), ExtResource("31_1hyee"), ExtResource("34_6wwn0"), ExtResource("32_dibiw"), ExtResource("33_uhqqw")])
 
 [node name="GridClickControls" type="Node" parent="." node_paths=PackedStringArray("building_grid", "moving_camera", "dialogue_box_spawner")]
 script = ExtResource("27_lq8jb")
