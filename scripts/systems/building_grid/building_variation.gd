@@ -14,7 +14,7 @@ extends Resource
 @export var blueprint: BuildingBlueprint
 
 # the possible dialog the associated NPC will say when the building is insepcted
-@export var NPCDialog: Array[String]
+@export_multiline var NPCDialog: Array[String]
 
 # the image associated with the building's NPC
 @export var NPCImage: Texture2D

@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://scripts/ui/gameplay/npc_dialogue_box.gd" id="1_mteuw"]
 [ext_resource type="Texture2D" uid="uid://vfgrp5seiq7s" path="res://sprites/ui/dialogue_nine_patch.png" id="2_l5pa6"]
-[ext_resource type="Theme" uid="uid://babe0j67pdkhx" path="res://theming/hud.tres" id="3_d7jb6"]
+[ext_resource type="Theme" path="res://theming/hud.tres" id="3_d7jb6"]
 [ext_resource type="Texture2D" uid="uid://civju8sthute2" path="res://sprites/ui/dialogue button.png" id="4_17q0w"]
 [ext_resource type="LabelSettings" uid="uid://dyeel2yw3srlj" path="res://theming/button_label.tres" id="5_pxven"]
-[ext_resource type="Texture2D" uid="uid://cgpcvb844wi6" path="res://sprites/test/icon.svg" id="6_8ifu1"]
+[ext_resource type="Texture2D" uid="uid://cbg5cmoo7uc20" path="res://sprites/ui/portraits/hurst.png" id="6_w76n1"]
 
 [node name="NpcDialogueBox" type="Control"]
 layout_mode = 3
@@ -27,8 +27,10 @@ patch_margin_right = 13
 patch_margin_bottom = 13
 
 [node name="NPCName" type="NinePatchRect" parent="NinePatchRect"]
+layout_mode = 0
+offset_left = -11.0
 offset_top = -13.0
-offset_right = 122.0
+offset_right = 111.0
 offset_bottom = 24.0
 texture = ExtResource("2_l5pa6")
 region_rect = Rect2(0, 0, 39, 39)
@@ -55,13 +57,30 @@ fit_content = true
 scroll_active = false
 shortcut_keys_enabled = false
 
-[node name="RichTextLabel" type="RichTextLabel" parent="NinePatchRect"]
+[node name="NPCDialogueLabel" type="RichTextLabel" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 26.0
+offset_top = 30.0
+offset_right = -14.0
+offset_bottom = -244.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_d7jb6")
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+shortcut_keys_enabled = false
+
+[node name="BuildingInfoLabel" type="RichTextLabel" parent="NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 13.0
-offset_top = 13.0
+offset_top = 145.0
 offset_right = -14.0
 offset_bottom = -53.0
 grow_horizontal = 2
@@ -140,11 +159,24 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="TextureRect" type="TextureRect" parent="NinePatchRect"]
+[node name="NinePatchRect" type="NinePatchRect" parent="NinePatchRect"]
 layout_mode = 0
-offset_left = -29.0
-offset_top = 19.0
-offset_right = 41.0
-offset_bottom = 89.0
-texture = ExtResource("6_8ifu1")
+offset_left = -86.0
+offset_top = 29.0
+offset_right = 24.0
+offset_bottom = 139.0
+texture = ExtResource("2_l5pa6")
+region_rect = Rect2(0, 0, 39, 39)
+patch_margin_left = 13
+patch_margin_top = 13
+patch_margin_right = 13
+patch_margin_bottom = 13
+
+[node name="TextureRect" type="TextureRect" parent="NinePatchRect/NinePatchRect"]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = 97.0
+offset_bottom = 97.0
+texture = ExtResource("6_w76n1")
 expand_mode = 2

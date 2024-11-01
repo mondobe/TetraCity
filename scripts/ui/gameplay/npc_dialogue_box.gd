@@ -12,7 +12,7 @@ var variation: BuildingVariation
 ## The price of this building in coins
 var price: int
 
-## the label setting which turns the button red 
+## the label setting which turns the button red
 var label_setting_red: LabelSettings
 
 ## The button to ignore the interaction.
@@ -27,7 +27,11 @@ var label_setting_red: LabelSettings
 @onready var NPCLabel: RichTextLabel = $NinePatchRect/NPCName/NameLabel
 
 #Texture rectangle which displays the mugshot of the NPC
-@onready var NPCPicture: TextureRect = $NinePatchRect/TextureRect
+@onready var NPCPicture: TextureRect = $NinePatchRect/NinePatchRect/TextureRect
+
+@onready var dialogue_text: RichTextLabel = $NinePatchRect/NPCDialogueLabel
+
+@onready var building_info_text: RichTextLabel = $NinePatchRect/BuildingInfoLabel
 
 
 ## Initialize this dialogue box's values from a specific balloon.
@@ -46,20 +50,15 @@ func _ready() -> void:
 	label_setting_red.set_font_color(Color(1, 0, 0))
 
 func update_text() -> void:
-	resize_borders(Vector2(320, 300))
 	var randomIndex = randi() % variation.NPCDialog.size()
 	NPCPicture.texture = variation.NPCImage
 	NPCLabel.text = variation.NPCName
-	set_text_no_resize(
-"
-[indent][indent]%s[/indent][/indent]
-
-
-
-%s
+	dialogue_text.text = variation.NPCDialog[randomIndex]
+	building_info_text.text = (
+"%s
 %s
 Cost: %d coins"
-		% [variation.NPCDialog[randomIndex], variation.building_name, variation.blueprint.description, price])
+		% [variation.building_name, variation.blueprint.description, price])
 
 ## Called when clicking the "buy" button
 signal buy()
