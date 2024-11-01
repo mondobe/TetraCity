@@ -1,4 +1,5 @@
-class_name NuclearReactor extends Node
+class_name NuclearReactor
+extends Node
 
 ## Give CPD equal to the sum of each neighbor's CPD times 4
 func get_bonus() -> BuildingBonus:

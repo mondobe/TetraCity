@@ -16,10 +16,21 @@ var price: int
 ## The number of days left in this balloon's lifetime.
 var lifetime: int
 
+# Reference to the grid containing the building
+var grid: BuildingGrid
+
 ## The area of this balloon that can be clicked.
 @onready var click_area: Area2D = $HitboxArea
 
 @onready var sprite: Sprite2D = $BuildingSprite
+
+# Get the price after applying modifiers (Right now just the bank)
+func adjusted_price() -> int:
+	var scale:float = 1
+	for building in grid.buildings:
+		if building.bonus is Bank:
+			scale *= building.bonus.get_scale_factor(blueprint)
+	return price * scale
 
 func _ready() -> void:
 	click_area.input_event.connect(click_input)
