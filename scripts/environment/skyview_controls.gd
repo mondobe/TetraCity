@@ -47,7 +47,7 @@ func end_day() -> void:
 func spawn_balloon(price: int, variation: BuildingVariation) -> Balloon:
 	var balloon: Balloon = spawn_balloon_at(
 		Vector2(randf_range(-180, 180), randf_range(-350, -200)))
-	balloon.init_from_blueprint_variation(variation)
+	balloon.init_from_blueprint_variation(variation, _building_grid)
 	balloon.on_click.connect(func(): balloon_dialogue(balloon))
 	balloon.price = price
 	balloon.grid = _building_grid
@@ -57,7 +57,7 @@ func spawn_balloon(price: int, variation: BuildingVariation) -> Balloon:
 func spawn_random_balloon_at_cursor() -> Balloon:
 	var balloon = spawn_balloon_at(_moving_camera.get_global_mouse_position())
 	var variation: BuildingVariation = _test_variations[randi_range(0, len(_test_variations) - 1)]
-	balloon.init_from_blueprint_variation(variation)
+	balloon.init_from_blueprint_variation(variation, _building_grid)
 	balloon.price = 0
 	balloon.grid = _building_grid
 	return balloon
@@ -65,11 +65,11 @@ func spawn_random_balloon_at_cursor() -> Balloon:
 ## Spawn a balloon (with no initialized variation) in a random position.
 func spawn_balloon_at(pos: Vector2) -> Balloon:
 	var balloon: Balloon = _balloon.instantiate()
+	balloon.grid = _building_grid
 	balloon.position = pos
 	balloon.on_click.connect(func(): balloon_dialogue(balloon))
 	balloon.moving_camera = _moving_camera
 	add_child(balloon)
-	balloon.grid = _building_grid
 	return balloon
 
 ## Spawn a dialogue box (called when clicking on a balloon).

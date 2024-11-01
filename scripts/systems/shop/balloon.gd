@@ -45,7 +45,7 @@ func _ready() -> void:
 
 ## Initialize this balloon from a blueprint variation, setting the texture and
 ## other data.
-func init_from_blueprint_variation(variation: BuildingVariation) -> void:
+func init_from_blueprint_variation(variation: BuildingVariation, grid: BuildingGrid) -> void:
 	self.blueprint = variation.blueprint
 	self.variation = variation
 	self.lifetime = blueprint.balloon_lifetime
