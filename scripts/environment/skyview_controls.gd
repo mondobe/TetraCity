@@ -50,6 +50,7 @@ func spawn_balloon(price: int, variation: BuildingVariation) -> Balloon:
 	balloon.init_from_blueprint_variation(variation)
 	balloon.on_click.connect(func(): balloon_dialogue(balloon))
 	balloon.price = price
+	balloon.grid = _building_grid
 	return balloon
 
 ## Spawn a balloon at the cursor position.
@@ -58,6 +59,7 @@ func spawn_random_balloon_at_cursor() -> Balloon:
 	var variation: BuildingVariation = _test_variations[randi_range(0, len(_test_variations) - 1)]
 	balloon.init_from_blueprint_variation(variation)
 	balloon.price = 0
+	balloon.grid = _building_grid
 	return balloon
 
 ## Spawn a balloon (with no initialized variation) in a random position.
@@ -67,6 +69,7 @@ func spawn_balloon_at(pos: Vector2) -> Balloon:
 	balloon.on_click.connect(func(): balloon_dialogue(balloon))
 	balloon.moving_camera = _moving_camera
 	add_child(balloon)
+	balloon.grid = _building_grid
 	return balloon
 
 ## Spawn a dialogue box (called when clicking on a balloon).

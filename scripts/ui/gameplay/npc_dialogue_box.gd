@@ -38,7 +38,7 @@ var label_setting_red: LabelSettings
 func init_from_balloon(balloon, canAfford):
 	self.balloon = balloon
 	self.variation = balloon.variation
-	self.price = balloon.price
+	self.price = balloon.adjusted_price()
 	if !canAfford:
 		yes_button.hide()
 	update_text()
