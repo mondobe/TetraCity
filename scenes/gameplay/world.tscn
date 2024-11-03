@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=58 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -33,13 +33,13 @@
 [ext_resource type="Texture2D" uid="uid://2y0cu1o4f15y" path="res://sprites/ui/swap_view_button.png" id="20_j6mao"]
 [ext_resource type="Script" path="res://scripts/ui/gameplay/hud_container.gd" id="20_mo5pp"]
 [ext_resource type="Resource" uid="uid://be6stuus2km8m" path="res://buildings/variations/cafe.tres" id="20_q54bt"]
-[ext_resource type="Theme" path="res://theming/hud.tres" id="21_thl1h"]
+[ext_resource type="Theme" uid="uid://babe0j67pdkhx" path="res://theming/hud.tres" id="21_thl1h"]
 [ext_resource type="Resource" uid="uid://bhxuoe0d6x3u1" path="res://buildings/variations/solar_farm.tres" id="21_xkiqr"]
 [ext_resource type="Texture2D" uid="uid://cs2j0cowr4jvg" path="res://sprites/ui/end_day_button.png" id="22_r5sg8"]
 [ext_resource type="Texture2D" uid="uid://cpcb07fut3qoi" path="res://sprites/ui/end_day_button_pressed.png" id="23_tn7m6"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay/balloon_spawn_ai.gd" id="24_fvko1"]
 [ext_resource type="BitMap" uid="uid://bxvhu0db4kx20" path="res://sprites/ui/end_day_button_mask.png" id="24_wx3v4"]
-[ext_resource type="PackedScene" path="res://scenes/ui/building_info_box.tscn" id="26_no2ju"]
+[ext_resource type="PackedScene" uid="uid://cf4x3txyo6wyw" path="res://scenes/ui/building_info_box.tscn" id="26_no2ju"]
 [ext_resource type="Script" path="res://scripts/ui/gameplay/grid_click_controls.gd" id="27_lq8jb"]
 [ext_resource type="Resource" uid="uid://cbd8qt7xqw4v1" path="res://buildings/city_hall.tres" id="28_hpkc4"]
 [ext_resource type="Resource" uid="uid://bh0s6jhfgvuwv" path="res://buildings/apartment.tres" id="29_paan3"]
@@ -47,12 +47,13 @@
 [ext_resource type="PackedScene" uid="uid://dlsi186j032br" path="res://tech_art/grass_flower.tscn" id="30_7vn53"]
 [ext_resource type="Resource" uid="uid://da5icvnicvami" path="res://buildings/nuclear_reactor.tres" id="30_8p0k6"]
 [ext_resource type="AudioStream" uid="uid://drhnluohr4qns" path="res://sound_effects/click.wav" id="30_ph8ko"]
-[ext_resource type="PackedScene" path="res://scenes/ui/coin_label.tscn" id="30_uter3"]
+[ext_resource type="PackedScene" uid="uid://hxfntnk8ej7c" path="res://scenes/ui/coin_label.tscn" id="30_uter3"]
 [ext_resource type="Resource" uid="uid://cfyagiutao5c2" path="res://buildings/park.tres" id="31_1hyee"]
 [ext_resource type="Resource" uid="uid://du6t0xow0k5db" path="res://buildings/school.tres" id="32_dibiw"]
 [ext_resource type="Resource" uid="uid://x7obthv6pdcy" path="res://buildings/solar_farm.tres" id="33_uhqqw"]
 [ext_resource type="Resource" uid="uid://o4wnmgkxop7d" path="res://buildings/cafe.tres" id="34_6wwn0"]
 [ext_resource type="Script" path="res://scripts/systems/shop/weighted_random.gd" id="50_pn2c1"]
+[ext_resource type="Script" path="res://scripts/systems/gameplay/natural_disasters.gd" id="54_fbgul"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7faob"]
 font = ExtResource("11_8u3tu")
@@ -150,6 +151,24 @@ gravity = ExtResource("17_mefcy")
 hard_drop = ExtResource("18_150fx")
 settle = ExtResource("19_16mf0")
 
+[node name="ForegroundDecoration" type="Node2D" parent="."]
+z_index = 1
+
+[node name="GrassFlower" parent="ForegroundDecoration" instance=ExtResource("30_7vn53")]
+position = Vector2(40, 130)
+
+[node name="GrassFlower2" parent="ForegroundDecoration" instance=ExtResource("30_7vn53")]
+position = Vector2(-260, 150)
+
+[node name="BackgroundDecoration" type="Node2D" parent="."]
+z_index = -1
+
+[node name="Grass" parent="BackgroundDecoration" instance=ExtResource("29_trtxd")]
+position = Vector2(-310, 96)
+
+[node name="Grass2" parent="BackgroundDecoration" instance=ExtResource("29_trtxd")]
+position = Vector2(290, 104)
+
 [node name="TempUILayer" type="CanvasLayer" parent="."]
 
 [node name="PixelUILayer" type="CanvasLayer" parent="."]
@@ -236,13 +255,14 @@ scale = Vector2(0.5, 0.5)
 transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 follow_viewport_enabled = true
 
-[node name="WorldStats" type="Node" parent="." node_paths=PackedStringArray("top_label", "building_bonuses", "building_grid", "balloon_spawn_ai", "sky_view_controls")]
+[node name="WorldStats" type="Node" parent="." node_paths=PackedStringArray("top_label", "building_bonuses", "building_grid", "balloon_spawn_ai", "sky_view_controls", "natural_disasters")]
 script = ExtResource("11_fetru")
 top_label = NodePath("../PixelUILayer/HUDContainer/MiddleArea/StatsLabel")
 building_bonuses = NodePath("../BuildingBonuses")
 building_grid = NodePath("../BuildingGrid")
 balloon_spawn_ai = NodePath("../BalloonSpawnAI")
 sky_view_controls = NodePath("../SkyViewControls")
+natural_disasters = NodePath("../NaturalDisasters")
 
 [node name="BuildingBonuses" type="Node" parent="." node_paths=PackedStringArray("building_grid", "world_stats", "static_ui_layer")]
 script = ExtResource("14_3u7nn")
@@ -294,23 +314,13 @@ building_grid = NodePath("../BuildingGrid")
 moving_camera = NodePath("../MovingCamera")
 dialogue_box_spawner = NodePath("../DialogueBoxSpawner")
 
-[node name="ForegroundDecoration" type="Node2D" parent="."]
-z_index = 1
+[node name="NaturalDisasters" type="Node" parent="." node_paths=PackedStringArray("_world_stats", "building_grid")]
+script = ExtResource("54_fbgul")
+_world_stats = NodePath("../WorldStats")
+building_grid = NodePath("../BuildingGrid")
+_disaster_scripts = Array[String](["res://scripts/disasters/acid_rain.gd"])
 
-[node name="GrassFlower" parent="ForegroundDecoration" instance=ExtResource("30_7vn53")]
-position = Vector2(40, 130)
-
-[node name="GrassFlower2" parent="ForegroundDecoration" instance=ExtResource("30_7vn53")]
-position = Vector2(-260, 150)
-
-[node name="BackgroundDecoration" type="Node2D" parent="."]
-z_index = -1
-
-[node name="Grass" parent="BackgroundDecoration" instance=ExtResource("29_trtxd")]
-position = Vector2(-310, 96)
-
-[node name="Grass2" parent="BackgroundDecoration" instance=ExtResource("29_trtxd")]
-position = Vector2(290, 104)
+[node name="Disasters" type="Node" parent="NaturalDisasters"]
 
 [connection signal="pressed" from="PixelUILayer/HUDContainer/AscendButton" to="MovingCamera" method="toggle_sky_and_ground_view"]
 [connection signal="pressed" from="PixelUILayer/HUDContainer/MiddleArea/EndDayButton" to="WorldStats" method="end_day_button"]

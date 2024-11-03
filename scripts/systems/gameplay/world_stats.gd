@@ -17,6 +17,8 @@ extends Node
 ## The node in charge of spawning balloons.
 @export var sky_view_controls: SkyViewControls
 
+@export var natural_disasters: NaturalDisasters
+
 var _nuclear_reactor: BuildingBlueprint = preload("res://buildings/nuclear_reactor.tres")
 
 var _you_win: PackedScene = preload("res://scenes/menus/you_win.tscn")
@@ -72,6 +74,7 @@ func end_day() -> void:
 	):
 		LevelLoader.load_level(_you_lose)
 
+	natural_disasters.on_new_day()
 	sky_view_controls.end_day()
 	building_bonuses.apply_bonuses()
 	balloon_spawn_ai.on_new_day()

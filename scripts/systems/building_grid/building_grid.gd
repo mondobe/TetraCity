@@ -284,3 +284,35 @@ func global_coords_to_grid_space(point: Vector2) -> Vector2i:
 	var relative_point: Vector2 = point - global_position
 	var spaces: Vector2 = relative_point / GRID_SPACE_SIZE
 	return Vector2i(spaces)
+
+## Given a grid space, find its total position
+func top_corner_of_space(coords: Vector2i) -> Vector2:
+	var offset: Vector2 = Vector2(coords) * GRID_SPACE_SIZE
+	var global_point: Vector2 = offset + global_position
+	return global_point
+
+func building_gets_sun(building: Building) -> bool:
+	# Loop through all squares in the bounding box
+	for x: int in range(building.grid.dimensions.x):
+		for y: int in range(building.grid.dimensions.y):
+			var xy: Vector2i = Vector2i(x, y)
+			# If there is a building square here...
+			if building.grid.at(xy) == 1:
+				var grid_xy: Vector2i = building.pos_coords + xy
+				# If the square gets sun, add fuel
+				if test_coord_gets_sun(grid_xy + Vector2i.UP):
+					return true
+	return false
+
+# Recursively tests if a square on the grid is blocked by another building above it
+func test_coord_gets_sun(coord: Vector2i) -> bool:
+	# If we reach the top of the grid, nothing has blocked us
+	if not grid.contains(coord):
+		return true
+	# If there's no building here, try the square above
+	elif grid.at(coord) == 0:
+		return test_coord_gets_sun(coord + Vector2i.UP)
+	# There's a building blocking the square
+	else:
+		return false
+
