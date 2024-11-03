@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://be5mnxnq1gej4"]
+
+[ext_resource type="FontFile" uid="uid://sxhpegxwj6qy" path="res://fonts/verdana.ttf" id="1_x6sen"]
+
+[resource]
+line_spacing = 0.0
+font = ExtResource("1_x6sen")
+font_size = 22

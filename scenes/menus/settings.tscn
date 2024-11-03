@@ -1,19 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bpnbqv1fkfxwy"]
+[gd_scene load_steps=8 format=3 uid="uid://bpnbqv1fkfxwy"]
 
+[ext_resource type="Script" path="res://scripts/ui/settings_screen.gd" id="1_gfto1"]
 [ext_resource type="FontFile" uid="uid://c685qb4m7qjc" path="res://fonts/rubik.ttf" id="1_hmc66"]
 [ext_resource type="Texture2D" uid="uid://vfgrp5seiq7s" path="res://sprites/ui/dialogue_nine_patch.png" id="1_u57oc"]
-[ext_resource type="LabelSettings" uid="uid://dyeel2yw3srlj" path="res://theming/button_label.tres" id="3_okekg"]
+[ext_resource type="FontFile" uid="uid://sxhpegxwj6qy" path="res://fonts/verdana.ttf" id="3_g47t5"]
+[ext_resource type="LabelSettings" uid="uid://be5mnxnq1gej4" path="res://theming/settings_label.tres" id="4_vkgvd"]
+[ext_resource type="Theme" path="res://theming/hover_ui.tres" id="5_ofg2w"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qlurt"]
-bg_color = Color(0.402316, 0.57802, 1, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_amg5c"]
+line_spacing = 0.0
+font = ExtResource("3_g47t5")
+font_size = 32
 
-[node name="TitleScreen" type="Node2D"]
+[node name="SettingsScreen" type="Node2D"]
+script = ExtResource("1_gfto1")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="PixelCanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 
-[node name="SettingsWindow" type="ScrollContainer" parent="CanvasLayer"]
+[node name="SettingsWindow" type="ScrollContainer" parent="PixelCanvasLayer"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -27,7 +33,7 @@ grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
 
-[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/SettingsWindow"]
+[node name="NinePatchRect" type="NinePatchRect" parent="PixelCanvasLayer/SettingsWindow"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
@@ -38,7 +44,7 @@ patch_margin_top = 13
 patch_margin_right = 13
 patch_margin_bottom = 13
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/SettingsWindow/NinePatchRect"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect"]
 layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
@@ -47,91 +53,97 @@ offset_bottom = 405.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="CategoryLabel" type="Label" parent="CanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer"]
+[node name="CategoryLabel" type="Label" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
+size_flags_stretch_ratio = 1.21
 theme_override_fonts/font = ExtResource("1_hmc66")
 theme_override_font_sizes/font_size = 75
 text = "Settings"
-label_settings = ExtResource("3_okekg")
+label_settings = SubResource("LabelSettings_amg5c")
 vertical_alignment = 1
 
-[node name="OptionSetting" type="HBoxContainer" parent="CanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
+[node name="OptionSetting" type="HBoxContainer" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="OptionPanel" type="Panel" parent="CanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/OptionSetting"]
+[node name="OptionPanel" type="Panel" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/OptionSetting"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_qlurt")
 
-[node name="Label" type="Label" parent="CanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/OptionSetting/OptionPanel"]
-layout_mode = 2
+[node name="Label" type="Label" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/OptionSetting/OptionPanel"]
+layout_mode = 1
 offset_left = 10.0
 offset_top = 13.0
 offset_right = 260.0
-offset_bottom = 62.0
+offset_bottom = 48.0
 theme_override_font_sizes/font_size = 35
 text = " Window Mode"
+label_settings = ExtResource("4_vkgvd")
+vertical_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="CanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/OptionSetting"]
-custom_minimum_size = Vector2(0, 75)
+[node name="OptionButton" type="OptionButton" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/OptionSetting"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 focus_mode = 0
 
-[node name="SliderSetting" type="HBoxContainer" parent="CanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
+[node name="SliderSetting" type="HBoxContainer" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="OptionPanel" type="Panel" parent="CanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/SliderSetting"]
+[node name="OptionPanel" type="Panel" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/SliderSetting"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_qlurt")
 
-[node name="Label" type="Label" parent="CanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/SliderSetting/OptionPanel"]
-layout_mode = 2
+[node name="Label" type="Label" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/SliderSetting/OptionPanel"]
+layout_mode = 1
 offset_left = 10.0
 offset_top = 13.0
 offset_right = 260.0
-offset_bottom = 62.0
+offset_bottom = 48.0
 theme_override_font_sizes/font_size = 35
 text = " Volume"
+label_settings = ExtResource("4_vkgvd")
+vertical_alignment = 1
 
-[node name="HSlider" type="HSlider" parent="CanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/SliderSetting"]
+[node name="HSlider" type="HSlider" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/SliderSetting"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="CheckSetting" type="HBoxContainer" parent="CanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
+[node name="CheckSetting" type="HBoxContainer" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer"]
+custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
 theme_override_constants/separation = 5
 
-[node name="OptionPanel" type="Panel" parent="CanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/CheckSetting"]
+[node name="OptionPanel" type="Panel" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/CheckSetting"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_qlurt")
 
-[node name="Label" type="Label" parent="CanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/CheckSetting/OptionPanel"]
-layout_mode = 2
+[node name="Label" type="Label" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/CheckSetting/OptionPanel"]
+layout_mode = 1
 offset_left = 10.0
 offset_top = 13.0
 offset_right = 260.0
-offset_bottom = 62.0
+offset_bottom = 48.0
 theme_override_font_sizes/font_size = 35
 text = " Volume"
+label_settings = ExtResource("4_vkgvd")
+vertical_alignment = 1
 
-[node name="CheckButton" type="CheckBox" parent="CanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/CheckSetting"]
+[node name="CheckButton" type="CheckBox" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/CheckSetting"]
 layout_mode = 2
 size_flags_horizontal = 6
 focus_mode = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Buttons" type="MarginContainer" parent="CanvasLayer"]
 anchors_preset = 2
@@ -139,6 +151,7 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = -80.0
 offset_right = 557.0
+offset_bottom = 0.000244141
 grow_vertical = 0
 theme_override_constants/margin_left = 50
 theme_override_constants/margin_bottom = 25
@@ -147,20 +160,18 @@ theme_override_constants/margin_bottom = 25
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Button" type="Button" parent="CanvasLayer/Buttons/HBoxContainer"]
+[node name="BackButton" type="Button" parent="CanvasLayer/Buttons/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+theme = ExtResource("5_ofg2w")
 text = "Back to Game"
 
-[node name="Button2" type="Button" parent="CanvasLayer/Buttons/HBoxContainer"]
+[node name="ResetButton" type="Button" parent="CanvasLayer/Buttons/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
+theme = ExtResource("5_ofg2w")
 text = "Reset Defaults"
 
-[node name="Button3" type="Button" parent="CanvasLayer/Buttons/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-focus_mode = 0
-text = "Apply Changes"
+[connection signal="pressed" from="CanvasLayer/Buttons/HBoxContainer/BackButton" to="." method="back_to_title"]
