@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2l85yu8i6vfl"]
+
+[ext_resource type="Texture2D" uid="uid://kux364hblob1" path="res://sprites/disasters/acid_rain/acid_clouds.png" id="1_s8ifi"]
+[ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="2_ux5be"]
+
+[node name="AcidClouds" type="Sprite2D"]
+self_modulate = Color(1, 1, 1, 0)
+z_index = -2
+texture_repeat = 2
+texture = ExtResource("1_s8ifi")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 2000)
+script = ExtResource("2_ux5be")
+drift_x = 18.0
+drift_y_amp = 6.0
+drift_y_freq = 0.002

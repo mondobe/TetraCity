@@ -3,8 +3,14 @@ extends Node
 
 const START_DAY: int = 15
 
+const splash_scene: PackedScene = preload("res://scenes/effects/acid_rain/acid_splash.tscn")
+const clouds_scene: PackedScene = preload("res://scenes/effects/acid_rain/acid_clouds.tscn")
+
+var clouds: Sprite2D
+
 func init() -> void:
-	print("Hello from acid rain")
+	clouds = clouds_scene.instantiate()
+	add_sibling(clouds)
 
 func get_info_text(day: int) -> String:
 	if day < START_DAY:
@@ -20,8 +26,14 @@ The top layer of buildings will be melted off!"
 		return ""
 
 func on_new_day(day: int) -> void:
-	if day == START_DAY:
-		acid_rain()
+	if day <= START_DAY:
+		var intensity: float = max((day + 5 - START_DAY) * 0.2, 0)
+		clouds.self_modulate = Color(1, 1, 1, intensity)
+
+		if day == START_DAY:
+			acid_rain()
+	else:
+		clouds.self_modulate = Color(1, 1, 1, 0)
 
 func acid_rain() -> void:
 	var building_grid: BuildingGrid = get_parent().building_grid
@@ -37,6 +49,16 @@ func acid_rain() -> void:
 	)
 
 	for building: Building in rained_on:
+		for x: int in range(building.grid.dimensions.x):
+			for y: int in range(building.grid.dimensions.y):
+				if building.grid.at(Vector2(x, y)) == 1:
+					var splash = splash_scene.instantiate()
+					add_sibling(splash)
+
+					var coords = Vector2i(x, y) + building.pos_coords
+					var top_corner = building_grid.top_corner_of_space(coords)
+					splash.global_position = top_corner
+
 		building.queue_free()
 
 	building_grid.build_grid()

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dh82u4p0t7axd"]
+
+[ext_resource type="Texture2D" uid="uid://csund16nly1ln" path="res://sprites/disasters/acid_rain/acid_splash.png" id="1_70041"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_grhrd"]
+atlas = ExtResource("1_70041")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkone"]
+atlas = ExtResource("1_70041")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vvas"]
+atlas = ExtResource("1_70041")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xkfkh"]
+atlas = ExtResource("1_70041")
+region = Rect2(20, 20, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hxqs6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_grhrd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkone")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8vvas")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xkfkh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="AcidSplash" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_hxqs6")
+centered = false
+
+[connection signal="animation_looped" from="." to="." method="queue_free"]
+[connection signal="ready" from="." to="." method="play" binds= ["default"]]
