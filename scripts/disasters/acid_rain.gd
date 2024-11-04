@@ -1,7 +1,7 @@
 class_name AcidRain
 extends Node
 
-const START_DAY: int = 15
+const START_DAY: int = 45
 
 const splash_scene: PackedScene = preload("res://scenes/effects/acid_rain/acid_splash.tscn")
 const clouds_scene: PackedScene = preload("res://scenes/effects/acid_rain/acid_clouds.tscn")
@@ -40,7 +40,7 @@ func acid_rain() -> void:
 	var rained_on: Array[Building]
 
 	for building: Building in building_grid.buildings:
-		if building_grid.building_gets_sun(building):
+		if (not building.bonus is CityHall) and building_grid.building_gets_sun(building):
 			rained_on.append(building)
 
 	building_grid.buildings = building_grid.buildings.filter(
