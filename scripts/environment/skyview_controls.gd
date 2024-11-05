@@ -82,7 +82,7 @@ func balloon_dialogue(balloon: Balloon) -> void:
 		if balloon.global_position.x > _moving_camera.global_position.x
 		else Vector2(560, 80))
 	var box = _dialogue_box_spawner.spawn_npc_box_at_screen(dialogue_box_pos)
-	box.init_from_balloon(balloon, _world_stats.coins >= balloon.price)
+	box.init_from_balloon(balloon)
 	box.buy.connect(func(): buy_button(box))
 	box.ignore.connect(func(): ignore_button(box))
 	_npc_dialogue_box = box

@@ -75,8 +75,8 @@ choices = {
 [sub_resource type="Resource" id="Resource_fot5w"]
 script = ExtResource("50_pn2c1")
 choices = {
-0: 0.7,
-1: 1.0,
+0: 0.4,
+1: 1.1,
 2: 0.2,
 3: 0.05
 }
@@ -303,7 +303,7 @@ _blueprints = Array[Resource("res://scripts/systems/building_grid/building_bluep
 building_weights = SubResource("Resource_ukpd0")
 building_weight_factors = {
 "apartment": 0.8,
-"bank": 0.4,
+"bank": 0.2,
 "cafe": 0.6,
 "park": 0.65,
 "school": 0.8,
