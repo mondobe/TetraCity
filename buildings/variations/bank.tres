@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://d4fykbj7302x4"]
+
+[ext_resource type="Texture2D" uid="uid://cgpcvb844wi6" path="res://sprites/test/icon.svg" id="1_wome1"]
+[ext_resource type="Resource" uid="uid://ukhvt3nt48fn" path="res://buildings/bank.tres" id="2_v3dmh"]
+[ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="3_hk1ct"]
+[ext_resource type="Texture2D" uid="uid://3jag4uaieh8x" path="res://sprites/buildings/bank.png" id="4_tfv2d"]
+
+[resource]
+script = ExtResource("3_hk1ct")
+sprite = ExtResource("4_tfv2d")
+building_name = "Bank"
+blueprint = ExtResource("2_v3dmh")
+NPCDialog = Array[String](["I'm selling you a bank", "These messages are picked at the bank store"])
+NPCImage = ExtResource("1_wome1")
+NPCName = "Bank man"

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BuildingBlueprint" load_steps=3 format=3 uid="uid://ukhvt3nt48fn"]
+
+[ext_resource type="Script" path="res://scripts/buildings/bank.gd" id="1_4vag4"]
+[ext_resource type="Script" path="res://scripts/systems/building_grid/building_blueprint.gd" id="2_krhhn"]
+
+[resource]
+script = ExtResource("2_krhhn")
+bonus = ExtResource("1_4vag4")
+squares = "....
+.O..
+.OO.
+...."
+center_coords = Vector2i(2, 2)
+center_mode = 0
+kick_mode = 0
+description = "Adjacent buildings are 25% cheaper."
+variations = Array[String](["bank"])
+first_spawning_day = 8
+balloon_lifetime = 3
+probabilities = Array[float]([0.1, 0.15])
+starting_price = 35.0
+daily_increase = 0.075
