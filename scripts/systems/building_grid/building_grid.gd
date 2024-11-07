@@ -144,6 +144,10 @@ func placing_process(delta: float) -> void:
 ## Add the current building to the grid and rebuild its collision.
 func done_placing() -> void:
 	buildings.append(placing_building)
+	var softdrop_particles = load("res://scenes/effects/particles/soft_drop.tscn").instantiate()
+	placing_building.add_child(softdrop_particles)
+	var particles = softdrop_particles.get_child(0)
+	particles.emitting = true
 	build_grid()
 	placing_building.done_placing()
 	placing_building = null
