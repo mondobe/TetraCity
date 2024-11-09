@@ -16,6 +16,5 @@ description = "Supercharges all nearby buildings, causing them to make 5 times a
 variations = Array[String](["nuclear_reactor"])
 first_spawning_day = 50
 balloon_lifetime = 10000
-probabilities = Array[float]([1.0, 0.0])
 starting_price = 1000.0
 daily_increase = 0.0

@@ -17,6 +17,5 @@ description = "Earns one coin per day."
 variations = Array[String](["apartment"])
 first_spawning_day = 0
 balloon_lifetime = 3
-probabilities = Array[float]([0.3, 0.19])
 starting_price = 5.0
 daily_increase = 0.05
