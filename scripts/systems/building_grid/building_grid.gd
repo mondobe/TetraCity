@@ -29,6 +29,10 @@ const ADJACENT_VECTORS: Array[Vector2i] = [
 	Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1),
 ]
 
+const HARD_PARTICLES = preload("res://scenes/effects/particles/hard_drop.tscn")
+const SOFT_PARTICLES = preload("res://scenes/effects/particles/soft_drop.tscn")
+enum ParticleType {HARD, SOFT}
+
 ## The moving camera.
 @export var _moving_camera: MovingCamera
 
@@ -113,6 +117,9 @@ func placing_process(delta: float) -> void:
 			continue
 		if num_drops > 0:
 			sfx.play_hard_drop()
+		if num_drops > 3:
+			spawn_particles(ParticleType.HARD);
+
 		push_timer = MAX_PUSH_TIMER
 
 	# Soft Drop
@@ -144,20 +151,7 @@ func placing_process(delta: float) -> void:
 ## Add the current building to the grid and rebuild its collision.
 func done_placing() -> void:
 	buildings.append(placing_building)
-
-	for x in range(placing_building.grid.dimensions.x):
-		for y in range(placing_building.grid.dimensions.y):
-			var xy: Vector2i = Vector2i(x, y)
-			if placing_building.grid.at(xy) == 0:
-				continue
-			var grid_xy: Vector2i = xy + placing_building.pos_coords
-			var softdrop_particles = load("res://scenes/effects/particles/soft_drop.tscn").instantiate()
-			placing_building.add_child(softdrop_particles)
-			var particles = softdrop_particles.get_child(0)
-			particles.global_position = top_corner_of_space(grid_xy + Vector2i(0,1))
-			particles.global_position += Vector2(10, 0)
-			particles.emitting = true
-
+	spawn_particles(ParticleType.SOFT);
 	build_grid()
 	placing_building.done_placing()
 	placing_building = null
@@ -330,3 +324,17 @@ func test_coord_gets_sun(coord: Vector2i) -> bool:
 	else:
 		return false
 
+# Spawn those particles!
+func spawn_particles(variation: ParticleType) -> void:
+	for x in range(placing_building.grid.dimensions.x):
+		for y in range(placing_building.grid.dimensions.y):
+			var xy: Vector2i = Vector2i(x, y)
+			if placing_building.grid.at(xy) == 0:
+				continue
+			var grid_xy: Vector2i = xy + placing_building.pos_coords
+			var particle_node = (HARD_PARTICLES if variation == ParticleType.HARD else SOFT_PARTICLES).instantiate()
+			placing_building.add_child(particle_node)
+			var particles = particle_node.get_child(0)
+			particles.global_position = top_corner_of_space(grid_xy)
+			particles.global_position += Vector2(10, 10)
+			particles.emitting = true
