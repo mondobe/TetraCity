@@ -333,7 +333,7 @@ func spawn_particles(variation: ParticleType) -> void:
 				continue
 			var grid_xy: Vector2i = xy + placing_building.pos_coords
 			var particle_node = (HARD_PARTICLES if variation == ParticleType.HARD else SOFT_PARTICLES).instantiate()
-			placing_building.add_child(particle_node)
+			add_sibling(particle_node)
 			var particles = particle_node.get_child(0)
 			particles.global_position = top_corner_of_space(grid_xy)
 			particles.global_position += Vector2(10, 10)
