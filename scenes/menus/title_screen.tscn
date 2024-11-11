@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://eayrnwud62wn"]
 
 [ext_resource type="Script" path="res://scripts/ui/title_screen.gd" id="1_bsimy"]
-[ext_resource type="Texture2D" uid="uid://pllt5njnknbr" path="res://sprites/environment/clouds.png" id="3_5qla5"]
+[ext_resource type="Texture2D" uid="uid://bk3mcifbo00ob" path="res://sprites/environment/clouds.png" id="3_5qla5"]
 [ext_resource type="Theme" uid="uid://cou1oxt1vsf13" path="res://theming/hover_ui.tres" id="4_737vl"]
 [ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="4_tu6lm"]
-[ext_resource type="Texture2D" uid="uid://tu1sfupggi2i" path="res://sprites/ui/m2_logo.png" id="5_72qku"]
+[ext_resource type="Texture2D" uid="uid://chuswf7xagqfc" path="res://sprites/ui/final_logo.png" id="5_7jei2"]
 [ext_resource type="AudioStream" uid="uid://c8mm5qn6gafc8" path="res://music/title_theme.mp3" id="6_pxqlc"]
 
 [node name="TitleScreen" type="Node2D"]
@@ -62,13 +62,13 @@ texture_filter = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -191.0
-offset_top = 276.0
-offset_right = 191.0
-offset_bottom = 641.0
+offset_left = -236.0
+offset_top = 220.0
+offset_right = 253.0
+offset_bottom = 671.0
 grow_horizontal = 2
 pivot_offset = Vector2(191, 182)
-texture = ExtResource("5_72qku")
+texture = ExtResource("5_7jei2")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("6_pxqlc")
