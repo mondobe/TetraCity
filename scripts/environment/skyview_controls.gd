@@ -100,6 +100,7 @@ func buy_button(box: NpcDialogueBox) -> void:
 		ignore_button(box)
 		return
 	_world_stats.coins -= box.price
+	SavedStats.incrementBuildingBought(1)
 	_world_stats.top_label.update()
 	_building_grid.make_and_place(box.variation)
 
