@@ -34,7 +34,7 @@ func on_new_day() -> void:
 	for balloon in balloons:
 		balloon.lifetime -= 1
 		if balloon.lifetime <= 0:
-			balloon.queue_free()
+			remove_balloon(balloon, false)
 			buildings_in_world[balloon.blueprint] -= 1
 
 	balloons = balloons.filter(
@@ -84,8 +84,11 @@ func spawn_variation(variation: BuildingVariation, price: int) -> void:
 	buildings_in_world[variation.blueprint] = (
 		buildings_in_world.get(variation.blueprint, 0) + 1)
 
-func remove_balloon(balloon: Balloon) -> void:
-	balloon.queue_free()
+func remove_balloon(balloon: Balloon, immediate: bool) -> void:
+	if immediate:
+		balloon.queue_free()
+	else:
+		balloon.float_away()
 	balloons.erase(balloon)
 
 func choose_building() -> BuildingBlueprint:

@@ -54,6 +54,7 @@ func init_values() -> void:
 func end_day_button() -> void:
 	end_day()
 	top_label.update()
+	top_label.bump()
 
 ## Update the values for each day
 func end_day() -> void:

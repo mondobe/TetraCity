@@ -93,6 +93,7 @@ func start_placing(new_building: Building) -> void:
 	add_child(new_building)
 	push_timer = MAX_PUSH_TIMER
 	guide.show()
+	_moving_camera.start_placing(new_building)
 
 ## Called every frame while placing a building.
 func placing_process(delta: float) -> void:

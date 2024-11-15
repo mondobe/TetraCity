@@ -88,6 +88,7 @@ zoom = Vector2(4, 4)
 script = ExtResource("2_1vd7b")
 speed = 10.0
 extent = 100.0
+placing_extent = 50.0
 sky_position = Vector2(0, -300)
 hud_container = NodePath("../PixelUILayer/HUDContainer")
 
