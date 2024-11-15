@@ -8,6 +8,7 @@ func _on_setting_button_pressed():
 
 
 func _on_start_button_pressed():
+	SavedStats.Clear()
 	LevelLoader.load_level(_main_scene)
 
 

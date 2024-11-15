@@ -25,6 +25,8 @@ var _you_win: PackedScene = preload("res://scenes/menus/you_win.tscn")
 
 var _you_lose: PackedScene = preload("res://scenes/menus/you_lose.tscn")
 
+var _stats_screen: PackedScene = preload("res://scenes/menus/stats_screen.tscn")
+
 ## The amount of coins the player has.
 var coins
 
@@ -66,7 +68,9 @@ func end_day() -> void:
 		func(b: Building) -> bool:
 			return b.blueprint == _nuclear_reactor
 	):
-		LevelLoader.load_level(_you_win)
+		SavedStats.setFinalBalance(coins)
+		SavedStats.setFinalFuel(fuel)
+		LevelLoader.load_level(_stats_screen)
 
 	if fuel <= 0 and not building_grid.buildings.any(
 		func(b: Building) -> bool:
