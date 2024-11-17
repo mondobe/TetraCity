@@ -12,6 +12,7 @@ OO.
 center_coords = Vector2i(1, 1)
 center_mode = 1
 kick_mode = 0
+name = "solar_farm"
 description = "Gives one day's worth of fuel every 3 days - as long as this building isn't blocked by others above it."
 variations = Array[String](["solar_farm"])
 first_spawning_day = 8

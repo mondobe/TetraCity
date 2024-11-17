@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=60 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -53,6 +53,7 @@
 [ext_resource type="Resource" uid="uid://x7obthv6pdcy" path="res://buildings/solar_farm.tres" id="33_uhqqw"]
 [ext_resource type="Resource" uid="uid://o4wnmgkxop7d" path="res://buildings/cafe.tres" id="34_6wwn0"]
 [ext_resource type="Script" path="res://scripts/systems/shop/weighted_random.gd" id="50_pn2c1"]
+[ext_resource type="Resource" uid="uid://bfggc1wdyn5rl" path="res://buildings/church.tres" id="51_vqbxa"]
 [ext_resource type="Resource" uid="uid://ukhvt3nt48fn" path="res://buildings/bank.tres" id="52_x4pai"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay/natural_disasters.gd" id="54_fbgul"]
 
@@ -67,6 +68,7 @@ choices = {
 "apartment": 100.0,
 "bank": 25.0,
 "cafe": 30.0,
+"church": 30.0,
 "park": 50.0,
 "school": 40.0,
 "solar_farm": 20.0
@@ -76,9 +78,10 @@ choices = {
 script = ExtResource("50_pn2c1")
 choices = {
 0: 0.4,
-1: 1.1,
-2: 0.2,
-3: 0.05
+1: 1.2,
+2: 0.25,
+3: 0.03,
+4: 0.003
 }
 
 [node name="World" type="Node2D"]
@@ -299,12 +302,13 @@ static_small_pixel_ui_layer = NodePath("../StaticSmallPixelUILayer")
 script = ExtResource("24_fvko1")
 _sky_view_controls = NodePath("../SkyViewControls")
 _world_stats = NodePath("../WorldStats")
-_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("28_hpkc4"), ExtResource("30_8p0k6"), ExtResource("29_paan3"), ExtResource("31_1hyee"), ExtResource("34_6wwn0"), ExtResource("32_dibiw"), ExtResource("33_uhqqw"), ExtResource("52_x4pai")])
+_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("28_hpkc4"), ExtResource("30_8p0k6"), ExtResource("29_paan3"), ExtResource("31_1hyee"), ExtResource("34_6wwn0"), ExtResource("32_dibiw"), ExtResource("51_vqbxa"), ExtResource("33_uhqqw"), ExtResource("52_x4pai")])
 building_weights = SubResource("Resource_ukpd0")
 building_weight_factors = {
 "apartment": 0.8,
 "bank": 0.2,
 "cafe": 0.6,
+"church": 0.2,
 "park": 0.65,
 "school": 0.8,
 "solar_farm": 0.2

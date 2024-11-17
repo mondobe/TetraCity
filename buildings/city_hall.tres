@@ -12,6 +12,7 @@ OOO
 center_coords = Vector2i(1, 1)
 center_mode = 1
 kick_mode = 0
+name = "city_hall"
 description = "Handles administrative tasks."
 variations = Array[String](["city_hall"])
 first_spawning_day = 0

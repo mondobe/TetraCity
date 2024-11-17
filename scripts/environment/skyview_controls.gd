@@ -29,6 +29,10 @@ var _balloon: PackedScene = preload("res://scenes/gameplay/balloon.tscn")
 
 @onready var click_sfx = $ClickSfx
 
+## Specific blueprints
+
+var church: BuildingBlueprint = preload("res://buildings/church.tres")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -100,7 +104,11 @@ func buy_button(box: NpcDialogueBox) -> void:
 	_moving_camera.lock_to_camera_mode(MovingCamera.CameraMode.GROUND)
 	_building_grid.make_and_place(box.variation)
 	_balloon_spawn_ai.remove_balloon(box.balloon)
-	_balloon_spawn_ai.update_weights(box.variation.blueprint.resource_name)
+	_balloon_spawn_ai.update_weights(box.variation.blueprint.name)
+	
+	if box.balloon.blueprint == church:
+		_world_stats.increment_church_count()
+	
 	box.queue_free()
 	end_day_button.show()
 	click_sfx.play()

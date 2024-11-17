@@ -34,6 +34,9 @@ var fuel
 ## The current day (starting from 1).
 var day
 
+## Church count
+var churches : int
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	init_values()
@@ -50,7 +53,11 @@ func init_values() -> void:
 	coins = 10
 	fuel = 60
 	day = 1
+	churches = 0
 
+func increment_church_count() -> void:
+	churches += 1
+	
 func end_day_button() -> void:
 	end_day()
 	top_label.update()

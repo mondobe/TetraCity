@@ -23,4 +23,4 @@ func init_random_disaster() -> void:
 	var disaster_script: Script = load(disaster_script_path)
 	disaster.set_script(disaster_script)
 	if disaster.has_method("init"):
-		disaster.init()
+		disaster.init(_world_stats)

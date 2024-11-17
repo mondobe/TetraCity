@@ -31,6 +31,9 @@ var pos_coords: Vector2i
 ## The node that defines what bonus is applied by this building.
 var bonus: Node
 
+## Times a building has been weight-boosted by an adjacent church
+var times_church_boosted: int
+
 ## The Sprite2D component that displays the building's texture.
 @onready var sprite: Sprite2D = $Sprite2D
 

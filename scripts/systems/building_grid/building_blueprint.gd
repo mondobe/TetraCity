@@ -21,6 +21,9 @@ extends Resource
 ## See the [enum Building.KickMode] docs
 @export var kick_mode: Building.KickMode
 
+## The building's name
+@export var name: String
+
 ## The building's description
 @export_multiline var description: String
 
