@@ -47,9 +47,8 @@ func on_new_day() -> void:
 
 	if day == 50:
 		spawn("nuclear_reactor", 1000)
-
+		
 	var spawn_count: int = spawn_weights.get_random()
-
 	for i in range(spawn_count):
 		var choice = choose_building()
 		var var_name: String = choice.variations.pick_random()
@@ -93,8 +92,7 @@ func remove_balloon(balloon: Balloon, immediate: bool) -> void:
 
 func choose_building() -> BuildingBlueprint:
 	var building = building_weights.get_random()
-	if building == "church":
-		return choose_building()
+		
 	var blueprint: BuildingBlueprint = building_blueprint_from_name(building)
 	if blueprint.first_spawning_day > _world_stats.day:
 		return choose_building()

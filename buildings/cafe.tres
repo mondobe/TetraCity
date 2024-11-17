@@ -13,6 +13,7 @@ squares = "....
 center_coords = Vector2i(2, 2)
 center_mode = 0
 kick_mode = 0
+name = "cafe"
 description = "Earns the same income as the highest-earning adjacent building each day (excluding other Cafes)."
 variations = Array[String](["cafe"])
 first_spawning_day = 6

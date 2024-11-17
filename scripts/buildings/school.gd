@@ -1,3 +1,4 @@
+class_name School
 extends Node
 
 # Return a bonus with coins equal to the number of buildings

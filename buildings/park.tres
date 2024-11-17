@@ -12,6 +12,7 @@ squares = "....
 center_coords = Vector2i(1, 1)
 center_mode = 1
 kick_mode = 0
+name = "park"
 description = "Earns 1 coin for each adjacent building."
 variations = Array[String](["park"])
 first_spawning_day = 2

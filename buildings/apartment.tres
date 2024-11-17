@@ -13,6 +13,7 @@ OOOO
 center_coords = Vector2i(2, 2)
 center_mode = 0
 kick_mode = 1
+name = "apartment"
 description = "Earns one coin per day."
 variations = Array[String](["apartment"])
 first_spawning_day = 0
