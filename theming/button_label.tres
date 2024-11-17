@@ -5,5 +5,5 @@
 [resource]
 line_spacing = 0.0
 font = ExtResource("1_uwbkp")
-font_size = 11
+font_size = 13
 font_color = Color(0, 0, 0, 1)

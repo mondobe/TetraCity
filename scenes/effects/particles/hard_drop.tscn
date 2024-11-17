@@ -1,0 +1,30 @@
+[gd_scene load_steps=2 format=3 uid="uid://nnnfca3adcti"]
+
+[sub_resource type="Curve" id="Curve_xvthi"]
+max_value = 100.0
+_data = [Vector2(0, 10), 0.0, 0.0, 0, 0, Vector2(0.0674157, 8.79121), 0.0, 0.0, 0, 0, Vector2(0.185393, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="HardDrop" type="Node2D"]
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 18
+lifetime = 1.2
+one_shot = true
+explosiveness = 1.0
+lifetime_randomness = 0.35
+local_coords = true
+emission_shape = 3
+emission_rect_extents = Vector2(10, 10)
+direction = Vector2(0, -1)
+spread = 25.0
+gravity = Vector2(0, 50)
+initial_velocity_min = 30.0
+initial_velocity_max = 45.0
+radial_accel_min = 3.0
+radial_accel_max = 8.0
+damping_min = 18.0
+damping_max = 18.0
+damping_curve = SubResource("Curve_xvthi")
+color = Color(0.646656, 0.358792, 0.238498, 1)

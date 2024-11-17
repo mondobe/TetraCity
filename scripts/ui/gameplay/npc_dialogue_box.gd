@@ -9,8 +9,11 @@ var balloon: Balloon
 ## The variation that the building being bought was based on.
 var variation: BuildingVariation
 
-## The price of this building in coins
+## The price of this building in coins, after modifiers like bank bonus
 var price: int
+
+## The price of this building in coins, before modifiers
+var original_price:int
 
 ## The number of remining days for which this building will be available
 var lifetime: int
@@ -39,6 +42,7 @@ func init_from_balloon(balloon):
 	self.balloon = balloon
 	self.variation = balloon.variation
 	self.price = balloon.adjusted_price()
+	self.original_price = balloon.price
 	self.lifetime = balloon.lifetime
 	if price > balloon.grid.world_stats.coins:
 		yes_button.hide()
@@ -56,16 +60,19 @@ func update_text() -> void:
 	var lifetime_line: String = (("Last day to buy!" if lifetime == 1
 		else ("%d days left to buy" % lifetime) if lifetime < 100
 		else ""))
+	## This empty char at the end of the original message is for alignment
+	## It lets the %s be right against "coins" so that spacing is right in all cases
+	var original_cost_msg = "" if price == original_price else ("(Originally %d) " % original_price)
 	var cost_suffix = "(Can't afford!)" if price > balloon.grid.world_stats.coins else ""
 	building_info_text.text = (
 "%s
 
 %s
 
-Cost: %d coins %s
+Cost: %d %scoins %s
 
 %s"
-		% [variation.building_name, variation.blueprint.description, price, cost_suffix, lifetime_line])
+		% [variation.building_name, variation.blueprint.description, price, original_cost_msg, cost_suffix, lifetime_line])
 
 ## Called when clicking the "buy" button
 signal buy()

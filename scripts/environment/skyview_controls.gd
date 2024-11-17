@@ -38,10 +38,10 @@ func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-# func _process(delta: float) -> void:
-	# if Input.is_action_just_pressed("test_create_building") \
-	# 	and _moving_camera._camera_mode == MovingCamera.CameraMode.SKY:
-	# 	spawn_random_balloon_at_cursor()
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_cancel"):
+		if _npc_dialogue_box and not _building_grid.placing_building:
+			ignore_button(_npc_dialogue_box)
 
 func end_day() -> void:
 	if _npc_dialogue_box:
@@ -70,7 +70,7 @@ func spawn_random_balloon_at_cursor() -> Balloon:
 func spawn_balloon_at(pos: Vector2) -> Balloon:
 	var balloon: Balloon = _balloon.instantiate()
 	balloon.grid = _building_grid
-	balloon.position = pos
+	balloon.start_float_towards(pos)
 	balloon.on_click.connect(func(): balloon_dialogue(balloon))
 	balloon.moving_camera = _moving_camera
 	add_child(balloon)
@@ -101,14 +101,14 @@ func buy_button(box: NpcDialogueBox) -> void:
 		return
 	_world_stats.coins -= box.price
 	_world_stats.top_label.update()
-	_moving_camera.lock_to_camera_mode(MovingCamera.CameraMode.GROUND)
 	_building_grid.make_and_place(box.variation)
-	_balloon_spawn_ai.remove_balloon(box.balloon)
+	
+	_balloon_spawn_ai.remove_balloon(box.balloon, true)
 	_balloon_spawn_ai.update_weights(box.variation.blueprint.name)
 	
 	if box.balloon.blueprint == church:
 		_world_stats.increment_church_count()
-	
+
 	box.queue_free()
 	end_day_button.show()
 	click_sfx.play()
@@ -122,6 +122,7 @@ func ignore_button(box: NpcDialogueBox) -> void:
 ## Finish placing a bought building.
 func done_placing() -> void:
 	close_dialogue()
+	_moving_camera.set_camera_mode_if_unlocked(MovingCamera.CameraMode.GROUND)
 
 ## Return to a state of non-dialogue.
 func close_dialogue() -> void:

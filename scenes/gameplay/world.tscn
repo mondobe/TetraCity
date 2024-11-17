@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://scripts/environment/skyview_controls.gd" id="2_ymg3g"]
 [ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="3_113pp"]
 [ext_resource type="Texture2D" uid="uid://b7xoss14ph6pv" path="res://sprites/environment/groundBottom.png" id="3_ku6pw"]
-[ext_resource type="Texture2D" uid="uid://bk3mcifbo00ob" path="res://sprites/environment/clouds2.png" id="5_q6mms"]
+[ext_resource type="Texture2D" uid="uid://bk3mcifbo00ob" path="res://sprites/environment/clouds.png" id="5_0j3lg"]
 [ext_resource type="Resource" uid="uid://bas3a8n65ds1" path="res://buildings/variations/city_hall.tres" id="8_gjekm"]
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_grid.gd" id="8_yumsi"]
 [ext_resource type="PackedScene" uid="uid://cmoks1w008liq" path="res://scenes/gameplay/building.tscn" id="9_teedr"]
@@ -91,6 +91,7 @@ zoom = Vector2(4, 4)
 script = ExtResource("2_1vd7b")
 speed = 10.0
 extent = 100.0
+placing_extent = 50.0
 sky_position = Vector2(0, -300)
 hud_container = NodePath("../PixelUILayer/HUDContainer")
 
@@ -119,7 +120,7 @@ region_rect = Rect2(0, 0, 1024, 192)
 [node name="ScrollingClouds" type="Sprite2D" parent="BackgroundEffects"]
 z_index = -2
 texture_repeat = 2
-texture = ExtResource("5_q6mms")
+texture = ExtResource("5_0j3lg")
 region_enabled = true
 region_rect = Rect2(0, 0, 2000, 2000)
 script = ExtResource("3_113pp")

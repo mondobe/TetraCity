@@ -4,7 +4,7 @@ extends Camera2D
 ## World scene.
 
 ## The modes that the camera could be in.
-enum CameraMode { GROUND, SKY, BUILDING }
+enum CameraMode { GROUND, SKY, BUILDING, PLACING }
 
 ## The speed at which the camera moves towards its target
 @export var speed: float
@@ -12,6 +12,10 @@ enum CameraMode { GROUND, SKY, BUILDING }
 ## The amount by which the camera is allowed to move from the center of the screen
 ## in Ground View
 @export var extent: float
+
+## The amount by which the camera is allowed to move from the center of the screen
+## in Placing View
+@export var placing_extent: float
 
 ## The position where the camera goes in Sky View
 @export var sky_position: Vector2
@@ -46,7 +50,12 @@ func _process(delta: float) -> void:
 			target_pos = sky_position
 		# Building view: move towards the current building
 		CameraMode.BUILDING:
-			target_pos = (_current_building.get_center_position() + Vector2(0, -30))
+			target_pos = _current_building.get_center_position() + Vector2(0, -30)
+		# Placing view: provide a clear view of the grid
+		CameraMode.PLACING:
+			target_pos = get_global_mouse_position() - global_position
+			if target_pos.length() > placing_extent:
+				target_pos = target_pos.normalized() * placing_extent
 
 	var delta_pos = target_pos - global_position
 	translate(delta_pos * speed * delta)
@@ -87,3 +96,9 @@ func look_at_building(building: Building) -> void:
 	if not locked and _camera_mode == CameraMode.GROUND:
 		_camera_mode = CameraMode.BUILDING
 		_current_building = building
+
+## If the camera is unlocked, looks at the specified building (sets mode to
+## PLACING).
+func start_placing(building: Building) -> void:
+	lock_to_camera_mode(CameraMode.PLACING)
+	_current_building = building
