@@ -1,82 +1,55 @@
 class_name Church
 extends Node
 
-var have_spawns_reweighed : bool
-
-var reweighed_buildings : Dictionary
-
-var church_count : int
-
 ## The weights used for weighting building spawn numbers
 var building_weight_factors : Dictionary = {
-	"apartment": 1.25,
-	"bank": 5.0,
-	"cafe": 5.0/3,
-	"church": 5.0,
-	"park": 20.0/13,
-	"school": 1.25,
-	"solar_farm": 5.0
+	"city_hall": 1,
+	"apartment": 1.8,
+	"bank": 2.0,
+	"cafe": 1.6,
+	"church": 4.0,
+	"park": 1.6,
+	"school": 1.6,
+	"solar_farm": 3.0,
+	"nuclear_reactor": 1
 	}
 
-## The weights used for weighting building spawns
-var building_weights : Dictionary 
-
 func get_bonus() -> BuildingBonus:
-	if (church_count != 0):
-		var new_building_weights = update_building_weights()
-		
-		# If building spawn amount haven't been adjusted yet
-		if not have_spawns_reweighed:
-			var new_spawn_weights = produce_spawn_weights()
-			return BuildingBonus.new().with_spawn_reweighting(new_spawn_weights).with_buildings_reweighting(new_building_weights)
-		
-		have_spawns_reweighed = true
-		return BuildingBonus.new().with_buildings_reweighting(new_building_weights)
-	return BuildingBonus.new()
-
-## Init for Church 
-func set_church_parameters(church_count: int, building_weights: Dictionary) -> void:
-	self.church_count = church_count
-	self.building_weights = building_weights 
+	return BuildingBonus.new().with_buildings_reweighting(update_building_weights())
 
 ## Loops through all adjacent buildings and boosts any which haven't been boosted
 func update_building_weights() -> Dictionary:
-	var adjacent_buildings = get_parent().get_adjacent_buildings()
-	var new_weights = building_weights.duplicate()
-	for building in adjacent_buildings:
-		var index = building.get_index_in_grid()
-		if reweighed_buildings.get(index) == null:
-			reweighed_buildings[index] = building
-			if new_weights.get(building.blueprint.name) != null:
-				new_weights[building.blueprint.name] *= building_weight_factors[building.blueprint.name]
-			building.times_church_boosted += 1
-	
+	var adjacent_buildings: Array = get_parent().get_adjacent_buildings()
+	var new_weights: Dictionary = Dictionary()
+	for building: Building in adjacent_buildings:
+		var b_name: String = building.blueprint.name
+		new_weights[b_name] = new_weights.get(b_name, 1) * building_weight_factors[b_name]
 	return new_weights
-	
+
 ## Produces a new set of Spawn Weights
-func produce_spawn_weights() -> Dictionary:
+static func produce_spawn_weights(church_count: int) -> WeightedRandom:
 	var lambda = .1
-		
+
 	for i in range(church_count):
 		lambda += (1 - lambda) / 3
-	
-	var new_spawns : Dictionary
-	
+
+	var new_spawns: WeightedRandom = WeightedRandom.new()
+
 	for i in range(0,5):
 		var x = (i - 1.237) / 1.3
 		var xfact = factorial(x)
 		var weight = exp(-lambda) * lambda ** x / xfact
-		new_spawns[i] = weight
-	
+		new_spawns.choices[i] = weight
+
 	return new_spawns
 
 func get_info_text() -> String:
-	return "Increases the chances of having more options of buildings to buy per day.
-	These additional buildings are also more likely to favor those which neighbor a church."
+	return "Balloons are more likely to appear, especially those holding
+adjacent buildings."
 
 ## A Factorial Function Implementation for complex numbers
 ## Produces factorial-like numbers (actual implementation is a gamma)
-func factorial(x: float):
+static func factorial(x: float):
 	var gamma_coefficients = [
 	1,
 	0.57721566490153286060651209008240243104215933593992359880576723488486772677766467,
@@ -102,36 +75,8 @@ func factorial(x: float):
 	0.00000000000051003702874544759790154813228632318027268860697076321173501048565735,
 	-0.00000000000002058326053566506783222429544855237419746091080810147188058196444349,
 	-0.00000000000000534812253942301798237001731872793994898971547812068211168095493211,
-	0.00000000000000122677862823826079015889384662242242816545575045632136601135999606,
-	-0.00000000000000011812593016974587695137645868422978312115572918048478798375081233,
-	0.00000000000000000118669225475160033257977724292867407108849407966482711074006109,
-	0.00000000000000000141238065531803178155580394756670903708635075033452562564122263,
-	-0.00000000000000000022987456844353702065924785806336992602845059314190367014889830,
-	0.00000000000000000001714406321927337433383963370267257066812656062517433174649858,
-	0.00000000000000000000013373517304936931148647813951222680228750594717618947898583,
-	-0.00000000000000000000020542335517666727893250253513557337960820379352387364127301,
-	0.00000000000000000000002736030048607999844831509904330982014865311695836363370165,
-	-0.00000000000000000000000173235644591051663905742845156477979906974910879499841377,
-	-0.00000000000000000000000002360619024499287287343450735427531007926413552145370486,
-	0.00000000000000000000000001864982941717294430718413161878666898945868429073668232,
-	-0.00000000000000000000000000221809562420719720439971691362686037973177950067567580,
-	0.00000000000000000000000000012977819749479936688244144863305941656194998646391332,
-	0.00000000000000000000000000000118069747496652840622274541550997151855968463784158,
-	-0.00000000000000000000000000000112458434927708809029365467426143951211941179558301,
-	0.00000000000000000000000000000012770851751408662039902066777511246477487720656005,
-	-0.00000000000000000000000000000000739145116961514082346128933010855282371056899245,
-	0.00000000000000000000000000000000001134750257554215760954165259469306393008612196,
-	0.00000000000000000000000000000000004639134641058722029944804907952228463057968680,
-	-0.00000000000000000000000000000000000534733681843919887507741819670989332090488591,
-	0.00000000000000000000000000000000000032079959236133526228612372790827943910901464,
-	-0.00000000000000000000000000000000000000444582973655075688210159035212464363740144,
-	-0.00000000000000000000000000000000000000131117451888198871290105849438992219023663,
-	0.00000000000000000000000000000000000000016470333525438138868182593279063941453996,
-	-0.00000000000000000000000000000000000000001056233178503581218600561071538285049997,
-	0.00000000000000000000000000000000000000000026784429826430494783549630718908519485,
-	0.00000000000000000000000000000000000000000002424715494851782689673032938370921241,
 	]
-	
+
 	var result = gamma_coefficients[-1]
 	for i in range(len(gamma_coefficients) - 2, -1, -1):
 		result = result * x + gamma_coefficients[i]

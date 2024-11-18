@@ -102,10 +102,10 @@ func buy_button(box: NpcDialogueBox) -> void:
 	_world_stats.coins -= box.price
 	_world_stats.top_label.update()
 	_building_grid.make_and_place(box.variation)
-	
+
 	_balloon_spawn_ai.remove_balloon(box.balloon, true)
 	_balloon_spawn_ai.update_weights(box.variation.blueprint.name)
-	
+
 	if box.balloon.blueprint == church:
 		_world_stats.increment_church_count()
 
