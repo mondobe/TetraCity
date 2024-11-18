@@ -1,13 +1,13 @@
-[gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://bw1uo52c268cy"]
+[gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://d0xtsbqtasrbi"]
 
 [ext_resource type="Texture2D" uid="uid://cbg5cmoo7uc20" path="res://sprites/ui/portraits/hurst.png" id="1_ih8ry"]
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="1_isfqw"]
-[ext_resource type="Resource" uid="uid://bfggc1wdyn5rl" path="res://buildings/church.tres" id="2_w2mri"]
-[ext_resource type="Texture2D" uid="uid://bi38boa7f3neb" path="res://sprites/buildings/church_placeholder.png" id="4_p1kkl"]
+[ext_resource type="Resource" uid="uid://so3ksyoffthl" path="res://buildings/church.tres" id="2_w2mri"]
+[ext_resource type="Texture2D" uid="uid://dmtqhi378ev0" path="res://sprites/buildings/church.png" id="4_bny7u"]
 
 [resource]
 script = ExtResource("1_isfqw")
-sprite = ExtResource("4_p1kkl")
+sprite = ExtResource("4_bny7u")
 building_name = "Church"
 blueprint = ExtResource("2_w2mri")
 NPCDialog = Array[String](["<NPC Church Dialogue>"])

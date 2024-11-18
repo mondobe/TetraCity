@@ -57,7 +57,7 @@ func init_values() -> void:
 
 func increment_church_count() -> void:
 	churches += 1
-	
+
 func end_day_button() -> void:
 	end_day()
 	top_label.update()
