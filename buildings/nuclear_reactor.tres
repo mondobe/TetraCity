@@ -12,6 +12,7 @@ OOO"
 center_coords = Vector2i(1, 1)
 center_mode = 1
 kick_mode = 0
+name = "nuclear_reactor"
 description = "Supercharges all nearby buildings, causing them to make 5 times as much money!"
 variations = Array[String](["nuclear_reactor"])
 first_spawning_day = 50

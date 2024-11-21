@@ -7,6 +7,8 @@ extends Node
 
 @export var _world_stats: WorldStats
 
+@export var _building_grid: BuildingGrid
+
 @export var _blueprints: Array[BuildingBlueprint]
 
 @onready var buildings_in_world: Dictionary = Dictionary()
@@ -34,7 +36,7 @@ func on_new_day() -> void:
 	for balloon in balloons:
 		balloon.lifetime -= 1
 		if balloon.lifetime <= 0:
-			balloon.queue_free()
+			remove_balloon(balloon, false)
 			buildings_in_world[balloon.blueprint] -= 1
 
 	balloons = balloons.filter(
@@ -48,14 +50,33 @@ func on_new_day() -> void:
 	if day == 50:
 		spawn("nuclear_reactor", 1000)
 
-	var spawn_count: int = spawn_weights.get_random()
-
+	var spawn_count: int = adjusted_spawn_weights().get_random()
 	for i in range(spawn_count):
 		var choice = choose_building()
 		var var_name: String = choice.variations.pick_random()
 		var price = get_price(day, choice)
 		spawn(var_name, price)
 		spawn_count -= 1
+
+func adjusted_building_weights(weights: WeightedRandom) -> WeightedRandom:
+	var new_weights: WeightedRandom = weights.duplicate()
+	for building: Building in _building_grid.buildings:
+		if building.bonus is Church:
+			var church_bonus: BuildingBonus = building.bonus.get_bonus()
+			var weight_adjustment: Dictionary = church_bonus.building_weights
+			for b_name: String in weight_adjustment.keys():
+				new_weights.choices[b_name] = (
+					new_weights.choices[b_name] * weight_adjustment[b_name])
+	return new_weights
+
+func adjusted_spawn_weights() -> WeightedRandom:
+	var church_count: int = _building_grid.buildings.reduce(
+		func(accum: int, b: Building) -> int:
+			if b.bonus is Church:
+				return accum + 1
+			return accum
+	, 0)
+	return Church.produce_spawn_weights(church_count)
 
 func test_blueprint(blueprint: BuildingBlueprint) -> void:
 	var day = _world_stats.day
@@ -84,14 +105,17 @@ func spawn_variation(variation: BuildingVariation, price: int) -> void:
 	buildings_in_world[variation.blueprint] = (
 		buildings_in_world.get(variation.blueprint, 0) + 1)
 
-func remove_balloon(balloon: Balloon) -> void:
-	balloon.queue_free()
+func remove_balloon(balloon: Balloon, immediate: bool) -> void:
+	if immediate:
+		balloon.queue_free()
+	else:
+		balloon.float_away()
 	balloons.erase(balloon)
 
 func choose_building() -> BuildingBlueprint:
-	var building = building_weights.get_random()
-	if building == "church":
-		return choose_building()
+	var weights: WeightedRandom = adjusted_building_weights(building_weights)
+	var building = weights.get_random()
+
 	var blueprint: BuildingBlueprint = building_blueprint_from_name(building)
 	if blueprint.first_spawning_day > _world_stats.day:
 		return choose_building()

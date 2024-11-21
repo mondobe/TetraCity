@@ -17,6 +17,7 @@ func apply_bonuses() -> void:
 	var max: int = 0
 	for building: Building in building_grid.buildings:
 		var bonus: BuildingBonus = building.bonus.get_bonus()
+
 		world_stats.coins += bonus.coins
 		world_stats.fuel += bonus.fuel
 		max += bonus.coins
