@@ -65,8 +65,9 @@ func adjusted_building_weights(weights: WeightedRandom) -> WeightedRandom:
 			var church_bonus: BuildingBonus = building.bonus.get_bonus()
 			var weight_adjustment: Dictionary = church_bonus.building_weights
 			for b_name: String in weight_adjustment.keys():
-				new_weights.choices[b_name] = (
-					new_weights.choices[b_name] * weight_adjustment[b_name])
+				if weights.choices.has(b_name):
+					new_weights.choices[b_name] = (
+						new_weights.choices[b_name] * weight_adjustment[b_name])
 	return new_weights
 
 func adjusted_spawn_weights() -> WeightedRandom:

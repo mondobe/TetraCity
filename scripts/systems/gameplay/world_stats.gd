@@ -52,7 +52,7 @@ func _process(delta: float) -> void:
 
 ## Initialize values at the start of the game
 func init_values() -> void:
-	coins = 10
+	coins = 1000
 	fuel = 60
 	day = 1
 	churches = 0
