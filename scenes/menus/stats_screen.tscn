@@ -1,0 +1,105 @@
+[gd_scene load_steps=5 format=3 uid="uid://du1xrjqm00i0b"]
+
+[ext_resource type="Script" path="res://scripts/ui/stats_screen.gd" id="1_a1ndk"]
+[ext_resource type="Theme" uid="uid://cou1oxt1vsf13" path="res://theming/hover_ui.tres" id="2_ri8ms"]
+[ext_resource type="FontFile" uid="uid://c685qb4m7qjc" path="res://fonts/rubik.ttf" id="3_00b1y"]
+
+[sub_resource type="FontVariation" id="FontVariation_ps5rv"]
+base_font = ExtResource("3_00b1y")
+variation_opentype = {
+2003265652: 500
+}
+
+[node name="StatsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a1ndk")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0.364706, 0.592157, 1)
+
+[node name="TitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -404.0
+offset_top = 15.0
+offset_right = 404.0
+offset_bottom = 134.0
+grow_horizontal = 2
+theme = ExtResource("2_ri8ms")
+theme_type_variation = &"TitleLabel"
+text = "Congratulations!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SubTitleLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -767.5
+offset_top = 15.0
+offset_right = 767.5
+offset_bottom = 315.0
+grow_horizontal = 2
+theme = ExtResource("2_ri8ms")
+theme_type_variation = &"SubTitleLabel"
+text = "Thank you for playing Tetra City."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatsLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -287.5
+offset_top = -232.0
+offset_right = 287.5
+offset_bottom = 297.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ri8ms")
+theme_type_variation = &"RichTextLabel"
+theme_override_constants/line_separation = 12
+theme_override_fonts/normal_font = SubResource("FontVariation_ps5rv")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "Final Coin Balance: 430
+Fuel Remaining: 11
+Total Coins Earned: 2763
+Buildings Bought: 19
+Highest CPD: 102
+Natural Disaster: Acid Rain"
+
+[node name="ReturnButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -78.0
+offset_top = -120.0
+offset_right = 78.0
+offset_bottom = -40.9996
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+text = "Return to Title"
+
+[connection signal="pressed" from="ReturnButton" to="." method="_on_play_again_button_pressed"]

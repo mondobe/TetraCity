@@ -22,6 +22,7 @@ driver/output_latency.web=90
 [autoload]
 
 LevelLoader="*res://scripts/systems/loading/level_loader.gd"
+SavedStats="*res://scripts/systems/saved_stats.gd"
 
 [display]
 
