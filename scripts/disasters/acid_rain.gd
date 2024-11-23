@@ -10,6 +10,8 @@ var clouds: Sprite2D
 
 var _world_stats: WorldStats
 
+var disaster_name = "Acid Rain"
+
 func init(world_stats: WorldStats) -> void:
 	clouds = clouds_scene.instantiate()
 	_world_stats = world_stats

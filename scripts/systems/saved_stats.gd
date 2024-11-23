@@ -43,10 +43,7 @@ func getHighestCPD():
 
 #Takes the natural disaster as the file path
 func setNaturalDisaster(inputDisaster: String):
-	if(inputDisaster.contains("acid_rain")):
-		disaster = "Acid Rain"
-	else:
-		disaster = "no disaster"
+	disaster = inputDisaster
 
 func getNaturalDisaster():
 	return disaster

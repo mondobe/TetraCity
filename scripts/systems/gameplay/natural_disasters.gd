@@ -19,9 +19,9 @@ func get_disaster_info_text() -> void:
 	return disaster.get_info_text(_world_stats.day)
 
 func init_random_disaster() -> void:
-	var disaster_script_path: String = _disaster_scripts.pick_random()
-	SavedStats.setNaturalDisaster(disaster_script_path)
+	var disaster_script_path: String = _disaster_scripts[1]
 	var disaster_script: Script = load(disaster_script_path)
 	disaster.set_script(disaster_script)
 	if disaster.has_method("init"):
 		disaster.init(_world_stats)
+	SavedStats.setNaturalDisaster(disaster.disaster_name)
