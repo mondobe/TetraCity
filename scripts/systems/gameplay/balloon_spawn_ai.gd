@@ -130,4 +130,4 @@ func update_weights(choice: String) -> void:
 		building_weights.choices[choice] *= building_weight_factors[choice]
 
 func get_price(day: int, blueprint: BuildingBlueprint) -> float:
-	return blueprint.starting_price * pow(1 + blueprint.daily_increase, day - blueprint.first_spawning_day)
+	return blueprint.starting_price * pow(1 + blueprint.daily_increase, day - blueprint.first_spawning_day) + (day - blueprint.first_spawning_day) * blueprint.day_multiplier

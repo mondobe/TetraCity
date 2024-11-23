@@ -19,4 +19,5 @@ variations = Array[String](["apartment"])
 first_spawning_day = 0
 balloon_lifetime = 3
 starting_price = 5.0
-daily_increase = 0.05
+daily_increase = 0.043
+day_multiplier = 0.35

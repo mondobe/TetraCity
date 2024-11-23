@@ -18,4 +18,5 @@ variations = Array[String](["park"])
 first_spawning_day = 2
 balloon_lifetime = 3
 starting_price = 7.0
-daily_increase = 0.056
+daily_increase = 0.045
+day_multiplier = 0.5
