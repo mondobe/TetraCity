@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://d0xtsbqtasrbi"]
+[gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://dl64v2tsr5fdh"]
 
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="1_isfqw"]
 [ext_resource type="Texture2D" uid="uid://bvwr805h584n1" path="res://sprites/ui/portraits/reggie.png" id="1_tda3j"]
