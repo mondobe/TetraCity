@@ -19,5 +19,5 @@ variations = Array[String](["cafe"])
 first_spawning_day = 6
 balloon_lifetime = 3
 starting_price = 18.0
-daily_increase = 0.031
+daily_increase = 3.1
 day_multiplier = 0.35

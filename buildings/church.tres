@@ -19,5 +19,5 @@ variations = Array[String](["church"])
 first_spawning_day = 4
 balloon_lifetime = 2
 starting_price = 14.0
-daily_increase = 0.036
+daily_increase = 3.55
 day_multiplier = 1.45

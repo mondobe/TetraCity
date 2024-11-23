@@ -19,5 +19,5 @@ variations = Array[String](["bank"])
 first_spawning_day = 8
 balloon_lifetime = 3
 starting_price = 30.0
-daily_increase = 0.038
+daily_increase = 3.75
 day_multiplier = 1.75
