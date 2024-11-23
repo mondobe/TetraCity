@@ -53,7 +53,7 @@
 [ext_resource type="Resource" uid="uid://x7obthv6pdcy" path="res://buildings/solar_farm.tres" id="33_uhqqw"]
 [ext_resource type="Resource" uid="uid://o4wnmgkxop7d" path="res://buildings/cafe.tres" id="34_6wwn0"]
 [ext_resource type="Script" path="res://scripts/systems/shop/weighted_random.gd" id="50_pn2c1"]
-[ext_resource type="Resource" path="res://buildings/church.tres" id="51_vqbxa"]
+[ext_resource type="Resource" uid="uid://so3ksyoffthl" path="res://buildings/church.tres" id="51_vqbxa"]
 [ext_resource type="Resource" uid="uid://ukhvt3nt48fn" path="res://buildings/bank.tres" id="52_x4pai"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay/natural_disasters.gd" id="54_fbgul"]
 

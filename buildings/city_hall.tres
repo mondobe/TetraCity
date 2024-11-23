@@ -19,3 +19,4 @@ first_spawning_day = 0
 balloon_lifetime = 10000
 starting_price = 0.0
 daily_increase = 0.0
+day_multiplier = 0.0
