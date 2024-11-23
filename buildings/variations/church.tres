@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://d0xtsbqtasrbi"]
+[gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://dl64v2tsr5fdh"]
 
 [ext_resource type="Texture2D" uid="uid://cbg5cmoo7uc20" path="res://sprites/ui/portraits/hurst.png" id="1_ih8ry"]
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="1_isfqw"]
@@ -12,4 +12,4 @@ building_name = "Church"
 blueprint = ExtResource("2_w2mri")
 NPCDialog = Array[String](["<NPC Church Dialogue>"])
 NPCImage = ExtResource("1_ih8ry")
-NPCName = "Church"
+NPCName = "Reggie"
