@@ -19,4 +19,5 @@ variations = Array[String](["school"])
 first_spawning_day = 4
 balloon_lifetime = 3
 starting_price = 12.0
-daily_increase = 0.042
+daily_increase = 0.043
+day_multiplier = 0.53

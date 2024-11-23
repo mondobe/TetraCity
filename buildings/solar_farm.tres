@@ -18,4 +18,5 @@ variations = Array[String](["solar_farm"])
 first_spawning_day = 8
 balloon_lifetime = 2
 starting_price = 50.0
-daily_increase = 0.06
+daily_increase = 0.033
+day_multiplier = 1.28
