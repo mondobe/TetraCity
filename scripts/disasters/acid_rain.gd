@@ -19,8 +19,8 @@ func get_info_text(day: int) -> String:
 	if day < START_DAY:
 		var days_left = START_DAY - day
 		if days_left <= 10:
-			return "Acid rain begins in 10 days!
-The top layer of buildings will be melted off!"
+			return "Acid rain begins in %d days!
+The top layer of buildings will be melted off!" % days_left
 		else:
 			return ""
 	elif day == START_DAY:
@@ -46,22 +46,4 @@ func acid_rain() -> void:
 		if (not building.bonus is CityHall) and building_grid.building_gets_sun(building):
 			rained_on.append(building)
 
-	building_grid.buildings = building_grid.buildings.filter(
-		func(building: Building) -> bool:
-			return building not in rained_on
-	)
-
-	for building: Building in rained_on:
-		for x: int in range(building.grid.dimensions.x):
-			for y: int in range(building.grid.dimensions.y):
-				if building.grid.at(Vector2(x, y)) == 1:
-					var splash = splash_scene.instantiate()
-					add_sibling(splash)
-
-					var coords = Vector2i(x, y) + building.pos_coords
-					var top_corner = building_grid.top_corner_of_space(coords)
-					splash.global_position = top_corner
-
-		building.queue_free()
-
-	building_grid.build_grid()
+	building_grid.destroy_buildings(rained_on, splash_scene)
