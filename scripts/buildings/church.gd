@@ -4,12 +4,12 @@ extends Node
 ## The weights used for weighting building spawn numbers
 var building_weight_factors : Dictionary = {
 	"city_hall": 1,
-	"apartment": 1.8,
+	"apartment": 1.35,
 	"bank": 2.0,
 	"cafe": 1.6,
-	"church": 4.0,
-	"park": 1.6,
-	"school": 1.6,
+	"church": 2.0,
+	"park": 1.5,
+	"school": 1.5,
 	"solar_farm": 3.0,
 	"nuclear_reactor": 1
 	}
