@@ -27,7 +27,7 @@ extends Node
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	spawn("city_hall", 0)
-	spawn("apartment", 5)
+	spawn("apartment", 3)
 
 ## Called each day to spawn random NPCs.
 func on_new_day() -> void:

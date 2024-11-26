@@ -18,13 +18,16 @@ func init(world_stats: WorldStats) -> void:
 	add_sibling(clouds)
 
 func get_info_text(day: int) -> String:
-	if day < START_DAY:
+	if day < START_DAY - 1:
 		var days_left = START_DAY - day
-		if days_left <= 10:
+		if days_left <= 10 and days_left > 0:
 			return "Acid rain begins in %d days!
 The top layer of buildings will be melted off!" % days_left
 		else:
 			return ""
+	elif day == START_DAY - 1:
+			return "Acid rain begins tomorrow!
+The top layer of buildings will be melted off!"
 	elif day == START_DAY:
 		return "Watch out for acid rain today!"
 	else:

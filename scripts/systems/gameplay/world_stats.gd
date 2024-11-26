@@ -28,16 +28,13 @@ var _you_lose: PackedScene = preload("res://scenes/menus/you_lose.tscn")
 var _stats_screen: PackedScene = preload("res://scenes/menus/stats_screen.tscn")
 
 ## The amount of coins the player has.
-var coins
+var coins: int
 
 ## The amount of fuel the player has.
-var fuel
+var fuel: int
 
 ## The current day (starting from 1).
-var day
-
-## Church count
-var churches : int
+var day: int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -55,10 +52,7 @@ func init_values() -> void:
 	coins = 10
 	fuel = 60
 	day = 1
-	churches = 0
-
-func increment_church_count() -> void:
-	churches += 1
+	new_day_updates()
 
 func end_day_button() -> void:
 	end_day()
@@ -86,6 +80,9 @@ func end_day() -> void:
 	):
 		LevelLoader.load_level(_you_lose)
 
+	new_day_updates()
+
+func new_day_updates() -> void:
 	natural_disasters.on_new_day()
 	sky_view_controls.end_day()
 	building_bonuses.apply_bonuses()

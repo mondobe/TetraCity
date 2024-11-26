@@ -2,6 +2,9 @@ class_name LightningStorm
 extends Node
 
 const splash_scene: PackedScene = preload("res://scenes/effects/lightning_storm/lightning_smash.tscn")
+const clouds_scene: PackedScene = preload("res://scenes/effects/acid_rain/acid_clouds.tscn")
+
+var clouds: Sprite2D
 
 const START_DAY: int = 45
 
@@ -10,13 +13,18 @@ var _world_stats: WorldStats
 var disaster_name = "Lightning Storm"
 
 func init(world_stats: WorldStats) -> void:
+	clouds = clouds_scene.instantiate()
 	_world_stats = world_stats
+	add_sibling(clouds)
 
 func get_info_text(day: int) -> String:
 	match day:
 		START_DAY:
 			return "Lightning strike incoming!"
-		var curr_day when START_DAY - curr_day <= 10:
+		START_DAY - 1:
+			return "Lightning Strike tomorrow! Your
+highest building and any buildings below it will be destroyed!"
+		var curr_day when START_DAY - curr_day <= 10 and START_DAY > curr_day:
 			var days_left = START_DAY - curr_day
 			return "Lightning Strike in %d days! Your
 highest building and any buildings below it will be destroyed!" % days_left
@@ -24,9 +32,14 @@ highest building and any buildings below it will be destroyed!" % days_left
 			return ""
 
 func on_new_day(day: int) -> void:
-	# Probably add visual effects based on day later
-	if day == START_DAY:
-		lightning_strike()
+	if day <= START_DAY:
+		var intensity: float = max((day + 5 - START_DAY) * 0.2, 0)
+		clouds.self_modulate = Color(1, 1, 1, intensity)
+
+		if day == START_DAY:
+			lightning_strike()
+	else:
+		clouds.self_modulate = Color(1, 1, 1, 0)
 
 # Given some building, return an array of all grid coordinates in the building
 func get_coords(building: Building) -> Array[Vector2i]:
