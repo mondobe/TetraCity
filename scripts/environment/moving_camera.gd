@@ -74,12 +74,13 @@ func get_camera_mode() -> CameraMode:
 ## Sets the camera to the specified mode and locks it.
 ## Could be used for e.g. placing a piece.
 func lock_to_camera_mode(mode: CameraMode) -> void:
-	_set_camera_mode(mode)
 	locked = true
+	_set_camera_mode(mode)
 
 ## Unlocks the camera so calling set_camera_mode_if_unlocked will move it
 func unlock() -> void:
 	locked = false
+	hud_container.update(self)
 
 ## If the camera is unlocked, sets it to the specified mode.
 func set_camera_mode_if_unlocked(new_mode: CameraMode) -> void:
@@ -88,7 +89,7 @@ func set_camera_mode_if_unlocked(new_mode: CameraMode) -> void:
 
 func _set_camera_mode(mode: CameraMode) -> void:
 	_camera_mode = mode
-	hud_container.set_camera_mode(mode)
+	hud_container.update(self)
 
 ## If the camera is unlocked, looks at the specified building (sets mode to
 ## BUILDING).
@@ -96,6 +97,7 @@ func look_at_building(building: Building) -> void:
 	if not locked and _camera_mode == CameraMode.GROUND:
 		_camera_mode = CameraMode.BUILDING
 		_current_building = building
+		hud_container.update(self)
 
 ## If the camera is unlocked, looks at the specified building (sets mode to
 ## PLACING).
