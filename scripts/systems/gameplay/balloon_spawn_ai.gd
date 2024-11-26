@@ -49,7 +49,6 @@ func on_new_day() -> void:
 
 	if day == 50:
 		spawn("nuclear_reactor", 1000)
-
 	var spawn_count: int = adjusted_spawn_weights().get_random()
 	for i in range(spawn_count):
 		var choice = choose_building()
@@ -115,6 +114,7 @@ func remove_balloon(balloon: Balloon, immediate: bool) -> void:
 
 func choose_building() -> BuildingBlueprint:
 	var weights: WeightedRandom = adjusted_building_weights(building_weights)
+	print(weights.choices)
 	var building = weights.get_random()
 
 	var blueprint: BuildingBlueprint = building_blueprint_from_name(building)
