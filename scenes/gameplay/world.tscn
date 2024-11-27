@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=60 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -53,6 +53,7 @@
 [ext_resource type="Resource" uid="uid://x7obthv6pdcy" path="res://buildings/solar_farm.tres" id="33_uhqqw"]
 [ext_resource type="Resource" uid="uid://o4wnmgkxop7d" path="res://buildings/cafe.tres" id="34_6wwn0"]
 [ext_resource type="Script" path="res://scripts/systems/shop/weighted_random.gd" id="50_pn2c1"]
+[ext_resource type="Resource" uid="uid://so3ksyoffthl" path="res://buildings/church.tres" id="51_vqbxa"]
 [ext_resource type="Resource" uid="uid://ukhvt3nt48fn" path="res://buildings/bank.tres" id="52_x4pai"]
 [ext_resource type="Script" path="res://scripts/systems/gameplay/natural_disasters.gd" id="54_fbgul"]
 
@@ -64,10 +65,11 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="Resource" id="Resource_ukpd0"]
 script = ExtResource("50_pn2c1")
 choices = {
-"apartment": 100.0,
+"apartment": 120.0,
 "bank": 25.0,
-"cafe": 30.0,
-"park": 50.0,
+"cafe": 40.0,
+"church": 30.0,
+"park": 65.0,
 "school": 40.0,
 "solar_farm": 20.0
 }
@@ -75,10 +77,11 @@ choices = {
 [sub_resource type="Resource" id="Resource_fot5w"]
 script = ExtResource("50_pn2c1")
 choices = {
-0: 0.4,
-1: 1.1,
-2: 0.2,
-3: 0.05
+0: 0.25,
+1: 1.2,
+2: 0.4,
+3: 0.03,
+4: 0.003
 }
 
 [node name="World" type="Node2D"]
@@ -88,6 +91,7 @@ zoom = Vector2(4, 4)
 script = ExtResource("2_1vd7b")
 speed = 10.0
 extent = 100.0
+placing_extent = 50.0
 sky_position = Vector2(0, -300)
 hud_container = NodePath("../PixelUILayer/HUDContainer")
 
@@ -252,6 +256,19 @@ flip_v = true
 scale = Vector2(2, 2)
 transform = Transform2D(2, 0, 0, 2, 0, 0)
 
+[node name="WarningBox" parent="SmallPixelUILayer" instance=ExtResource("14_qdc0i")]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1130.0
+offset_top = -345.0
+offset_right = -980.0
+offset_bottom = -345.0
+grow_horizontal = 0
+grow_vertical = 2
+
 [node name="StaticSmallPixelUILayer" type="CanvasLayer" parent="."]
 scale = Vector2(0.5, 0.5)
 transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
@@ -295,18 +312,20 @@ building_info_box = ExtResource("26_no2ju")
 small_pixel_ui_layer = NodePath("../SmallPixelUILayer")
 static_small_pixel_ui_layer = NodePath("../StaticSmallPixelUILayer")
 
-[node name="BalloonSpawnAI" type="Node" parent="." node_paths=PackedStringArray("_sky_view_controls", "_world_stats")]
+[node name="BalloonSpawnAI" type="Node" parent="." node_paths=PackedStringArray("_sky_view_controls", "_world_stats", "_building_grid")]
 script = ExtResource("24_fvko1")
 _sky_view_controls = NodePath("../SkyViewControls")
 _world_stats = NodePath("../WorldStats")
-_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("28_hpkc4"), ExtResource("30_8p0k6"), ExtResource("29_paan3"), ExtResource("31_1hyee"), ExtResource("34_6wwn0"), ExtResource("32_dibiw"), ExtResource("33_uhqqw"), ExtResource("52_x4pai")])
+_building_grid = NodePath("../BuildingGrid")
+_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("28_hpkc4"), ExtResource("30_8p0k6"), ExtResource("29_paan3"), ExtResource("31_1hyee"), ExtResource("34_6wwn0"), ExtResource("32_dibiw"), ExtResource("51_vqbxa"), ExtResource("33_uhqqw"), ExtResource("52_x4pai")])
 building_weights = SubResource("Resource_ukpd0")
 building_weight_factors = {
 "apartment": 0.8,
 "bank": 0.2,
 "cafe": 0.6,
-"park": 0.65,
-"school": 0.8,
+"church": 0.4,
+"park": 0.72,
+"school": 0.7,
 "solar_farm": 0.2
 }
 spawn_weights = SubResource("Resource_fot5w")
@@ -317,11 +336,12 @@ building_grid = NodePath("../BuildingGrid")
 moving_camera = NodePath("../MovingCamera")
 dialogue_box_spawner = NodePath("../DialogueBoxSpawner")
 
-[node name="NaturalDisasters" type="Node" parent="." node_paths=PackedStringArray("_world_stats", "building_grid")]
+[node name="NaturalDisasters" type="Node" parent="." node_paths=PackedStringArray("_world_stats", "building_grid", "warning_box")]
 script = ExtResource("54_fbgul")
 _world_stats = NodePath("../WorldStats")
 building_grid = NodePath("../BuildingGrid")
-_disaster_scripts = Array[String](["res://scripts/disasters/acid_rain.gd"])
+warning_box = NodePath("../SmallPixelUILayer/WarningBox")
+_disaster_scripts = Array[String](["res://scripts/disasters/acid_rain.gd", "res://scripts/disasters/lightning_storm.gd"])
 
 [node name="Disasters" type="Node" parent="NaturalDisasters"]
 

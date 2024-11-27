@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://dr8iwbdrvgt0q"]
+
+[ext_resource type="Texture2D" uid="uid://b56xumw6cro2a" path="res://sprites/disasters/lightning_storm/lightning_smash.png" id="1_j75ny"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lp3i5"]
+atlas = ExtResource("1_j75ny")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pxxk"]
+atlas = ExtResource("1_j75ny")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6gcv7"]
+atlas = ExtResource("1_j75ny")
+region = Rect2(0, 20, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a5qvy"]
+atlas = ExtResource("1_j75ny")
+region = Rect2(20, 20, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nqot8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lp3i5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6pxxk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6gcv7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a5qvy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="LightningSmash" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_nqot8")
+autoplay = "default"
+centered = false
+
+[connection signal="animation_looped" from="." to="." method="queue_free"]

@@ -21,6 +21,9 @@ extends Resource
 ## See the [enum Building.KickMode] docs
 @export var kick_mode: Building.KickMode
 
+## The building's name
+@export var name: String
+
 ## The building's description
 @export_multiline var description: String
 
@@ -36,5 +39,8 @@ extends Resource
 ## The price of this building on the day on which it can first appear.
 @export var starting_price: float
 
-## The price increase of this building per day, as a fraction of the current price.
+## The price increase of this building per day, as a percentage of the current price.
 @export var daily_increase: float
+
+## A multiplier applied to the day, whose product is added linearly to the current price.
+@export var day_multiplier: float

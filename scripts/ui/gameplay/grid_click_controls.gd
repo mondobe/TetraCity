@@ -25,6 +25,8 @@ func _unhandled_input(event: InputEvent) -> void:
 			if mouse_building_index > 0:
 				var mouse_building: Building = building_grid.buildings[mouse_building_index - 1]
 				click_on(mouse_building, mouse_pos)
+	if event.is_action_pressed("ui_cancel"):
+		remove_current_info_box()
 
 func click_on(building: Building, pos: Vector2):
 	current_info_box = dialogue_box_spawner.spawn_info_box_at_static(pos)

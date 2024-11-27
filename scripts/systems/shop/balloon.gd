@@ -16,21 +16,22 @@ var price: int
 ## The number of days left in this balloon's lifetime.
 var lifetime: int
 
-# Reference to the grid containing the building
+## Reference to the grid containing the building
 var grid: BuildingGrid
+
+## The point to which the balloon is moving
+var target_position: Vector2
 
 ## The area of this balloon that can be clicked.
 @onready var click_area: Area2D = $HitboxArea
 
 @onready var sprite: Sprite2D = $BuildingSprite
 
-# Get the price after applying modifiers (Right now just the bank)
-func adjusted_price() -> int:
-	var scale:float = 1
-	for building in grid.buildings:
-		if building.bonus is Bank:
-			scale *= building.bonus.get_scale_factor(blueprint)
-	return price * scale
+@onready var float_offset: float = randf_range(0, 2 * PI)
+
+@onready var disappear_timer: float = 5
+
+@onready var floating_away = false
 
 func _ready() -> void:
 	click_area.input_event.connect(click_input)
@@ -42,6 +43,28 @@ func _ready() -> void:
 		func() -> void:
 			sprite.self_modulate = Color.WHITE
 	)
+
+func _process(delta: float) -> void:
+	var delta_x: float = target_position.x - global_position.x
+	if abs(delta_x) > 2:
+		var vel_x: float = clamp(delta_x * 0.02, -140, 140)
+		global_position.x += vel_x
+	global_position.y = target_position.y + sin(Time.get_ticks_msec() * 0.0015 + float_offset) * 1.2
+	if floating_away:
+		disappear_timer -= delta
+		if disappear_timer < 0:
+			queue_free()
+
+func start_float_towards(pos: Vector2) -> void:
+	var start_pos: Vector2 = Vector2(sign(pos.x) * 300, pos.y)
+	global_position = start_pos
+	target_position = pos
+
+func float_away() -> void:
+	floating_away = true
+	var end_pos: Vector2 = Vector2(sign(target_position.x) * 300, target_position.y)
+	target_position = end_pos
+	click_area.queue_free()
 
 ## Initialize this balloon from a blueprint variation, setting the texture and
 ## other data.
@@ -61,6 +84,14 @@ func click_input(viewport: Viewport, event: InputEvent, shape_idx: int) -> void:
 		if mouse_event.button_index == MOUSE_BUTTON_LEFT \
 			and mouse_event.is_pressed():
 			on_click.emit()
+
+## Get the price after applying modifiers (Right now just the bank)
+func adjusted_price() -> int:
+	var scale:float = 1
+	for building in grid.buildings:
+		if building.bonus is Bank:
+			scale *= building.bonus.get_scale_factor(blueprint)
+	return price * scale
 
 ## Called when this balloon is clicked on (when eligible)
 signal on_click()

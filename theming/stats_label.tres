@@ -1,0 +1,14 @@
+[gd_resource type="LabelSettings" load_steps=3 format=3 uid="uid://d3ug6h3ibb458"]
+
+[ext_resource type="FontFile" uid="uid://c685qb4m7qjc" path="res://fonts/rubik.ttf" id="1_mioms"]
+
+[sub_resource type="FontVariation" id="FontVariation_0g0ng"]
+base_font = ExtResource("1_mioms")
+variation_opentype = {
+2003265652: 400
+}
+
+[resource]
+line_spacing = 15.0
+font = SubResource("FontVariation_0g0ng")
+font_size = 42

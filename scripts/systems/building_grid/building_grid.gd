@@ -93,6 +93,7 @@ func start_placing(new_building: Building) -> void:
 	add_child(new_building)
 	push_timer = MAX_PUSH_TIMER
 	guide.show()
+	_moving_camera.start_placing(new_building)
 
 ## Called every frame while placing a building.
 func placing_process(delta: float) -> void:
@@ -338,3 +339,25 @@ func spawn_particles(variation: ParticleType) -> void:
 			particles.global_position = top_corner_of_space(grid_xy)
 			particles.global_position += Vector2(10, 10)
 			particles.emitting = true
+
+# Destroy the list of buildings, and play the given effect. Used in natural disasters
+func destroy_buildings(to_destroy: Array[Building], effect_scene: PackedScene) -> void:
+	buildings = buildings.filter(
+		func(building: Building) -> bool:
+			return building not in to_destroy
+	)
+
+	for building: Building in to_destroy:
+		for x: int in range(building.grid.dimensions.x):
+			for y: int in range(building.grid.dimensions.y):
+				if building.grid.at(Vector2(x, y)) == 1:
+					var effect = effect_scene.instantiate()
+					add_sibling(effect)
+
+					var coords = Vector2i(x, y) + building.pos_coords
+					var top_corner = top_corner_of_space(coords)
+					effect.global_position = top_corner
+
+		building.queue_free()
+
+	build_grid()
