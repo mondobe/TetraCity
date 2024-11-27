@@ -33,6 +33,7 @@ func get_disaster_info_text() -> void:
 
 func init_random_disaster() -> void:
 	var disaster_script_path: String = _disaster_scripts.pick_random()
+	SavedStats.setNaturalDisaster(disaster_script_path)
 	var disaster_script: Script = load(disaster_script_path)
 	disaster.set_script(disaster_script)
 	if disaster.has_method("init"):
