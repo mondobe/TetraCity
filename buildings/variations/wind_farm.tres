@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://dxchdih8r7mnw"]
+
+[ext_resource type="Texture2D" uid="uid://bgugjwhf08mb8" path="res://sprites/ui/portraits/birdle.png" id="1_b6thy"]
+[ext_resource type="Resource" uid="uid://x7obthv6pdcy" path="res://buildings/solar_farm.tres" id="2_76t2o"]
+[ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="3_x3m6p"]
+[ext_resource type="Texture2D" uid="uid://cvse6vhj21aw2" path="res://sprites/buildings/wind_farm.png" id="4_40nfw"]
+
+[resource]
+script = ExtResource("3_x3m6p")
+sprite = ExtResource("4_40nfw")
+squares = "OO.
+.OO
+..."
+center_coords = Vector2i(1, 1)
+center_mode = 1
+kick_mode = 0
+building_name = "Wind Farm"
+blueprint = ExtResource("2_76t2o")
+NPCDialog = Array[String](["Mmm... the wind over the sea is so beautiful! The sand in your toes! The discarded fries!", "Bird costume? What are you talking about?", "Wind is a good omen. With wind comes seagulls! And golf balls! And, now, electricity!"])
+NPCImage = ExtResource("1_b6thy")
+NPCName = "Birdle"

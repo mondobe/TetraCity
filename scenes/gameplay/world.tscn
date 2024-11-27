@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=61 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="3_113pp"]
 [ext_resource type="Texture2D" uid="uid://b7xoss14ph6pv" path="res://sprites/environment/groundBottom.png" id="3_ku6pw"]
 [ext_resource type="Texture2D" uid="uid://bk3mcifbo00ob" path="res://sprites/environment/clouds.png" id="5_0j3lg"]
+[ext_resource type="Texture2D" path="res://sprites/environment/birds.png" id="7_rad58"]
 [ext_resource type="Resource" uid="uid://bas3a8n65ds1" path="res://buildings/variations/city_hall.tres" id="8_gjekm"]
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_grid.gd" id="8_yumsi"]
 [ext_resource type="PackedScene" uid="uid://cmoks1w008liq" path="res://scenes/gameplay/building.tscn" id="9_teedr"]
@@ -125,6 +126,18 @@ region_enabled = true
 region_rect = Rect2(0, 0, 2000, 2000)
 script = ExtResource("3_113pp")
 drift_x = 12.0
+drift_y_amp = 8.0
+drift_y_freq = 0.001
+
+[node name="ScrollingBirds" type="Sprite2D" parent="BackgroundEffects"]
+z_index = -2
+texture_repeat = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("7_rad58")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 2000)
+script = ExtResource("3_113pp")
+drift_x = 20.0
 drift_y_amp = 8.0
 drift_y_freq = 0.001
 

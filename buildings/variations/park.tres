@@ -8,6 +8,12 @@
 [resource]
 script = ExtResource("2_1tkkh")
 sprite = ExtResource("3_l7xma")
+squares = "....
+.OO.
+...."
+center_coords = Vector2i(1, 1)
+center_mode = 1
+kick_mode = 0
 building_name = "Park"
 blueprint = ExtResource("1_fhtr8")
 NPCDialog = Array[String](["This is a park", "Very useful. Probably the best building in the game"])

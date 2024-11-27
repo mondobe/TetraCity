@@ -8,6 +8,12 @@
 [resource]
 script = ExtResource("2_5pm6u")
 sprite = ExtResource("3_yiuo5")
+squares = ".O.
+OOO
+..."
+center_coords = Vector2i(1, 1)
+center_mode = 1
+kick_mode = 0
 building_name = "City Hall"
 blueprint = ExtResource("1_wiphg")
 NPCDialog = Array[String](["Ah, you made it, Madam Mayor! Go ahead and place the City Hall building wherever you want."])

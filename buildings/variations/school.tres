@@ -8,6 +8,13 @@
 [resource]
 script = ExtResource("2_6rxls")
 sprite = ExtResource("3_6c7c4")
+squares = "....
+.OO.
+.OO.
+...."
+center_coords = Vector2i(2, 2)
+center_mode = 0
+kick_mode = 0
 building_name = "School"
 blueprint = ExtResource("1_ghnt4")
 NPCDialog = Array[String](["This is a school", "It's a institution of learning and irnociallym, you want to buy it in the late game"])

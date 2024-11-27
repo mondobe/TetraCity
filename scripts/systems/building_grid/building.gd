@@ -48,7 +48,7 @@ var times_church_boosted: int
 func init_from_blueprint_variation(variation: BuildingVariation) -> void:
 	self.blueprint = variation.blueprint
 	self.variation = variation
-	self.grid = BuildingGrid.byte_grid_from_string(blueprint.squares)
+	self.grid = BuildingGrid.byte_grid_from_string(variation.squares)
 
 	sprite = $Sprite2D
 	sprite.texture = variation.sprite
@@ -60,8 +60,8 @@ func init_from_blueprint_variation(variation: BuildingVariation) -> void:
 ## Move the Sprite2D child to the correct position and offset for rotation
 func _init_sprite() -> void:
 	sprite.centered = false
-	var center_px = blueprint.center_coords * BuildingGrid.GRID_SPACE_SIZE
-	if blueprint.center_mode == CenterMode.CENTER:
+	var center_px = variation.center_coords * BuildingGrid.GRID_SPACE_SIZE
+	if variation.center_mode == CenterMode.CENTER:
 		center_px += Vector2i(1, 1) * (BuildingGrid.GRID_SPACE_SIZE / 2)
 	sprite.offset = -center_px
 	sprite.position = center_px
@@ -80,7 +80,7 @@ func set_origin_coords(coords: Vector2i) -> void:
 ## Rotate the building in the specified direction
 func rotate_building(dir: ClockDirection) -> void:
 	# Update grid
-	grid = rotate_grid_around(grid, blueprint.center_coords, blueprint.center_mode, dir)
+	grid = rotate_grid_around(grid, variation.center_coords, variation.center_mode, dir)
 
 	# Rotate sprite
 	var cw = dir == CLOCKWISE
@@ -142,4 +142,4 @@ func get_adjacent_buildings() -> Array:
 	return indices.map(func(i): return building_grid.buildings[i])
 
 func get_center_position() -> Vector2:
-	return global_position + Vector2(blueprint.center_coords * building_grid.GRID_SPACE_SIZE)
+	return global_position + Vector2(variation.center_coords * building_grid.GRID_SPACE_SIZE)

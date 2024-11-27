@@ -1,15 +1,22 @@
 [gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://blctvydks2h24"]
 
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="1_3jvir"]
+[ext_resource type="Texture2D" uid="uid://c6hh22olsptvo" path="res://sprites/ui/portraits/bryan.png" id="1_4x3tg"]
 [ext_resource type="Resource" uid="uid://bh0s6jhfgvuwv" path="res://buildings/apartment.tres" id="1_11ynu"]
-[ext_resource type="Texture2D" uid="uid://cgpcvb844wi6" path="res://sprites/test/icon.svg" id="1_s3bq5"]
 [ext_resource type="Texture2D" uid="uid://b4wejql45gxc2" path="res://sprites/buildings/apartments.png" id="3_pbyl4"]
 
 [resource]
 script = ExtResource("1_3jvir")
 sprite = ExtResource("3_pbyl4")
+squares = "....
+OOOO
+....
+...."
+center_coords = Vector2i(2, 2)
+center_mode = 0
+kick_mode = 1
 building_name = "Apartment"
 blueprint = ExtResource("1_11ynu")
 NPCDialog = Array[String](["Hey! Check out this brand-new apartment. It comes fully furnished, super spacious, and really cheap!", "Hello, Madam Mayor! I'm selling this apartment with all the newest amenities. Any good city needs great housing!"])
-NPCImage = ExtResource("1_s3bq5")
+NPCImage = ExtResource("1_4x3tg")
 NPCName = "Bryan"

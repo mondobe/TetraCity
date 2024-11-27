@@ -189,7 +189,7 @@ func test_rotate_building(building: Building, direction: ClockDirection) -> bool
 		var t_index: int = step + building.rotation_value * 5
 		var translation: Vector2i = (
 				NORMAL_KICK_TRANSLATIONS[t_index]
-				if building.blueprint.kick_mode == Building.KickMode.NORMAL else
+				if building.variation.kick_mode == Building.KickMode.NORMAL else
 				LONG_KICK_TRANSLATIONS[t_index])
 		if direction == COUNTERCLOCKWISE:
 			translation = -translation

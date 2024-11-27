@@ -8,6 +8,12 @@
 [resource]
 script = ExtResource("2_sex6l")
 sprite = ExtResource("3_a6n15")
+squares = "OOO
+OOO
+OOO"
+center_coords = Vector2i(1, 1)
+center_mode = 1
+kick_mode = 0
 building_name = "Nuclear Reactor"
 blueprint = ExtResource("1_xlphn")
 NPCDialog = Array[String](["This is a nuclear reactor", "you should buy this since it wins you the game"])

@@ -8,6 +8,12 @@
 [resource]
 script = ExtResource("2_0mg7q")
 sprite = ExtResource("3_fduiv")
+squares = ".OO
+OO.
+..."
+center_coords = Vector2i(1, 1)
+center_mode = 1
+kick_mode = 0
 building_name = "Solar Farm"
 blueprint = ExtResource("1_j4nx5")
 NPCDialog = Array[String](["This is a solar farm", "These are very powerful and you should get a few. Clean energy is great afterall"])

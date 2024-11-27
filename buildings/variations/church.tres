@@ -8,6 +8,12 @@
 [resource]
 script = ExtResource("1_isfqw")
 sprite = ExtResource("4_bny7u")
+squares = "..O
+OOO
+..."
+center_coords = Vector2i(1, 1)
+center_mode = 1
+kick_mode = 0
 building_name = "Church"
 blueprint = ExtResource("2_w2mri")
 NPCDialog = Array[String](["<NPC Church Dialogue>"])

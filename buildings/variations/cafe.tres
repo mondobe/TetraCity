@@ -8,6 +8,13 @@
 [resource]
 script = ExtResource("2_pja3x")
 sprite = ExtResource("3_44nr0")
+squares = "....
+..O.
+.OO.
+...."
+center_coords = Vector2i(2, 2)
+center_mode = 0
+kick_mode = 0
 building_name = "Café"
 blueprint = ExtResource("1_64t5p")
 NPCDialog = Array[String](["I'm selling you a cafe", "These messages are picked at ranodm"])

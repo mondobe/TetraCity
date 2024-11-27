@@ -8,6 +8,13 @@
 [resource]
 script = ExtResource("3_hk1ct")
 sprite = ExtResource("4_tfv2d")
+squares = "....
+.O..
+.OO.
+...."
+center_coords = Vector2i(2, 2)
+center_mode = 0
+kick_mode = 0
 building_name = "Bank"
 blueprint = ExtResource("2_v3dmh")
 NPCDialog = Array[String](["I'm selling you a bank", "These messages are picked at the bank store"])

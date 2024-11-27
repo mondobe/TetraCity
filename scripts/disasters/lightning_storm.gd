@@ -63,6 +63,8 @@ func lightning_strike() -> void:
 	for curr: Vector2i in get_coords(tallest):
 		if not curr.x in cols:
 			cols.append(curr.x)
+	if cols.is_empty():
+		return
 	var col: int = cols.pick_random()
 
 	# Get array of buildings that contain the column
