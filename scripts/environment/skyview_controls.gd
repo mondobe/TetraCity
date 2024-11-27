@@ -107,9 +107,6 @@ func buy_button(box: NpcDialogueBox) -> void:
 	_balloon_spawn_ai.remove_balloon(box.balloon, true)
 	_balloon_spawn_ai.update_weights(box.variation.blueprint.name)
 
-	if box.balloon.blueprint == church:
-		_world_stats.increment_church_count()
-
 	box.queue_free()
 	end_day_button.show()
 	click_sfx.play()
