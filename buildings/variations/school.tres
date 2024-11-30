@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://65ueslr70uo"]
 
-[ext_resource type="Texture2D" uid="uid://cgpcvb844wi6" path="res://sprites/test/icon.svg" id="1_8b16h"]
+[ext_resource type="Texture2D" uid="uid://dq4qxrad0lhob" path="res://sprites/ui/portraits/arthur.png" id="1_64yhe"]
 [ext_resource type="Resource" uid="uid://du6t0xow0k5db" path="res://buildings/school.tres" id="1_ghnt4"]
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="2_6rxls"]
 [ext_resource type="Texture2D" uid="uid://bwkstq2h01f78" path="res://sprites/buildings/school.png" id="3_6c7c4"]
@@ -17,6 +17,6 @@ center_mode = 0
 kick_mode = 0
 building_name = "School"
 blueprint = ExtResource("1_ghnt4")
-NPCDialog = Array[String](["This is a school", "It's a institution of learning and irnociallym, you want to buy it in the late game"])
-NPCImage = ExtResource("1_8b16h")
-NPCName = "School"
+NPCDialog = Array[String](["If I didn't know any better, I'd suspect you're just out of school yourself.", "What parents in their right mind would take their kids to a place like this? Beam me back down...", "Get me down from here... I've seen enough already."])
+NPCImage = ExtResource("1_64yhe")
+NPCName = "Arthur"

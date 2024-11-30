@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://bsegeoaejh2yl"]
 
-[ext_resource type="Texture2D" uid="uid://cgpcvb844wi6" path="res://sprites/test/icon.svg" id="1_4i4ra"]
+[ext_resource type="Texture2D" uid="uid://e4gfo3hav2k" path="res://sprites/ui/portraits/raina.png" id="1_6pgpf"]
 [ext_resource type="Resource" uid="uid://cfyagiutao5c2" path="res://buildings/park.tres" id="1_fhtr8"]
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="2_1tkkh"]
 [ext_resource type="Texture2D" uid="uid://c8v46qs671x27" path="res://sprites/buildings/park.png" id="3_l7xma"]
@@ -16,6 +16,6 @@ center_mode = 1
 kick_mode = 0
 building_name = "Park"
 blueprint = ExtResource("1_fhtr8")
-NPCDialog = Array[String](["This is a park", "Very useful. Probably the best building in the game"])
-NPCImage = ExtResource("1_4i4ra")
-NPCName = "Park"
+NPCDialog = Array[String](["Have you put any thought into the ecosystem of this city? There could be tons of invasive species up here...", "I'm going to pretend I don't notice the trail of black smoke behind this island.", "Where did you get the dirt for this island, anyway? There could be endangered prarie dogs in this soil!"])
+NPCImage = ExtResource("1_6pgpf")
+NPCName = "Raina"

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://bhxuoe0d6x3u1"]
 
+[ext_resource type="Texture2D" uid="uid://blssse8vln3bp" path="res://sprites/ui/portraits/yan.png" id="1_7vm87"]
 [ext_resource type="Resource" uid="uid://x7obthv6pdcy" path="res://buildings/solar_farm.tres" id="1_j4nx5"]
-[ext_resource type="Texture2D" uid="uid://cgpcvb844wi6" path="res://sprites/test/icon.svg" id="1_mqd7h"]
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="2_0mg7q"]
 [ext_resource type="Texture2D" uid="uid://nuyyxnwviias" path="res://sprites/buildings/solar_farm2.png" id="3_fduiv"]
 
@@ -16,6 +16,6 @@ center_mode = 1
 kick_mode = 0
 building_name = "Solar Farm"
 blueprint = ExtResource("1_j4nx5")
-NPCDialog = Array[String](["This is a solar farm", "These are very powerful and you should get a few. Clean energy is great afterall"])
-NPCImage = ExtResource("1_mqd7h")
-NPCName = "Solar Farm"
+NPCDialog = Array[String](["This tower harnesses the unmatched power of the sun! I mean... building. Not tower.", "This baby's slayed more scarabs than you can shake a staff at!", "I'll shave 20 coins off the price if you eat this rock."])
+NPCImage = ExtResource("1_7vm87")
+NPCName = "Yan"

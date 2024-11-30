@@ -6,12 +6,6 @@
 [resource]
 script = ExtResource("2_hwehq")
 bonus = ExtResource("1_d2s1j")
-squares = "....
-.OO.
-...."
-center_coords = Vector2i(1, 1)
-center_mode = 1
-kick_mode = 0
 name = "park"
 description = "Earns 1 coin for each adjacent building."
 variations = Array[String](["park"])

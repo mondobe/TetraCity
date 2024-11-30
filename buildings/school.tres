@@ -6,13 +6,6 @@
 [resource]
 script = ExtResource("2_0wjmd")
 bonus = ExtResource("1_qjbab")
-squares = "....
-.OO.
-.OO.
-...."
-center_coords = Vector2i(2, 2)
-center_mode = 0
-kick_mode = 0
 name = "school"
 description = "Every 5 days, earns one coin for every single building in the city."
 variations = Array[String](["school"])
