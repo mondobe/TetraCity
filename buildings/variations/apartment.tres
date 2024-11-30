@@ -17,6 +17,6 @@ center_mode = 0
 kick_mode = 1
 building_name = "Apartment"
 blueprint = ExtResource("1_11ynu")
-NPCDialog = Array[String](["Hey! Check out this brand-new apartment. It comes fully furnished, super spacious, and really cheap!", "Hello, Madam Mayor! I'm selling this apartment with all the newest amenities. Any good city needs great housing!"])
+NPCDialog = Array[String](["Hey! Check out this brand-new apartment. It comes fully furnished, super spacious, and really cheap!", "Hello, Mayor! I'm selling this apartment with all the newest amenities. Any good city needs great housing!"])
 NPCImage = ExtResource("1_4x3tg")
 NPCName = "Bryan"
