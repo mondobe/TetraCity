@@ -114,11 +114,13 @@ func remove_balloon(balloon: Balloon, immediate: bool) -> void:
 
 func choose_building() -> BuildingBlueprint:
 	var weights: WeightedRandom = adjusted_building_weights(building_weights)
-	print(weights.choices)
 	var building = weights.get_random()
 
 	var blueprint: BuildingBlueprint = building_blueprint_from_name(building)
 	if blueprint.first_spawning_day > _world_stats.day:
+		return choose_building()
+	if (blueprint.name == "solar_farm"
+		and buildings_in_world.get(blueprint, 0) >= 2):
 		return choose_building()
 	return blueprint
 

@@ -128,12 +128,14 @@ drift_x = 12.0
 drift_y_amp = 8.0
 drift_y_freq = 0.001
 
-[node name="BuildingGrid" type="Node2D" parent="." node_paths=PackedStringArray("_moving_camera", "_sky_view_controls", "world_stats")]
+[node name="BuildingGrid" type="Node2D" parent="." node_paths=PackedStringArray("_moving_camera", "_sky_view_controls", "_balloon_spawn_ai", "world_stats", "_hud_container")]
 position = Vector2(-140, -160)
 script = ExtResource("8_yumsi")
 _moving_camera = NodePath("../MovingCamera")
 _sky_view_controls = NodePath("../SkyViewControls")
+_balloon_spawn_ai = NodePath("../BalloonSpawnAI")
 world_stats = NodePath("../WorldStats")
+_hud_container = NodePath("../PixelUILayer/HUDContainer")
 _test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("8_gjekm"), ExtResource("9_uh8o4")])
 _initial_dimensions = Vector2i(14, 14)
 building = ExtResource("9_teedr")
@@ -290,14 +292,14 @@ world_stats = NodePath("../WorldStats")
 coin_label = ExtResource("30_uter3")
 static_ui_layer = NodePath("../StaticSmallPixelUILayer")
 
-[node name="SkyViewControls" type="Node" parent="." node_paths=PackedStringArray("_moving_camera", "_dialogue_box_spawner", "_building_grid", "_world_stats", "_balloon_spawn_ai", "end_day_button")]
+[node name="SkyViewControls" type="Node" parent="." node_paths=PackedStringArray("_moving_camera", "_dialogue_box_spawner", "_building_grid", "_world_stats", "_balloon_spawn_ai", "_hud_container")]
 script = ExtResource("2_ymg3g")
 _moving_camera = NodePath("../MovingCamera")
 _dialogue_box_spawner = NodePath("../DialogueBoxSpawner")
 _building_grid = NodePath("../BuildingGrid")
 _world_stats = NodePath("../WorldStats")
 _balloon_spawn_ai = NodePath("../BalloonSpawnAI")
-end_day_button = NodePath("../PixelUILayer/HUDContainer/MiddleArea/EndDayButton")
+_hud_container = NodePath("../PixelUILayer/HUDContainer")
 _test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("9_uh8o4"), ExtResource("8_gjekm"), ExtResource("17_072nv"), ExtResource("18_0tkei"), ExtResource("19_p4iij"), ExtResource("20_q54bt"), ExtResource("21_xkiqr")])
 
 [node name="ClickSfx" type="AudioStreamPlayer2D" parent="SkyViewControls"]

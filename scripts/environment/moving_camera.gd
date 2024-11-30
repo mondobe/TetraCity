@@ -31,8 +31,14 @@ enum CameraMode { GROUND, SKY, BUILDING, PLACING }
 
 @onready var _current_building: Building = null
 
+@onready var screen_shake_time: float = 0
+
+@onready var screen_shake_offset: Vector2 = Vector2.ZERO
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	global_position -= screen_shake_offset
+
 	# If the user has pressed TAB, toggle between the ground and the sky view.
 	if Input.is_action_just_pressed("ui_focus_next"):
 		toggle_sky_and_ground_view()
@@ -59,6 +65,15 @@ func _process(delta: float) -> void:
 
 	var delta_pos = target_pos - global_position
 	translate(delta_pos * speed * delta)
+
+	screen_shake_time -= delta
+	var ss_time_clamped = max(screen_shake_time, 0)
+	var ss_adjusted = 2 * sqrt(ss_time_clamped)
+	screen_shake_offset = Vector2.from_angle(randf_range(0, 2 * PI)) * ss_adjusted
+	global_position += screen_shake_offset
+
+func shake(time: float) -> void:
+	screen_shake_time = time
 
 ## Called on pressing TAB. Name is self-explanatory
 func toggle_sky_and_ground_view():

@@ -2,6 +2,7 @@ class_name LightningStorm
 extends Node
 
 const splash_scene: PackedScene = preload("res://scenes/effects/lightning_storm/lightning_smash.tscn")
+const bolt_scene: PackedScene = preload("res://scenes/effects/lightning_storm/lightning_strike.tscn")
 const clouds_scene: PackedScene = preload("res://scenes/effects/acid_rain/acid_clouds.tscn")
 
 var clouds: Sprite2D
@@ -10,11 +11,14 @@ const START_DAY: int = 45
 
 var _world_stats: WorldStats
 
+var _moving_camera: MovingCamera
+
 var disaster_name = "Lightning Storm"
 
 func init(world_stats: WorldStats) -> void:
 	clouds = clouds_scene.instantiate()
 	_world_stats = world_stats
+	_moving_camera = world_stats.building_grid._moving_camera
 	add_sibling(clouds)
 
 func get_info_text(day: int) -> String:
@@ -73,3 +77,8 @@ func lightning_strike() -> void:
 		return has_col and (not curr.bonus is CityHall))
 	# Use the splash scene for now
 	building_grid.destroy_buildings(to_destroy, splash_scene)
+	var bolt: AnimatedSprite2D = bolt_scene.instantiate()
+	bolt.global_position = (building_grid.global_position
+		+ Vector2(col + 0.5, peak.call(tallest)) * BuildingGrid.GRID_SPACE_SIZE)
+	add_sibling(bolt)
+	_moving_camera.shake(1)

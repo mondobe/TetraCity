@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dsoaacb6q0r2x"]
+[gd_scene load_steps=3 format=3 uid="uid://dsoaacb6q0r2x"]
 
 [ext_resource type="Texture2D" uid="uid://u7tqs1bfs43f" path="res://sprites/ui/you_lose.png" id="1_d6qym"]
+[ext_resource type="AudioStream" uid="uid://dh7xljh8di687" path="res://music/game_over.mp3" id="2_0uiih"]
 
 [node name="YouLose" type="Control"]
 layout_mode = 3
@@ -19,3 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_d6qym")
 stretch_mode = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_0uiih")
+autoplay = true
