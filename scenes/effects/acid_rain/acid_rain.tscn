@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw3f280eha120"]
+
+[ext_resource type="Texture2D" uid="uid://d1ciy88qn8076" path="res://sprites/disasters/acid_rain/rain.png" id="1_jm5py"]
+[ext_resource type="Script" path="res://scripts/environment/effects/scrolling_rain.gd" id="2_420qn"]
+
+[node name="AcidRain" type="Sprite2D"]
+z_index = -2
+texture_repeat = 2
+texture = ExtResource("1_jm5py")
+region_enabled = true
+region_rect = Rect2(0, 0, 2000, 2000)
+script = ExtResource("2_420qn")
+drift = Vector2(4.973, -18.547)

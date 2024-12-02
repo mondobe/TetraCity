@@ -5,8 +5,12 @@ const START_DAY: int = 45
 
 const splash_scene: PackedScene = preload("res://scenes/effects/acid_rain/acid_splash.tscn")
 const clouds_scene: PackedScene = preload("res://scenes/effects/acid_rain/acid_clouds.tscn")
+const rain_scene: PackedScene = preload("res://scenes/effects/acid_rain/acid_rain.tscn")
+const sfx_scene: PackedScene = preload("res://scenes/effects/acid_rain/rain_sfx.tscn")
 
 var clouds: Sprite2D
+var rain: Node2D
+var sfx: Node2D
 
 var _world_stats: WorldStats
 
@@ -42,6 +46,10 @@ func on_new_day(day: int) -> void:
 			acid_rain()
 	else:
 		clouds.self_modulate = Color(1, 1, 1, 0)
+		if day == START_DAY + 1:
+			sfx.queue_free()
+			rain.queue_free()
+
 
 func acid_rain() -> void:
 	var building_grid: BuildingGrid = get_parent().building_grid
@@ -52,3 +60,8 @@ func acid_rain() -> void:
 			rained_on.append(building)
 
 	building_grid.destroy_buildings(rained_on, splash_scene)
+
+	sfx = sfx_scene.instantiate()
+	add_sibling(sfx)
+	rain = rain_scene.instantiate()
+	add_sibling(rain)

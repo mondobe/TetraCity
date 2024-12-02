@@ -6,16 +6,10 @@
 [resource]
 script = ExtResource("1_mokn3")
 bonus = ExtResource("1_eklop")
-squares = "..O
-OOO
-..."
-center_coords = Vector2i(1, 1)
-center_mode = 1
-kick_mode = 0
 name = "church"
 description = "Increases the chances of having more options of buildings to buy per day.
 These additional buildings are also more likely to favor those which neighbor a church."
-variations = Array[String](["church"])
+variations = Array[String](["church", "cathedral", "mosque", "synagogue"])
 first_spawning_day = 4
 balloon_lifetime = 2
 starting_price = 14.0

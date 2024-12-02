@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://bsc7nvn07wp7m"]
+
+[ext_resource type="Texture2D" uid="uid://bvwr805h584n1" path="res://sprites/ui/portraits/reggie.png" id="1_okj44"]
+[ext_resource type="Resource" uid="uid://so3ksyoffthl" path="res://buildings/church.tres" id="2_omes2"]
+[ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="3_hprjb"]
+[ext_resource type="Texture2D" uid="uid://dch7j4pd41ok5" path="res://sprites/buildings/cathedral.png" id="4_8gbkx"]
+
+[resource]
+script = ExtResource("3_hprjb")
+sprite = ExtResource("4_8gbkx")
+squares = "..O
+OOO
+..."
+center_coords = Vector2i(1, 1)
+center_mode = 1
+kick_mode = 0
+building_name = "Cathedral"
+blueprint = ExtResource("2_omes2")
+NPCDialog = Array[String](["I've got a lot of friends at home who are excited to live here! Let's make it happen!", "The city's looking great so far! I'm praying you and everyone else stays safe."])
+NPCImage = ExtResource("1_okj44")
+NPCName = "Marco"

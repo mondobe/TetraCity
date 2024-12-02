@@ -3,6 +3,7 @@ extends Node
 
 const splash_scene: PackedScene = preload("res://scenes/effects/lightning_storm/lightning_smash.tscn")
 const bolt_scene: PackedScene = preload("res://scenes/effects/lightning_storm/lightning_strike.tscn")
+const sfx_scene: PackedScene = preload("res://scenes/effects/lightning_storm/thunder.tscn")
 const clouds_scene: PackedScene = preload("res://scenes/effects/acid_rain/acid_clouds.tscn")
 
 var clouds: Sprite2D
@@ -82,3 +83,6 @@ func lightning_strike() -> void:
 		+ Vector2(col + 0.5, peak.call(tallest)) * BuildingGrid.GRID_SPACE_SIZE)
 	add_sibling(bolt)
 	_moving_camera.shake(1)
+
+	var sfx: Node2D = sfx_scene.instantiate()
+	add_sibling(sfx)

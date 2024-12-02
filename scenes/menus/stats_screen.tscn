@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://du1xrjqm00i0b"]
+[gd_scene load_steps=5 format=3 uid="uid://du1xrjqm00i0b"]
 
 [ext_resource type="Script" path="res://scripts/ui/stats_screen.gd" id="1_a1ndk"]
 [ext_resource type="Theme" uid="uid://cou1oxt1vsf13" path="res://theming/hover_ui.tres" id="2_ri8ms"]
 [ext_resource type="FontFile" uid="uid://c685qb4m7qjc" path="res://fonts/rubik.ttf" id="3_00b1y"]
-[ext_resource type="AudioStream" uid="uid://dohlrp7nf0f34" path="res://music/win_theme11-22-24.mp3" id="4_tbw4b"]
 
 [sub_resource type="FontVariation" id="FontVariation_ps5rv"]
 base_font = ExtResource("3_00b1y")
@@ -102,9 +101,5 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 50
 text = "Return to Title"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_tbw4b")
-autoplay = true
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_play_again_button_pressed"]
