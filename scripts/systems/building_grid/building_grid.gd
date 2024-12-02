@@ -39,8 +39,14 @@ enum ParticleType {HARD, SOFT}
 ## The sky view controls.
 @export var _sky_view_controls: SkyViewControls
 
+## The balloon spawn AI
+@export var _balloon_spawn_ai: BalloonSpawnAI
+
 ## The world stats.
 @export var world_stats: WorldStats
+
+## Controls the pixel UI layer.
+@export var _hud_container: HudContainer
 
 ## Debug variable for what buildings can be placed when you press SPACE.
 @export var _test_variations: Array[BuildingVariation]
@@ -94,6 +100,7 @@ func start_placing(new_building: Building) -> void:
 	push_timer = MAX_PUSH_TIMER
 	guide.show()
 	_moving_camera.start_placing(new_building)
+	_hud_container.hide_end_day()
 
 ## Called every frame while placing a building.
 func placing_process(delta: float) -> void:
@@ -118,8 +125,10 @@ func placing_process(delta: float) -> void:
 			continue
 		if num_drops > 0:
 			sfx.play_hard_drop()
+			_moving_camera.shake(0.2)
 		if num_drops > 3:
 			spawn_particles(ParticleType.HARD);
+			_moving_camera.shake(0.5)
 
 		push_timer = MAX_PUSH_TIMER
 
@@ -140,7 +149,10 @@ func placing_process(delta: float) -> void:
 			sfx.play_building_move()
 
 	# If the push timer is below zero, stop moving the building
-	push_timer -= delta
+	if world_stats.day == 1:
+		push_timer -= delta * 0.6
+	else:
+		push_timer -= delta
 	if push_timer < 0:
 		if test_move_building(placing_building, Vector2i(0, 1)):
 			sfx.play_gravity()
@@ -155,6 +167,9 @@ func done_placing() -> void:
 	spawn_particles(ParticleType.SOFT);
 	build_grid()
 	placing_building.done_placing()
+	if placing_building.bonus is CityHall:
+		_hud_container.end_day_unlocked = true
+	_hud_container.show_end_day()
 	placing_building = null
 	_sky_view_controls.done_placing()
 	guide.hide()
@@ -359,5 +374,6 @@ func destroy_buildings(to_destroy: Array[Building], effect_scene: PackedScene) -
 					effect.global_position = top_corner
 
 		building.queue_free()
+		_balloon_spawn_ai.buildings_in_world[building.blueprint] -= 1;
 
 	build_grid()

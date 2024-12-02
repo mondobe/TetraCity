@@ -16,7 +16,7 @@ extends Node
 
 @export var _balloon_spawn_ai: BalloonSpawnAI
 
-@export var end_day_button: TextureButton
+@export var _hud_container: HudContainer
 
 ## The building variations that can randomly spawn upon pressing SPACE.
 @export var _test_variations: Array[BuildingVariation]
@@ -90,7 +90,7 @@ func balloon_dialogue(balloon: Balloon) -> void:
 	box.buy.connect(func(): buy_button(box))
 	box.ignore.connect(func(): ignore_button(box))
 	_npc_dialogue_box = box
-	end_day_button.hide()
+	_hud_container.hide_end_day()
 
 	click_sfx.play()
 
@@ -108,14 +108,14 @@ func buy_button(box: NpcDialogueBox) -> void:
 	_balloon_spawn_ai.update_weights(box.variation.blueprint.name)
 
 	box.queue_free()
-	end_day_button.show()
+	_hud_container.show_end_day()
 	click_sfx.play()
 
 ## Hide an undesirable NPC dialogue box (called upon pressing "No, thanks").
 func ignore_button(box: NpcDialogueBox) -> void:
 	close_dialogue()
 	box.queue_free()
-	end_day_button.show()
+	_hud_container.show_end_day()
 
 ## Finish placing a bought building.
 func done_placing() -> void:
