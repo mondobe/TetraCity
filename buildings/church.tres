@@ -7,8 +7,8 @@
 script = ExtResource("1_mokn3")
 bonus = ExtResource("1_eklop")
 name = "church"
-description = "Increases the chances of having more options of buildings to buy per day.
-These additional buildings are also more likely to favor those which neighbor a church."
+description = "Increases the chances of new buildings appearing each day.
+These additional buildings are also more likely to favor those which neighbor this one."
 variations = Array[String](["church", "cathedral", "mosque", "synagogue"])
 first_spawning_day = 4
 balloon_lifetime = 2

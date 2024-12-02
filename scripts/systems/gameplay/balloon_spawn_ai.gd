@@ -110,7 +110,6 @@ func remove_balloon(balloon: Balloon, immediate: bool) -> void:
 		balloon.queue_free()
 	else:
 		balloon.float_away()
-	balloons.erase(balloon)
 
 func choose_building() -> BuildingBlueprint:
 	var weights: WeightedRandom = adjusted_building_weights(building_weights)

@@ -105,6 +105,7 @@ func buy_button(box: NpcDialogueBox) -> void:
 	_building_grid.make_and_place(box.variation)
 
 	_balloon_spawn_ai.remove_balloon(box.balloon, true)
+	_balloon_spawn_ai.balloons.erase(box.balloon)
 	_balloon_spawn_ai.update_weights(box.variation.blueprint.name)
 
 	box.queue_free()
