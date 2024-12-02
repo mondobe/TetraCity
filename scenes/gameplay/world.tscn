@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=61 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -44,6 +44,7 @@
 [ext_resource type="Resource" uid="uid://cbd8qt7xqw4v1" path="res://buildings/city_hall.tres" id="28_hpkc4"]
 [ext_resource type="Resource" uid="uid://bh0s6jhfgvuwv" path="res://buildings/apartment.tres" id="29_paan3"]
 [ext_resource type="PackedScene" uid="uid://cr0ovt1ydrnpm" path="res://tech_art/grass.tscn" id="29_trtxd"]
+[ext_resource type="AudioStream" uid="uid://t0o71pgtqpjx" path="res://sound_effects/end_day.mp3" id="30_6h5im"]
 [ext_resource type="PackedScene" uid="uid://dlsi186j032br" path="res://tech_art/grass_flower.tscn" id="30_7vn53"]
 [ext_resource type="Resource" uid="uid://da5icvnicvami" path="res://buildings/nuclear_reactor.tres" id="30_8p0k6"]
 [ext_resource type="AudioStream" uid="uid://drhnluohr4qns" path="res://sound_effects/click.wav" id="30_ph8ko"]
@@ -241,6 +242,10 @@ texture_disabled = ExtResource("22_r5sg8")
 texture_focused = ExtResource("22_r5sg8")
 texture_click_mask = ExtResource("24_wx3v4")
 
+[node name="SFX" type="AudioStreamPlayer" parent="PixelUILayer/HUDContainer/MiddleArea/EndDayButton"]
+stream = ExtResource("30_6h5im")
+volume_db = -15.0
+
 [node name="DescendButton" type="TextureButton" parent="PixelUILayer/HUDContainer"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.352941)
@@ -348,5 +353,6 @@ _disaster_scripts = Array[String](["res://scripts/disasters/acid_rain.gd", "res:
 [node name="Disasters" type="Node" parent="NaturalDisasters"]
 
 [connection signal="pressed" from="PixelUILayer/HUDContainer/AscendButton" to="MovingCamera" method="toggle_sky_and_ground_view"]
+[connection signal="pressed" from="PixelUILayer/HUDContainer/MiddleArea/EndDayButton" to="PixelUILayer/HUDContainer/MiddleArea/EndDayButton/SFX" method="play"]
 [connection signal="pressed" from="PixelUILayer/HUDContainer/MiddleArea/EndDayButton" to="WorldStats" method="end_day_button"]
 [connection signal="pressed" from="PixelUILayer/HUDContainer/DescendButton" to="MovingCamera" method="toggle_sky_and_ground_view"]

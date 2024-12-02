@@ -68,10 +68,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -287.5
+offset_left = -287.0
 offset_top = -232.0
-offset_right = 287.5
-offset_bottom = 297.0
+offset_right = 288.0
+offset_bottom = 344.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_ri8ms")
@@ -105,5 +105,6 @@ text = "Return to Title"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_gp562")
+autoplay = true
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_play_again_button_pressed"]
