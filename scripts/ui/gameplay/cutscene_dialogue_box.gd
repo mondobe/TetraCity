@@ -16,15 +16,15 @@ func set_speaker_text(text: String) -> void:
 
 func set_speaker(text: String) -> void:
 	nameLabel.text = text
-	
+
 func update_size():
 	var yScale = (DisplayServer.window_get_size(0).y) / 5
-	var xScale = DisplayServer.window_get_size(0).x 
+	var xScale = DisplayServer.window_get_size(0).x
 	portrait.size = Vector2(yScale, yScale)
 	portrait.position = Vector2(0, yScale * 5 - yScale)
 	resize_borders(Vector2(xScale - yScale, yScale))
 	rect.position = Vector2(yScale, (yScale * 5) - yScale)
-	label.add_theme_font_size_override("normal_font_size", 55)
+	label.add_theme_font_size_override("normal_font_size", 48)
 	nameContainer.size = Vector2(yScale, rect.size.y / 3)
 	nameContainer.position = Vector2(yScale, yScale * 5 - yScale - nameContainer.size.y / 2)
 	nameLabel.add_theme_font_size_override("normal_font_size", 40)

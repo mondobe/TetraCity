@@ -1,33 +1,64 @@
-[gd_resource type="Resource" script_class="Cutscene" load_steps=9 format=3 uid="uid://cfospeu84vy2o"]
+[gd_resource type="Resource" script_class="Cutscene" load_steps=16 format=3 uid="uid://cfospeu84vy2o"]
 
-[ext_resource type="Texture2D" uid="uid://ck3umphbk182x" path="res://sprites/test/flower_man.png" id="1_q34ci"]
-[ext_resource type="Texture2D" uid="uid://bg15plpij7opp" path="res://sprites/test/lei_world.png" id="1_qbvp3"]
+[ext_resource type="Texture2D" uid="uid://cn7hhgrewvckm" path="res://sprites/ui/cutscenes/opening/hurstZoom.png" id="1_ka6a8"]
 [ext_resource type="Script" path="res://scripts/systems/cutscenes/cutscene.gd" id="1_x51ab"]
 [ext_resource type="Script" path="res://scripts/systems/cutscenes/cutscene_frame.gd" id="2_1e8qj"]
+[ext_resource type="Texture2D" uid="uid://cbg5cmoo7uc20" path="res://sprites/ui/portraits/hurst.png" id="2_ua173"]
+[ext_resource type="Texture2D" uid="uid://parv1cvgqlnk" path="res://sprites/ui/cutscenes/opening/cityItself.png" id="4_d4q4a"]
+[ext_resource type="Texture2D" uid="uid://bxehmeacwqwxq" path="res://sprites/ui/cutscenes/opening/fuelDisplay.png" id="5_g3185"]
+[ext_resource type="Texture2D" uid="uid://doo2qbxoyi5cm" path="res://sprites/ui/cutscenes/opening/balloon.png" id="5_sbp1f"]
+[ext_resource type="Texture2D" uid="uid://l4wutrvq4ukw" path="res://sprites/ui/cutscenes/opening/reactor.png" id="7_cw5ub"]
 
 [sub_resource type="Resource" id="Resource_5rr2n"]
 script = ExtResource("2_1e8qj")
-speaker = "SkyLeia"
-portrait = ExtResource("1_q34ci")
-frame = ExtResource("1_qbvp3")
-dialogue = "Welcome to the Land of SkyLei, traveler!"
+speaker = "Hurst"
+portrait = ExtResource("2_ua173")
+frame = ExtResource("1_ka6a8")
+dialogue = "Greeting, Mayor! Congratulations on the beginning of this extraordinary new adventure!"
 
 [sub_resource type="Resource" id="Resource_ip5qn"]
 script = ExtResource("2_1e8qj")
-speaker = ""
-dialogue = ""
+speaker = "Hurst"
+portrait = ExtResource("2_ua173")
+frame = ExtResource("4_d4q4a")
+dialogue = "There's the floating island - my own design, of course - that will soon become Tetra City!"
 
-[sub_resource type="Resource" id="Resource_3etyf"]
+[sub_resource type="Resource" id="Resource_7vfbh"]
 script = ExtResource("2_1e8qj")
-speaker = ""
-dialogue = ""
+speaker = "Hurst"
+portrait = ExtResource("2_ua173")
+frame = ExtResource("4_d4q4a")
+dialogue = "Of course, it looks a little empty right now... But that's all going to change now that you're here!"
 
 [sub_resource type="Resource" id="Resource_3bui4"]
 script = ExtResource("2_1e8qj")
-speaker = ""
-dialogue = ""
+speaker = "Hurst"
+portrait = ExtResource("2_ua173")
+frame = ExtResource("5_sbp1f")
+dialogue = "No need to worry about construction. All the structures you need will be pre-built and delivered via hot-air balloon!"
+
+[sub_resource type="Resource" id="Resource_rrfgf"]
+script = ExtResource("2_1e8qj")
+speaker = "Hurst"
+portrait = ExtResource("2_ua173")
+frame = ExtResource("5_g3185")
+dialogue = "Now, I should mention that the island has a limited supply of fuel at the moment. You've got enough in the tank for 60 days."
+
+[sub_resource type="Resource" id="Resource_kbbuv"]
+script = ExtResource("2_1e8qj")
+speaker = "Hurst"
+portrait = ExtResource("2_ua173")
+frame = ExtResource("7_cw5ub")
+dialogue = "Luckily, a friend of mine is selling a nuclear reactor for only 1000 coins! If you get one, the island will be set for good."
+
+[sub_resource type="Resource" id="Resource_0mipj"]
+script = ExtResource("2_1e8qj")
+speaker = "Hurst"
+portrait = ExtResource("2_ua173")
+frame = ExtResource("1_ka6a8")
+dialogue = "Until then, I'll leave you to it! Just make me some money! Um, I mean... build me a city!"
 
 [resource]
 script = ExtResource("1_x51ab")
 next_level = "res://scenes/gameplay/world.tscn"
-frames = Array[ExtResource("2_1e8qj")]([SubResource("Resource_5rr2n"), SubResource("Resource_ip5qn"), SubResource("Resource_3etyf"), SubResource("Resource_3bui4")])
+frames = Array[ExtResource("2_1e8qj")]([SubResource("Resource_5rr2n"), SubResource("Resource_ip5qn"), SubResource("Resource_7vfbh"), SubResource("Resource_3bui4"), SubResource("Resource_rrfgf"), SubResource("Resource_kbbuv"), SubResource("Resource_0mipj")])

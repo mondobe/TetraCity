@@ -7,7 +7,7 @@
 script = ExtResource("2_xrgr3")
 bonus = ExtResource("1_36wbt")
 name = "nuclear_reactor"
-description = "Supercharges all nearby buildings, causing them to make 5 times as much money!"
+description = "A virtually infinite fuel source for the island. Buy this to win the game!"
 variations = Array[String](["nuclear_reactor"])
 first_spawning_day = 50
 balloon_lifetime = 10000
