@@ -23,6 +23,7 @@ driver/output_latency.web=90
 
 LevelLoader="*res://scripts/systems/loading/level_loader.gd"
 SavedStats="*res://scripts/systems/saved_stats.gd"
+CutsceneLoader="*res://scripts/systems/cutscenes/cutscene_loader.gd"
 
 [display]
 
