@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=60 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="Texture2D" uid="uid://datqvsx5xph6" path="res://sprites/environment/groundTop.png" id="2_l1lou"]

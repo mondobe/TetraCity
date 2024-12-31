@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dsoaacb6q0r2x"]
+[gd_scene load_steps=3 format=3 uid="uid://dsoaacb6q0r2x"]
 
 [ext_resource type="Script" path="res://scripts/ui/stats_screen.gd" id="1_54egk"]
 [ext_resource type="Theme" uid="uid://cou1oxt1vsf13" path="res://theming/hover_ui.tres" id="2_mhveo"]
-[ext_resource type="AudioStream" uid="uid://dh7xljh8di687" path="res://music/game_over.mp3" id="2_rmptw"]
 
 [node name="StatsScreen" type="Control"]
 layout_mode = 3
@@ -78,9 +77,5 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_rmptw")
-autoplay = true
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_play_again_button_pressed"]

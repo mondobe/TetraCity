@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://eayrnwud62wn"]
+[gd_scene load_steps=7 format=3 uid="uid://eayrnwud62wn"]
 
 [ext_resource type="Script" path="res://scripts/ui/title_screen.gd" id="1_bsimy"]
 [ext_resource type="Resource" uid="uid://cfospeu84vy2o" path="res://cutscenes/opening_cutscene.tres" id="2_rcqyn"]
