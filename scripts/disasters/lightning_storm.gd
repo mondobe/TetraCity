@@ -38,6 +38,8 @@ func get_coords(building: Building) -> Array[Vector2i]:
 
 func lightning_strike() -> void:
 	var building_grid: BuildingGrid = get_parent().building_grid
+	if building_grid.buildings.is_empty():
+		return
 
 	# Given some building, find the highest y coordinate (lowest y value) in the building
 	var peak = func(building): return get_coords(building).map(func(vec): return vec.y).min()
@@ -48,7 +50,8 @@ func lightning_strike() -> void:
 	for curr: int in get_coords(tallest):
 		if not curr.x in cols:
 			cols.append(curr.x)
-	var col: int = cols.pick_random()
+	cols.sort()
+	var col: int = cols[cols.size() / 2]
 
 	# Get array of buildings that contain the column
 	var to_destroy: Array[Building] = building_grid.buildings.filter(func(curr): 
