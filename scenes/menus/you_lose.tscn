@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dsoaacb6q0r2x"]
 
-[ext_resource type="Script" path="res://scripts/ui/stats_screen.gd" id="1_54egk"]
+[ext_resource type="Script" path="res://scripts/ui/lose_screen.gd" id="1_66201"]
 [ext_resource type="Theme" uid="uid://cou1oxt1vsf13" path="res://theming/hover_ui.tres" id="2_mhveo"]
 [ext_resource type="AudioStream" uid="uid://dh7xljh8di687" path="res://music/game_over.mp3" id="2_rmptw"]
 
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_54egk")
+script = ExtResource("1_66201")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -62,22 +62,14 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -78.0
+offset_left = -178.5
 offset_top = -120.0
-offset_right = 78.0
+offset_right = 178.5
 offset_bottom = -40.9996
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 50
 text = "Return to Title"
-
-[node name="YouLose" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_rmptw")
