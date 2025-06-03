@@ -1,21 +1,21 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpnbqv1fkfxwy"]
+[gd_scene load_steps=8 format=3 uid="uid://bpnbqv1fkfxwy"]
 
 [ext_resource type="Script" path="res://scripts/ui/settings_screen.gd" id="1_gfto1"]
 [ext_resource type="FontFile" uid="uid://c685qb4m7qjc" path="res://fonts/rubik.ttf" id="1_hmc66"]
 [ext_resource type="Texture2D" uid="uid://vfgrp5seiq7s" path="res://sprites/ui/dialogue_nine_patch.png" id="1_u57oc"]
 [ext_resource type="FontFile" uid="uid://sxhpegxwj6qy" path="res://fonts/verdana.ttf" id="3_g47t5"]
-[ext_resource type="PackedScene" uid="uid://brnmepnd18k8c" path="res://scenes/ui/settings/option_setting.tscn" id="5_c2u1m"]
 [ext_resource type="Theme" uid="uid://cou1oxt1vsf13" path="res://theming/hover_ui.tres" id="5_ofg2w"]
 [ext_resource type="PackedScene" uid="uid://bmpyaq5wnv6el" path="res://scenes/ui/settings/slider_setting.tscn" id="6_3amwi"]
-[ext_resource type="PackedScene" uid="uid://cd3b0x8fttaln" path="res://scenes/ui/settings/check_setting.tscn" id="7_fuwa1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_amg5c"]
 line_spacing = 0.0
 font = ExtResource("3_g47t5")
 font_size = 32
 
-[node name="SettingsScreen" type="Node2D"]
+[node name="SettingsScreen" type="Node2D" node_paths=PackedStringArray("music_slider", "sfx_slider")]
 script = ExtResource("1_gfto1")
+music_slider = NodePath("PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/MusicVolSetting/HSlider")
+sfx_slider = NodePath("PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/SfxVolSetting/HSlider")
 
 [node name="PixelCanvasLayer" type="CanvasLayer" parent="."]
 scale = Vector2(2, 2)
@@ -65,14 +65,25 @@ text = "Settings"
 label_settings = SubResource("LabelSettings_amg5c")
 vertical_alignment = 1
 
-[node name="OptionSetting" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer" instance=ExtResource("5_c2u1m")]
+[node name="MusicVolSetting" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer" instance=ExtResource("6_3amwi")]
 layout_mode = 2
 
-[node name="SliderSetting" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer" instance=ExtResource("6_3amwi")]
+[node name="Label" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/MusicVolSetting/OptionPanel" index="0"]
+text = "Music Volume"
+
+[node name="HSlider" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/MusicVolSetting" index="1"]
+max_value = 1.0
+step = 0.0
+
+[node name="SfxVolSetting" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer" instance=ExtResource("6_3amwi")]
 layout_mode = 2
 
-[node name="CheckSetting" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer" instance=ExtResource("7_fuwa1")]
-layout_mode = 2
+[node name="Label" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/SfxVolSetting/OptionPanel" index="0"]
+text = "Sound Effects Volume"
+
+[node name="HSlider" parent="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/SfxVolSetting" index="1"]
+max_value = 1.0
+step = 0.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -105,8 +116,9 @@ focus_mode = 0
 theme = ExtResource("5_ofg2w")
 text = "Reset Defaults"
 
+[connection signal="value_changed" from="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/MusicVolSetting/HSlider" to="." method="set_music_vol"]
+[connection signal="value_changed" from="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/SfxVolSetting/HSlider" to="." method="set_sfx_vol"]
 [connection signal="pressed" from="CanvasLayer/Buttons/HBoxContainer/BackButton" to="." method="back_to_title"]
 
-[editable path="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/OptionSetting"]
-[editable path="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/SliderSetting"]
-[editable path="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/CheckSetting"]
+[editable path="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/MusicVolSetting"]
+[editable path="PixelCanvasLayer/SettingsWindow/NinePatchRect/VBoxContainer/SfxVolSetting"]

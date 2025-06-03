@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b0nv4ekbjei7n"]
+[gd_scene load_steps=3 format=3 uid="uid://b0nv4ekbjei7n"]
 
 [ext_resource type="AudioStream" uid="uid://c7o5bjphtvrcd" path="res://sound_effects/rain.mp3" id="1_ch1qc"]
+[ext_resource type="Script" path="res://scripts/systems/volume_control.gd" id="2_o5qsw"]
 
 [node name="RainSfx" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_ch1qc")
@@ -8,3 +9,7 @@ volume_db = -3.0
 autoplay = true
 attenuation = 1.50651e-05
 panning_strength = 0.0
+
+[node name="VolumeControl" type="Node" parent="."]
+script = ExtResource("2_o5qsw")
+is_sfx = true

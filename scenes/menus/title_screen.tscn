@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://eayrnwud62wn"]
+[gd_scene load_steps=9 format=3 uid="uid://eayrnwud62wn"]
 
 [ext_resource type="Script" path="res://scripts/ui/title_screen.gd" id="1_bsimy"]
 [ext_resource type="Resource" uid="uid://cfospeu84vy2o" path="res://cutscenes/opening_cutscene.tres" id="2_rcqyn"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="4_tu6lm"]
 [ext_resource type="Texture2D" uid="uid://chuswf7xagqfc" path="res://sprites/ui/final_logo.png" id="5_7jei2"]
 [ext_resource type="AudioStream" uid="uid://c8mm5qn6gafc8" path="res://music/title_theme.mp3" id="6_pxqlc"]
+[ext_resource type="Script" path="res://scripts/systems/volume_control.gd" id="8_fen6m"]
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_bsimy")
@@ -29,35 +30,52 @@ drift_y_freq = 0.001
 
 [node name="UICanvas" type="CanvasLayer" parent="."]
 
-[node name="Buttons" type="HBoxContainer" parent="UICanvas"]
+[node name="StartButton" type="Button" parent="UICanvas"]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -236.5
-offset_top = 153.0
-offset_right = 236.5
-offset_bottom = 221.0
+offset_left = -74.5
+offset_top = 157.0
+offset_right = 74.5
+offset_bottom = 241.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("4_737vl")
+theme_override_font_sizes/font_size = 64
+text = "Start"
+
+[node name="LowerButtons" type="HBoxContainer" parent="UICanvas"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.0
+offset_top = 275.0
+offset_right = 237.0
+offset_bottom = 343.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("4_737vl")
 
-[node name="QuitButton" type="Button" parent="UICanvas/Buttons"]
+[node name="CreditsButton" type="Button" parent="UICanvas/LowerButtons"]
+layout_mode = 2
+theme = ExtResource("4_737vl")
+text = "Credits
+"
+
+[node name="SettingButton" type="Button" parent="UICanvas/LowerButtons"]
+layout_mode = 2
+theme = ExtResource("4_737vl")
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="UICanvas/LowerButtons"]
 layout_mode = 2
 theme = ExtResource("4_737vl")
 text = "Quit
 "
-
-[node name="StartButton" type="Button" parent="UICanvas/Buttons"]
-layout_mode = 2
-theme = ExtResource("4_737vl")
-text = "Start"
-
-[node name="SettingButton" type="Button" parent="UICanvas/Buttons"]
-layout_mode = 2
-theme = ExtResource("4_737vl")
-text = "Settings"
 
 [node name="TextureRect" type="TextureRect" parent="UICanvas"]
 texture_filter = 1
@@ -77,6 +95,10 @@ stream = ExtResource("6_pxqlc")
 autoplay = true
 attenuation = 1e-05
 
-[connection signal="pressed" from="UICanvas/Buttons/QuitButton" to="." method="_on_quit_button_pressed"]
-[connection signal="pressed" from="UICanvas/Buttons/StartButton" to="." method="_on_start_button_pressed"]
-[connection signal="pressed" from="UICanvas/Buttons/SettingButton" to="." method="_on_setting_button_pressed"]
+[node name="VolumeControl" type="Node" parent="AudioStreamPlayer2D"]
+script = ExtResource("8_fen6m")
+
+[connection signal="pressed" from="UICanvas/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="UICanvas/LowerButtons/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="UICanvas/LowerButtons/SettingButton" to="." method="_on_setting_button_pressed"]
+[connection signal="pressed" from="UICanvas/LowerButtons/QuitButton" to="." method="_on_quit_button_pressed"]

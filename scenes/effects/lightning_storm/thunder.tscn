@@ -1,9 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cqwny7vann51a"]
+[gd_scene load_steps=3 format=3 uid="uid://cqwny7vann51a"]
 
 [ext_resource type="AudioStream" uid="uid://hyu7e0eg2prl" path="res://sound_effects/lightning.mp3" id="1_8h2n4"]
+[ext_resource type="Script" path="res://scripts/systems/volume_control.gd" id="2_h6x3m"]
 
 [node name="Thunder" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_8h2n4")
 autoplay = true
+
+[node name="VolumeControl" type="Node" parent="."]
+script = ExtResource("2_h6x3m")
+is_sfx = true
 
 [connection signal="finished" from="." to="." method="queue_free"]

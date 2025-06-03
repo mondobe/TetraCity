@@ -1,13 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://du1xrjqm00i0b"]
+[gd_scene load_steps=7 format=3 uid="uid://tcc2dnmxfbe2"]
 
-[ext_resource type="Script" path="res://scripts/ui/stats_screen.gd" id="1_a1ndk"]
-[ext_resource type="Theme" uid="uid://cou1oxt1vsf13" path="res://theming/hover_ui.tres" id="2_ri8ms"]
-[ext_resource type="FontFile" uid="uid://c685qb4m7qjc" path="res://fonts/rubik.ttf" id="3_00b1y"]
-[ext_resource type="AudioStream" uid="uid://dohlrp7nf0f34" path="res://music/win_theme11-22-24.mp3" id="4_gp562"]
-[ext_resource type="Script" path="res://scripts/systems/volume_control.gd" id="5_824na"]
+[ext_resource type="Script" path="res://scripts/ui/lose_screen.gd" id="1_yi05i"]
+[ext_resource type="Theme" uid="uid://cou1oxt1vsf13" path="res://theming/hover_ui.tres" id="2_gjosy"]
+[ext_resource type="FontFile" uid="uid://c685qb4m7qjc" path="res://fonts/rubik.ttf" id="3_djspm"]
+[ext_resource type="AudioStream" uid="uid://dohlrp7nf0f34" path="res://music/win_theme11-22-24.mp3" id="4_avjeq"]
+[ext_resource type="Script" path="res://scripts/systems/volume_control.gd" id="5_wgth4"]
 
 [sub_resource type="FontVariation" id="FontVariation_ps5rv"]
-base_font = ExtResource("3_00b1y")
+base_font = ExtResource("3_djspm")
 variation_opentype = {
 2003265652: 500
 }
@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_a1ndk")
+script = ExtResource("1_yi05i")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -40,25 +40,9 @@ offset_top = 15.0
 offset_right = 404.0
 offset_bottom = 134.0
 grow_horizontal = 2
-theme = ExtResource("2_ri8ms")
+theme = ExtResource("2_gjosy")
 theme_type_variation = &"TitleLabel"
-text = "Congratulations!"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="SubTitleLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -767.5
-offset_top = 15.0
-offset_right = 767.5
-offset_bottom = 315.0
-grow_horizontal = 2
-theme = ExtResource("2_ri8ms")
-theme_type_variation = &"SubTitleLabel"
-text = "Thank you for playing Tetra City."
+text = "Credits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -69,24 +53,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -287.0
-offset_top = -232.0
-offset_right = 288.0
-offset_bottom = 344.0
+offset_left = -617.0
+offset_top = -353.0
+offset_right = 618.0
+offset_bottom = 386.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("2_ri8ms")
+theme = ExtResource("2_gjosy")
 theme_type_variation = &"RichTextLabel"
 theme_override_constants/line_separation = 12
 theme_override_fonts/normal_font = SubResource("FontVariation_ps5rv")
-theme_override_font_sizes/normal_font_size = 40
+theme_override_font_sizes/normal_font_size = 39
 bbcode_enabled = true
-text = "Final Coin Balance: 430
-Fuel Remaining: 11
-Total Coins Earned: 2763
-Buildings Bought: 19
-Highest CPD: 102
-Natural Disaster: Acid Rain"
+text = "[color=ffe42b]Aiden Maxwell:[/color] Team Lead
+[color=ffe42b]Jade Chiban:[/color] Art
+[color=ffe42b]Peter Chen:[/color] Programming, Tech Art, Music
+[color=ffe42b]Nathan Xie:[/color] Programming, Tech Art, UI Design
+[color=ffe42b]Mykhaylo (Michael) Alekseychyk:[/color] Programming, UI Design, Art
+[color=ffe42b]Yu (Oli) Wang:[/color] Art, Tech Art
+[color=ffe42b]Wesley Fletcher:[/color] Writing
+[color=ffe42b]Kathy Tran:[/color] Art
+[color=ffe42b]Jack Hayley:[/color] Music
+[color=ffe42b]Priyanka Singh:[/color] Concept Art
+"
 
 [node name="ReturnButton" type="Button" parent="."]
 layout_mode = 1
@@ -105,10 +94,10 @@ theme_override_font_sizes/font_size = 50
 text = "Return to Title"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_gp562")
+stream = ExtResource("4_avjeq")
 autoplay = true
 
 [node name="VolumeControl" type="Node" parent="AudioStreamPlayer"]
-script = ExtResource("5_824na")
+script = ExtResource("5_wgth4")
 
 [connection signal="pressed" from="ReturnButton" to="." method="_on_play_again_button_pressed"]

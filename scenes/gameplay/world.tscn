@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=62 format=3 uid="uid://birrxtkg5d3hg"]
 
 [ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/environment/skyview_controls.gd" id="2_ymg3g"]
 [ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="3_113pp"]
 [ext_resource type="Texture2D" uid="uid://b7xoss14ph6pv" path="res://sprites/environment/groundBottom.png" id="3_ku6pw"]
+[ext_resource type="Script" path="res://scripts/systems/volume_control.gd" id="3_vtld6"]
 [ext_resource type="Texture2D" uid="uid://bk3mcifbo00ob" path="res://sprites/environment/clouds.png" id="5_0j3lg"]
 [ext_resource type="Resource" uid="uid://bas3a8n65ds1" path="res://buildings/variations/city_hall.tres" id="8_gjekm"]
 [ext_resource type="Script" path="res://scripts/systems/building_grid/building_grid.gd" id="8_yumsi"]
@@ -100,6 +101,9 @@ hud_container = NodePath("../PixelUILayer/HUDContainer")
 stream = ExtResource("2_is7ov")
 autoplay = true
 
+[node name="VolumeControl" type="Node" parent="MovingCamera/MusicPlayer"]
+script = ExtResource("3_vtld6")
+
 [node name="Ground" type="Node2D" parent="."]
 z_index = 1
 position = Vector2(0, 123)
@@ -159,6 +163,10 @@ building_move = Array[AudioStream]([ExtResource("14_qey0i"), ExtResource("15_4ry
 gravity = ExtResource("17_mefcy")
 hard_drop = ExtResource("18_150fx")
 settle = ExtResource("19_16mf0")
+
+[node name="VolumeControl" type="Node" parent="BuildingGrid/GridSfx"]
+script = ExtResource("3_vtld6")
+is_sfx = true
 
 [node name="ForegroundDecoration" type="Node2D" parent="."]
 z_index = 1
@@ -246,6 +254,10 @@ texture_click_mask = ExtResource("24_wx3v4")
 stream = ExtResource("30_6h5im")
 volume_db = -15.0
 
+[node name="VolumeControl" type="Node" parent="PixelUILayer/HUDContainer/MiddleArea/EndDayButton/SFX"]
+script = ExtResource("3_vtld6")
+is_sfx = true
+
 [node name="DescendButton" type="TextureButton" parent="PixelUILayer/HUDContainer"]
 visible = false
 self_modulate = Color(1, 1, 1, 0.352941)
@@ -310,6 +322,10 @@ _test_variations = Array[Resource("res://scripts/systems/building_grid/building_
 [node name="ClickSfx" type="AudioStreamPlayer2D" parent="SkyViewControls"]
 stream = ExtResource("30_ph8ko")
 volume_db = -3.0
+
+[node name="VolumeControl" type="Node" parent="SkyViewControls/ClickSfx"]
+script = ExtResource("3_vtld6")
+is_sfx = true
 
 [node name="DialogueBoxSpawner" type="Node" parent="." node_paths=PackedStringArray("small_pixel_ui_layer", "static_small_pixel_ui_layer")]
 script = ExtResource("18_al1pw")
