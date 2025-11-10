@@ -1,12 +1,12 @@
 [gd_scene load_steps=8 format=3 uid="uid://tpwh1rw6ehic"]
 
-[ext_resource type="Script" path="res://scripts/menu/cutscene_dialogue_box_spawner.gd" id="1_ifn1b"]
+[ext_resource type="Script" uid="uid://p68pu26xgar1" path="res://scripts/menu/cutscene_dialogue_box_spawner.gd" id="1_ifn1b"]
 [ext_resource type="PackedScene" uid="uid://b0rc8omyr0as8" path="res://scenes/ui/dialogue_box.tscn" id="2_1lu6r"]
 [ext_resource type="PackedScene" uid="uid://vsi3m02kybq0" path="res://scenes/ui/cutscene_dialogue_box.tscn" id="3_l1x2e"]
-[ext_resource type="Script" path="res://scripts/menu/dialogue_box_manager.gd" id="5_d6xo2"]
+[ext_resource type="Script" uid="uid://cpcgfn6r61vfk" path="res://scripts/menu/dialogue_box_manager.gd" id="5_d6xo2"]
 [ext_resource type="PackedScene" uid="uid://cf4x3txyo6wyw" path="res://scenes/ui/building_info_box.tscn" id="5_jsk11"]
 [ext_resource type="AudioStream" uid="uid://dohlrp7nf0f34" path="res://music/win_theme11-22-24.mp3" id="6_warkl"]
-[ext_resource type="Script" path="res://scripts/systems/volume_control.gd" id="7_g32mx"]
+[ext_resource type="Script" uid="uid://b31ehk6s4db0w" path="res://scripts/systems/volume_control.gd" id="7_g32mx"]
 
 [node name="Cutscene" type="Node2D"]
 

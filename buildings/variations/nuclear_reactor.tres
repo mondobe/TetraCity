@@ -2,7 +2,7 @@
 
 [ext_resource type="Resource" uid="uid://da5icvnicvami" path="res://buildings/nuclear_reactor.tres" id="1_xlphn"]
 [ext_resource type="Texture2D" uid="uid://qqwci4mtdsw8" path="res://sprites/ui/portraits/hoom.png" id="1_ynvn2"]
-[ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="2_sex6l"]
+[ext_resource type="Script" uid="uid://b705imi61vt73" path="res://scripts/systems/building_grid/building_variation.gd" id="2_sex6l"]
 [ext_resource type="Texture2D" uid="uid://bdsrb7og8piqf" path="res://sprites/buildings/nuclear_reactor.png" id="3_a6n15"]
 
 [resource]

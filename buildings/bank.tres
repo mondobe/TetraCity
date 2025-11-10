@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BuildingBlueprint" load_steps=3 format=3 uid="uid://ukhvt3nt48fn"]
 
-[ext_resource type="Script" path="res://scripts/buildings/bank.gd" id="1_4vag4"]
-[ext_resource type="Script" path="res://scripts/systems/building_grid/building_blueprint.gd" id="2_krhhn"]
+[ext_resource type="Script" uid="uid://1deuda56efmp" path="res://scripts/buildings/bank.gd" id="1_4vag4"]
+[ext_resource type="Script" uid="uid://bfc7wpggd86t3" path="res://scripts/systems/building_grid/building_blueprint.gd" id="2_krhhn"]
 
 [resource]
 script = ExtResource("2_krhhn")

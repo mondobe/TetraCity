@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2l85yu8i6vfl"]
 
 [ext_resource type="Texture2D" uid="uid://kux364hblob1" path="res://sprites/disasters/acid_rain/acid_clouds.png" id="1_s8ifi"]
-[ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="2_ux5be"]
+[ext_resource type="Script" uid="uid://bgucumpn8u3ii" path="res://scripts/environment/effects/scrolling_clouds.gd" id="2_ux5be"]
 
 [node name="AcidClouds" type="Sprite2D"]
 self_modulate = Color(1, 1, 1, 0)

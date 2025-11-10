@@ -4,10 +4,12 @@ var title_screen: PackedScene = load('res://scenes/menus/title_screen.tscn')
 
 @export var music_slider: HSlider
 @export var sfx_slider: HSlider
+@export var demo_dropdown: OptionButton
 
 func _ready() -> void:
 	music_slider.set_value_no_signal(Settings.music_vol)
 	sfx_slider.set_value_no_signal(Settings.sfx_vol)
+	demo_dropdown.selected = Settings.demo
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
@@ -21,3 +23,6 @@ func set_music_vol(value: float) -> void:
 
 func set_sfx_vol(value: float) -> void:
 	Settings.sfx_vol = value
+
+func set_demo(value: int) -> void:
+	Settings.demo = value

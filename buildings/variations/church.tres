@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://d0xtsbqtasrbi"]
 
-[ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="1_isfqw"]
+[ext_resource type="Script" uid="uid://b705imi61vt73" path="res://scripts/systems/building_grid/building_variation.gd" id="1_isfqw"]
 [ext_resource type="Texture2D" uid="uid://bvwr805h584n1" path="res://sprites/ui/portraits/reggie.png" id="1_tda3j"]
 [ext_resource type="Resource" uid="uid://so3ksyoffthl" path="res://buildings/church.tres" id="2_w2mri"]
 [ext_resource type="Texture2D" uid="uid://ducccwwco1bvn" path="res://sprites/buildings/church_redone.png" id="4_boi0f"]

@@ -1,24 +1,27 @@
-[gd_scene load_steps=62 format=3 uid="uid://birrxtkg5d3hg"]
+[gd_scene load_steps=69 format=3 uid="uid://birrxtkg5d3hg"]
 
-[ext_resource type="Script" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
+[ext_resource type="Script" uid="uid://b3raskyskmr0j" path="res://scripts/environment/moving_camera.gd" id="2_1vd7b"]
 [ext_resource type="AudioStream" uid="uid://d3gcir5sd0hp8" path="res://music/main_theme9-18-24.mp3" id="2_is7ov"]
 [ext_resource type="Texture2D" uid="uid://datqvsx5xph6" path="res://sprites/environment/groundTop.png" id="2_l1lou"]
-[ext_resource type="Script" path="res://scripts/environment/skyview_controls.gd" id="2_ymg3g"]
-[ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="3_113pp"]
+[ext_resource type="Script" uid="uid://vky1b43j3vkp" path="res://scripts/environment/skyview_controls.gd" id="2_ymg3g"]
+[ext_resource type="Script" uid="uid://bgucumpn8u3ii" path="res://scripts/environment/effects/scrolling_clouds.gd" id="3_113pp"]
 [ext_resource type="Texture2D" uid="uid://b7xoss14ph6pv" path="res://sprites/environment/groundBottom.png" id="3_ku6pw"]
-[ext_resource type="Script" path="res://scripts/systems/volume_control.gd" id="3_vtld6"]
+[ext_resource type="Script" uid="uid://b31ehk6s4db0w" path="res://scripts/systems/volume_control.gd" id="3_vtld6"]
 [ext_resource type="Texture2D" uid="uid://bk3mcifbo00ob" path="res://sprites/environment/clouds.png" id="5_0j3lg"]
 [ext_resource type="Resource" uid="uid://bas3a8n65ds1" path="res://buildings/variations/city_hall.tres" id="8_gjekm"]
-[ext_resource type="Script" path="res://scripts/systems/building_grid/building_grid.gd" id="8_yumsi"]
+[ext_resource type="Texture2D" uid="uid://dvgtbk03vjjyc" path="res://sprites/environment/planeSheet.png" id="8_ii2ls"]
+[ext_resource type="Script" uid="uid://vcee2f45eb4x" path="res://scripts/systems/building_grid/building_grid.gd" id="8_yumsi"]
+[ext_resource type="Script" uid="uid://djjkg772fh26m" path="res://scripts/environment/effects/ggx_plane.gd" id="9_77pi5"]
+[ext_resource type="Script" uid="uid://b705imi61vt73" path="res://scripts/systems/building_grid/building_variation.gd" id="9_jigba"]
 [ext_resource type="PackedScene" uid="uid://cmoks1w008liq" path="res://scenes/gameplay/building.tscn" id="9_teedr"]
 [ext_resource type="Resource" uid="uid://blctvydks2h24" path="res://buildings/variations/apartment.tres" id="9_uh8o4"]
 [ext_resource type="FontFile" uid="uid://sxhpegxwj6qy" path="res://fonts/verdana.ttf" id="11_8u3tu"]
 [ext_resource type="Texture2D" uid="uid://u3oof2tbhd7g" path="res://sprites/gameplay_misc/grid_space.png" id="11_cvkpl"]
-[ext_resource type="Script" path="res://scripts/systems/gameplay/world_stats.gd" id="11_fetru"]
-[ext_resource type="Script" path="res://scripts/environment/grid_guide.gd" id="12_dcn3s"]
-[ext_resource type="Script" path="res://scripts/ui/gameplay/stats_label.gd" id="12_q7wy1"]
-[ext_resource type="Script" path="res://scripts/environment/effects/grid_sfx.gd" id="13_56ujm"]
-[ext_resource type="Script" path="res://scripts/systems/gameplay/building_bonuses.gd" id="14_3u7nn"]
+[ext_resource type="Script" uid="uid://b3e15cgxteemt" path="res://scripts/systems/gameplay/world_stats.gd" id="11_fetru"]
+[ext_resource type="Script" uid="uid://oimkil1484nn" path="res://scripts/environment/grid_guide.gd" id="12_dcn3s"]
+[ext_resource type="Script" uid="uid://bkwyvkedd7jmj" path="res://scripts/ui/gameplay/stats_label.gd" id="12_q7wy1"]
+[ext_resource type="Script" uid="uid://4huo7ujedkur" path="res://scripts/environment/effects/grid_sfx.gd" id="13_56ujm"]
+[ext_resource type="Script" uid="uid://bkq1a021cwaxm" path="res://scripts/systems/gameplay/building_bonuses.gd" id="14_3u7nn"]
 [ext_resource type="PackedScene" uid="uid://b0rc8omyr0as8" path="res://scenes/ui/dialogue_box.tscn" id="14_qdc0i"]
 [ext_resource type="AudioStream" uid="uid://shijvr8llyke" path="res://sound_effects/building_move1.wav" id="14_qey0i"]
 [ext_resource type="AudioStream" uid="uid://boyj8hac8ushc" path="res://sound_effects/building_move2.wav" id="15_4rysv"]
@@ -27,21 +30,21 @@
 [ext_resource type="AudioStream" uid="uid://i5g1n1r0kdx0" path="res://sound_effects/gravity.wav" id="17_mefcy"]
 [ext_resource type="Resource" uid="uid://65ueslr70uo" path="res://buildings/variations/school.tres" id="18_0tkei"]
 [ext_resource type="AudioStream" uid="uid://d38miyjdvd7tk" path="res://sound_effects/hard_drop.wav" id="18_150fx"]
-[ext_resource type="Script" path="res://scripts/ui/gameplay/dialogue_box_spawner.gd" id="18_al1pw"]
+[ext_resource type="Script" uid="uid://c02m3aiky0xle" path="res://scripts/ui/gameplay/dialogue_box_spawner.gd" id="18_al1pw"]
 [ext_resource type="AudioStream" uid="uid://bjtt3aj4u4sm2" path="res://sound_effects/settle.wav" id="19_16mf0"]
 [ext_resource type="Resource" uid="uid://dutfrehwacddo" path="res://buildings/variations/nuclear_reactor.tres" id="19_p4iij"]
 [ext_resource type="PackedScene" uid="uid://bq56tb6w0hcbb" path="res://scenes/ui/npc_dialogue_box.tscn" id="19_yklqn"]
 [ext_resource type="Texture2D" uid="uid://2y0cu1o4f15y" path="res://sprites/ui/swap_view_button.png" id="20_j6mao"]
-[ext_resource type="Script" path="res://scripts/ui/gameplay/hud_container.gd" id="20_mo5pp"]
+[ext_resource type="Script" uid="uid://cufkqeo2dc1ff" path="res://scripts/ui/gameplay/hud_container.gd" id="20_mo5pp"]
 [ext_resource type="Resource" uid="uid://be6stuus2km8m" path="res://buildings/variations/cafe.tres" id="20_q54bt"]
 [ext_resource type="Theme" uid="uid://babe0j67pdkhx" path="res://theming/hud.tres" id="21_thl1h"]
 [ext_resource type="Resource" uid="uid://bhxuoe0d6x3u1" path="res://buildings/variations/solar_farm.tres" id="21_xkiqr"]
 [ext_resource type="Texture2D" uid="uid://cs2j0cowr4jvg" path="res://sprites/ui/end_day_button.png" id="22_r5sg8"]
 [ext_resource type="Texture2D" uid="uid://cpcb07fut3qoi" path="res://sprites/ui/end_day_button_pressed.png" id="23_tn7m6"]
-[ext_resource type="Script" path="res://scripts/systems/gameplay/balloon_spawn_ai.gd" id="24_fvko1"]
+[ext_resource type="Script" uid="uid://cefebhovv3rtj" path="res://scripts/systems/gameplay/balloon_spawn_ai.gd" id="24_fvko1"]
 [ext_resource type="BitMap" uid="uid://bxvhu0db4kx20" path="res://sprites/ui/end_day_button_mask.png" id="24_wx3v4"]
 [ext_resource type="PackedScene" uid="uid://cf4x3txyo6wyw" path="res://scenes/ui/building_info_box.tscn" id="26_no2ju"]
-[ext_resource type="Script" path="res://scripts/ui/gameplay/grid_click_controls.gd" id="27_lq8jb"]
+[ext_resource type="Script" uid="uid://ctbfguq5y6rng" path="res://scripts/ui/gameplay/grid_click_controls.gd" id="27_lq8jb"]
 [ext_resource type="Resource" uid="uid://cbd8qt7xqw4v1" path="res://buildings/city_hall.tres" id="28_hpkc4"]
 [ext_resource type="Resource" uid="uid://bh0s6jhfgvuwv" path="res://buildings/apartment.tres" id="29_paan3"]
 [ext_resource type="PackedScene" uid="uid://cr0ovt1ydrnpm" path="res://tech_art/grass.tscn" id="29_trtxd"]
@@ -54,10 +57,33 @@
 [ext_resource type="Resource" uid="uid://du6t0xow0k5db" path="res://buildings/school.tres" id="32_dibiw"]
 [ext_resource type="Resource" uid="uid://x7obthv6pdcy" path="res://buildings/solar_farm.tres" id="33_uhqqw"]
 [ext_resource type="Resource" uid="uid://o4wnmgkxop7d" path="res://buildings/cafe.tres" id="34_6wwn0"]
-[ext_resource type="Script" path="res://scripts/systems/shop/weighted_random.gd" id="50_pn2c1"]
+[ext_resource type="Script" uid="uid://bfc7wpggd86t3" path="res://scripts/systems/building_grid/building_blueprint.gd" id="48_ii2ls"]
+[ext_resource type="Script" uid="uid://6ol1sx4p71re" path="res://scripts/systems/shop/weighted_random.gd" id="50_pn2c1"]
 [ext_resource type="Resource" uid="uid://so3ksyoffthl" path="res://buildings/church.tres" id="51_vqbxa"]
 [ext_resource type="Resource" uid="uid://ukhvt3nt48fn" path="res://buildings/bank.tres" id="52_x4pai"]
-[ext_resource type="Script" path="res://scripts/systems/gameplay/natural_disasters.gd" id="54_fbgul"]
+[ext_resource type="Script" uid="uid://mgpkctqpfjxm" path="res://scripts/systems/gameplay/natural_disasters.gd" id="54_fbgul"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_77pi5"]
+atlas = ExtResource("8_ii2ls")
+region = Rect2(0, 0, 80, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_htpsd"]
+atlas = ExtResource("8_ii2ls")
+region = Rect2(80, 0, 80, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sdr0e"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_77pi5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_htpsd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.4
+}]
 
 [sub_resource type="LabelSettings" id="LabelSettings_7faob"]
 font = ExtResource("11_8u3tu")
@@ -93,7 +119,7 @@ zoom = Vector2(4, 4)
 script = ExtResource("2_1vd7b")
 speed = 10.0
 extent = 100.0
-placing_extent = 50.0
+placing_extent = 30.0
 sky_position = Vector2(0, -300)
 hud_container = NodePath("../PixelUILayer/HUDContainer")
 
@@ -123,7 +149,7 @@ region_rect = Rect2(0, 0, 1024, 192)
 [node name="BackgroundEffects" type="Node2D" parent="."]
 
 [node name="ScrollingClouds" type="Sprite2D" parent="BackgroundEffects"]
-z_index = -2
+z_index = -3
 texture_repeat = 2
 texture = ExtResource("5_0j3lg")
 region_enabled = true
@@ -133,6 +159,15 @@ drift_x = 12.0
 drift_y_amp = 8.0
 drift_y_freq = 0.001
 
+[node name="GGXPlane" type="AnimatedSprite2D" parent="BackgroundEffects"]
+z_index = -2
+position = Vector2(0, 100)
+sprite_frames = SubResource("SpriteFrames_sdr0e")
+autoplay = "default"
+frame_progress = 0.263551
+script = ExtResource("9_77pi5")
+speed = 100
+
 [node name="BuildingGrid" type="Node2D" parent="." node_paths=PackedStringArray("_moving_camera", "_sky_view_controls", "_balloon_spawn_ai", "world_stats", "_hud_container")]
 position = Vector2(-140, -160)
 script = ExtResource("8_yumsi")
@@ -141,7 +176,7 @@ _sky_view_controls = NodePath("../SkyViewControls")
 _balloon_spawn_ai = NodePath("../BalloonSpawnAI")
 world_stats = NodePath("../WorldStats")
 _hud_container = NodePath("../PixelUILayer/HUDContainer")
-_test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("8_gjekm"), ExtResource("9_uh8o4")])
+_test_variations = Array[ExtResource("9_jigba")]([ExtResource("8_gjekm"), ExtResource("9_uh8o4")])
 _initial_dimensions = Vector2i(14, 14)
 building = ExtResource("9_teedr")
 
@@ -317,7 +352,7 @@ _building_grid = NodePath("../BuildingGrid")
 _world_stats = NodePath("../WorldStats")
 _balloon_spawn_ai = NodePath("../BalloonSpawnAI")
 _hud_container = NodePath("../PixelUILayer/HUDContainer")
-_test_variations = Array[Resource("res://scripts/systems/building_grid/building_variation.gd")]([ExtResource("9_uh8o4"), ExtResource("8_gjekm"), ExtResource("17_072nv"), ExtResource("18_0tkei"), ExtResource("19_p4iij"), ExtResource("20_q54bt"), ExtResource("21_xkiqr")])
+_test_variations = Array[ExtResource("9_jigba")]([ExtResource("9_uh8o4"), ExtResource("8_gjekm"), ExtResource("17_072nv"), ExtResource("18_0tkei"), ExtResource("19_p4iij"), ExtResource("20_q54bt"), ExtResource("21_xkiqr")])
 
 [node name="ClickSfx" type="AudioStreamPlayer2D" parent="SkyViewControls"]
 stream = ExtResource("30_ph8ko")
@@ -340,7 +375,7 @@ script = ExtResource("24_fvko1")
 _sky_view_controls = NodePath("../SkyViewControls")
 _world_stats = NodePath("../WorldStats")
 _building_grid = NodePath("../BuildingGrid")
-_blueprints = Array[Resource("res://scripts/systems/building_grid/building_blueprint.gd")]([ExtResource("28_hpkc4"), ExtResource("30_8p0k6"), ExtResource("29_paan3"), ExtResource("31_1hyee"), ExtResource("34_6wwn0"), ExtResource("32_dibiw"), ExtResource("51_vqbxa"), ExtResource("33_uhqqw"), ExtResource("52_x4pai")])
+_blueprints = Array[ExtResource("48_ii2ls")]([ExtResource("28_hpkc4"), ExtResource("30_8p0k6"), ExtResource("29_paan3"), ExtResource("31_1hyee"), ExtResource("34_6wwn0"), ExtResource("32_dibiw"), ExtResource("51_vqbxa"), ExtResource("33_uhqqw"), ExtResource("52_x4pai")])
 building_weights = SubResource("Resource_ukpd0")
 building_weight_factors = {
 "apartment": 0.8,

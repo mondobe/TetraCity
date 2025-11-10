@@ -1,8 +1,8 @@
 [gd_resource type="Resource" script_class="Cutscene" load_steps=16 format=3 uid="uid://cfospeu84vy2o"]
 
 [ext_resource type="Texture2D" uid="uid://cn7hhgrewvckm" path="res://sprites/ui/cutscenes/opening/hurstZoom.png" id="1_ka6a8"]
-[ext_resource type="Script" path="res://scripts/systems/cutscenes/cutscene.gd" id="1_x51ab"]
-[ext_resource type="Script" path="res://scripts/systems/cutscenes/cutscene_frame.gd" id="2_1e8qj"]
+[ext_resource type="Script" uid="uid://dkw4d353kbeei" path="res://scripts/systems/cutscenes/cutscene.gd" id="1_x51ab"]
+[ext_resource type="Script" uid="uid://dkflaud1j5s2u" path="res://scripts/systems/cutscenes/cutscene_frame.gd" id="2_1e8qj"]
 [ext_resource type="Texture2D" uid="uid://cbg5cmoo7uc20" path="res://sprites/ui/portraits/hurst.png" id="2_ua173"]
 [ext_resource type="Texture2D" uid="uid://parv1cvgqlnk" path="res://sprites/ui/cutscenes/opening/cityItself.png" id="4_d4q4a"]
 [ext_resource type="Texture2D" uid="uid://bxehmeacwqwxq" path="res://sprites/ui/cutscenes/opening/fuelDisplay.png" id="5_g3185"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://7y7ffitn0rsr" path="res://sprites/ui/portraits/anna.png" id="1_cocb6"]
 [ext_resource type="Resource" uid="uid://so3ksyoffthl" path="res://buildings/church.tres" id="2_ujjso"]
-[ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="3_u7kqg"]
+[ext_resource type="Script" uid="uid://b705imi61vt73" path="res://scripts/systems/building_grid/building_variation.gd" id="3_u7kqg"]
 [ext_resource type="Texture2D" uid="uid://cnwpagpyclsmo" path="res://sprites/buildings/synagogue.png" id="4_8a0ch"]
 
 [resource]

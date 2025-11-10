@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="BuildingVariation" load_steps=5 format=3 uid="uid://blctvydks2h24"]
 
-[ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="1_3jvir"]
+[ext_resource type="Script" uid="uid://b705imi61vt73" path="res://scripts/systems/building_grid/building_variation.gd" id="1_3jvir"]
 [ext_resource type="Texture2D" uid="uid://c6hh22olsptvo" path="res://sprites/ui/portraits/bryan.png" id="1_4x3tg"]
 [ext_resource type="Resource" uid="uid://bh0s6jhfgvuwv" path="res://buildings/apartment.tres" id="1_11ynu"]
 [ext_resource type="Texture2D" uid="uid://b4wejql45gxc2" path="res://sprites/buildings/apartments.png" id="3_pbyl4"]

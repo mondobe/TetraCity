@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://du1xrjqm00i0b"]
 
-[ext_resource type="Script" path="res://scripts/ui/stats_screen.gd" id="1_a1ndk"]
+[ext_resource type="Script" uid="uid://clxv56aasm7sg" path="res://scripts/ui/stats_screen.gd" id="1_a1ndk"]
 [ext_resource type="Theme" uid="uid://cou1oxt1vsf13" path="res://theming/hover_ui.tres" id="2_ri8ms"]
 [ext_resource type="FontFile" uid="uid://c685qb4m7qjc" path="res://fonts/rubik.ttf" id="3_00b1y"]
 [ext_resource type="AudioStream" uid="uid://dohlrp7nf0f34" path="res://music/win_theme11-22-24.mp3" id="4_gp562"]
-[ext_resource type="Script" path="res://scripts/systems/volume_control.gd" id="5_824na"]
+[ext_resource type="Script" uid="uid://b31ehk6s4db0w" path="res://scripts/systems/volume_control.gd" id="5_824na"]
 
 [sub_resource type="FontVariation" id="FontVariation_ps5rv"]
 base_font = ExtResource("3_00b1y")

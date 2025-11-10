@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dq4qxrad0lhob" path="res://sprites/ui/portraits/arthur.png" id="1_64yhe"]
 [ext_resource type="Resource" uid="uid://du6t0xow0k5db" path="res://buildings/school.tres" id="1_ghnt4"]
-[ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="2_6rxls"]
+[ext_resource type="Script" uid="uid://b705imi61vt73" path="res://scripts/systems/building_grid/building_variation.gd" id="2_6rxls"]
 [ext_resource type="Texture2D" uid="uid://bwkstq2h01f78" path="res://sprites/buildings/school.png" id="3_6c7c4"]
 
 [resource]

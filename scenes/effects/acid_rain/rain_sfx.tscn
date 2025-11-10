@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0nv4ekbjei7n"]
 
 [ext_resource type="AudioStream" uid="uid://c7o5bjphtvrcd" path="res://sound_effects/rain.mp3" id="1_ch1qc"]
-[ext_resource type="Script" path="res://scripts/systems/volume_control.gd" id="2_o5qsw"]
+[ext_resource type="Script" uid="uid://b31ehk6s4db0w" path="res://scripts/systems/volume_control.gd" id="2_o5qsw"]
 
 [node name="RainSfx" type="AudioStreamPlayer2D"]
 stream = ExtResource("1_ch1qc")

@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bgugjwhf08mb8" path="res://sprites/ui/portraits/birdle.png" id="1_b6thy"]
 [ext_resource type="Resource" uid="uid://x7obthv6pdcy" path="res://buildings/solar_farm.tres" id="2_76t2o"]
-[ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="3_x3m6p"]
+[ext_resource type="Script" uid="uid://b705imi61vt73" path="res://scripts/systems/building_grid/building_variation.gd" id="3_x3m6p"]
 [ext_resource type="Texture2D" uid="uid://cvse6vhj21aw2" path="res://sprites/buildings/wind_farm.png" id="4_40nfw"]
 
 [resource]

@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dvw1dq5p0e1qv" path="res://tech_art/grass/grass1_ase.png" id="2_fwbn6"]
 [ext_resource type="Texture2D" uid="uid://d3iiwuafthv71" path="res://tech_art/grass/grass2_ase.png" id="3_4671m"]
 [ext_resource type="Texture2D" uid="uid://b4372ftmdh788" path="res://tech_art/grass/grass3_ase.png" id="4_ow3yt"]
-[ext_resource type="Script" path="res://scripts/environment/effects/sway_grass.gd" id="5_6ppo0"]
+[ext_resource type="Script" uid="uid://bkhgegqphmno8" path="res://scripts/environment/effects/sway_grass.gd" id="5_6ppo0"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_e61ko"]
 animations = [{

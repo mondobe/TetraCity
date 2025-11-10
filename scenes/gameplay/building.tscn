@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cmoks1w008liq"]
 
-[ext_resource type="Script" path="res://scripts/systems/building_grid/building.gd" id="1_v4c3k"]
+[ext_resource type="Script" uid="uid://bfgcebo2xgoxh" path="res://scripts/systems/building_grid/building.gd" id="1_v4c3k"]
 [ext_resource type="Texture2D" uid="uid://b4wejql45gxc2" path="res://sprites/buildings/apartments.png" id="2_whcsi"]
 [ext_resource type="Texture2D" uid="uid://flpx6win4pxp" path="res://sprites/gameplay_misc/guide.png" id="3_w0302"]
 

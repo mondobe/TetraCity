@@ -94,8 +94,12 @@ func make_and_place(variation: BuildingVariation) -> void:
 ## Start placing a new building. Sets the building at the top center of the grid
 ## and restarts the timer.
 func start_placing(new_building: Building) -> void:
-	new_building.set_origin_coords(Vector2i(
-			grid.dimensions.x / 2 - new_building.grid.dimensions.x / 2, 0))
+	if world_stats.day == 1:
+		new_building.set_origin_coords(Vector2i(
+				grid.dimensions.x / 2 - new_building.grid.dimensions.x / 2, 3))
+	else:
+		new_building.set_origin_coords(Vector2i(
+				grid.dimensions.x / 2 - new_building.grid.dimensions.x / 2, 0))
 	add_child(new_building)
 	push_timer = MAX_PUSH_TIMER
 	guide.show()

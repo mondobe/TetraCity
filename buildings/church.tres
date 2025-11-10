@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BuildingBlueprint" load_steps=3 format=3 uid="uid://so3ksyoffthl"]
 
-[ext_resource type="Script" path="res://scripts/buildings/church.gd" id="1_eklop"]
-[ext_resource type="Script" path="res://scripts/systems/building_grid/building_blueprint.gd" id="1_mokn3"]
+[ext_resource type="Script" uid="uid://b5f8stksksu6w" path="res://scripts/buildings/church.gd" id="1_eklop"]
+[ext_resource type="Script" uid="uid://bfc7wpggd86t3" path="res://scripts/systems/building_grid/building_blueprint.gd" id="1_mokn3"]
 
 [resource]
 script = ExtResource("1_mokn3")
@@ -12,6 +12,6 @@ These additional buildings are also more likely to favor those which neighbor th
 variations = Array[String](["church", "cathedral", "mosque", "synagogue"])
 first_spawning_day = 4
 balloon_lifetime = 2
-starting_price = 14.0
-daily_increase = 3.55
-day_multiplier = 1.45
+starting_price = 11.0
+daily_increase = 3.375
+day_multiplier = 1.225

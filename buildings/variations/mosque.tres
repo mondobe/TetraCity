@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dmcxwiwmfooiu" path="res://sprites/ui/portraits/rasab.png" id="1_466ta"]
 [ext_resource type="Resource" uid="uid://so3ksyoffthl" path="res://buildings/church.tres" id="2_he8y6"]
-[ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="3_ispgh"]
+[ext_resource type="Script" uid="uid://b705imi61vt73" path="res://scripts/systems/building_grid/building_variation.gd" id="3_ispgh"]
 [ext_resource type="Texture2D" uid="uid://bqug8gvos1efc" path="res://sprites/buildings/mosque.png" id="4_2s1is"]
 
 [resource]

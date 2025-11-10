@@ -62,6 +62,7 @@ func _process(delta: float) -> void:
 			target_pos = get_global_mouse_position() - global_position
 			if target_pos.length() > placing_extent:
 				target_pos = target_pos.normalized() * placing_extent
+			target_pos += Vector2(0, -5)
 
 	var delta_pos = target_pos - global_position
 	translate(delta_pos * speed * delta)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b0rc8omyr0as8"]
 
-[ext_resource type="Script" path="res://scripts/ui/gameplay/dialogue_box.gd" id="1_6uw3d"]
+[ext_resource type="Script" uid="uid://nqp528xul05n" path="res://scripts/ui/gameplay/dialogue_box.gd" id="1_6uw3d"]
 [ext_resource type="Texture2D" uid="uid://vfgrp5seiq7s" path="res://sprites/ui/dialogue_nine_patch.png" id="1_roajg"]
 [ext_resource type="Theme" uid="uid://babe0j67pdkhx" path="res://theming/hud.tres" id="3_5nt0x"]
 

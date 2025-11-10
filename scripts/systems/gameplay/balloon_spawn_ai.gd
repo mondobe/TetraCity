@@ -50,6 +50,8 @@ func on_new_day() -> void:
 	if day == 50:
 		spawn("nuclear_reactor", 1000)
 	var spawn_count: int = adjusted_spawn_weights().get_random()
+	if day <= 5 and spawn_count < 1:
+		spawn_count = 1
 	for i in range(spawn_count):
 		var choice = choose_building()
 		var var_name: String = choice.variations.pick_random()

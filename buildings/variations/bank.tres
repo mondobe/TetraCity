@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://8m7j6c276cx8" path="res://sprites/ui/portraits/daniel.png" id="1_gukqj"]
 [ext_resource type="Resource" uid="uid://ukhvt3nt48fn" path="res://buildings/bank.tres" id="2_v3dmh"]
-[ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="3_hk1ct"]
+[ext_resource type="Script" uid="uid://b705imi61vt73" path="res://scripts/systems/building_grid/building_variation.gd" id="3_hk1ct"]
 [ext_resource type="Texture2D" uid="uid://3jag4uaieh8x" path="res://sprites/buildings/bank.png" id="4_tfv2d"]
 
 [resource]

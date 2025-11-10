@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bxufr16hlwrbe"]
 
-[ext_resource type="Script" path="res://scripts/systems/shop/balloon.gd" id="1_bpkah"]
+[ext_resource type="Script" uid="uid://cepkh5wh7y1cb" path="res://scripts/systems/shop/balloon.gd" id="1_bpkah"]
 [ext_resource type="Texture2D" uid="uid://c122agkdptxel" path="res://sprites/gameplay_misc/balloon2.png" id="2_5iksp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ey5yg"]

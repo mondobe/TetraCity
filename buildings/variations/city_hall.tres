@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cbg5cmoo7uc20" path="res://sprites/ui/portraits/hurst.png" id="1_u2ojh"]
 [ext_resource type="Resource" uid="uid://cbd8qt7xqw4v1" path="res://buildings/city_hall.tres" id="1_wiphg"]
-[ext_resource type="Script" path="res://scripts/systems/building_grid/building_variation.gd" id="2_5pm6u"]
+[ext_resource type="Script" uid="uid://b705imi61vt73" path="res://scripts/systems/building_grid/building_variation.gd" id="2_5pm6u"]
 [ext_resource type="Texture2D" uid="uid://blrtmwevytseb" path="res://sprites/buildings/cityHall.png" id="3_yiuo5"]
 
 [resource]

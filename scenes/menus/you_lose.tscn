@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dsoaacb6q0r2x"]
 
-[ext_resource type="Script" path="res://scripts/ui/lose_screen.gd" id="1_66201"]
+[ext_resource type="Script" uid="uid://b78f8q7kpumex" path="res://scripts/ui/lose_screen.gd" id="1_66201"]
 [ext_resource type="Theme" uid="uid://cou1oxt1vsf13" path="res://theming/hover_ui.tres" id="2_mhveo"]
 [ext_resource type="AudioStream" uid="uid://dh7xljh8di687" path="res://music/game_over.mp3" id="2_rmptw"]
-[ext_resource type="Script" path="res://scripts/systems/volume_control.gd" id="4_spsrb"]
+[ext_resource type="Script" uid="uid://b31ehk6s4db0w" path="res://scripts/systems/volume_control.gd" id="4_spsrb"]
 
 [node name="StatsScreen" type="Control"]
 layout_mode = 3

@@ -1,13 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://eayrnwud62wn"]
+[gd_scene load_steps=10 format=3 uid="uid://eayrnwud62wn"]
 
-[ext_resource type="Script" path="res://scripts/ui/title_screen.gd" id="1_bsimy"]
+[ext_resource type="Script" uid="uid://c2li3vxxijsdm" path="res://scripts/ui/title_screen.gd" id="1_bsimy"]
 [ext_resource type="Resource" uid="uid://cfospeu84vy2o" path="res://cutscenes/opening_cutscene.tres" id="2_rcqyn"]
 [ext_resource type="Texture2D" uid="uid://bk3mcifbo00ob" path="res://sprites/environment/clouds.png" id="3_5qla5"]
 [ext_resource type="Theme" uid="uid://cou1oxt1vsf13" path="res://theming/hover_ui.tres" id="4_737vl"]
-[ext_resource type="Script" path="res://scripts/environment/effects/scrolling_clouds.gd" id="4_tu6lm"]
+[ext_resource type="Script" uid="uid://bgucumpn8u3ii" path="res://scripts/environment/effects/scrolling_clouds.gd" id="4_tu6lm"]
 [ext_resource type="Texture2D" uid="uid://chuswf7xagqfc" path="res://sprites/ui/final_logo.png" id="5_7jei2"]
 [ext_resource type="AudioStream" uid="uid://c8mm5qn6gafc8" path="res://music/title_theme.mp3" id="6_pxqlc"]
-[ext_resource type="Script" path="res://scripts/systems/volume_control.gd" id="8_fen6m"]
+[ext_resource type="Script" uid="uid://rlk2mbf66f3h" path="res://scripts/ui/quit_button.gd" id="6_ssxho"]
+[ext_resource type="Script" uid="uid://b31ehk6s4db0w" path="res://scripts/systems/volume_control.gd" id="8_fen6m"]
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_bsimy")
@@ -76,6 +77,7 @@ layout_mode = 2
 theme = ExtResource("4_737vl")
 text = "Quit
 "
+script = ExtResource("6_ssxho")
 
 [node name="TextureRect" type="TextureRect" parent="UICanvas"]
 texture_filter = 1

@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="BuildingBlueprint" load_steps=3 format=3 uid="uid://x7obthv6pdcy"]
 
-[ext_resource type="Script" path="res://scripts/buildings/solar_farm.gd" id="1_4ivfb"]
-[ext_resource type="Script" path="res://scripts/systems/building_grid/building_blueprint.gd" id="2_kocg7"]
+[ext_resource type="Script" uid="uid://bvbw0ctuhoe6m" path="res://scripts/buildings/solar_farm.gd" id="1_4ivfb"]
+[ext_resource type="Script" uid="uid://bfc7wpggd86t3" path="res://scripts/systems/building_grid/building_blueprint.gd" id="2_kocg7"]
 
 [resource]
 script = ExtResource("2_kocg7")
